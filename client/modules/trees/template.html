@@ -1,0 +1,66 @@
+<template name="trees">
+
+  {{> breadcrumb}}
+
+  <h2 class="page-header">Árboles</h2>
+
+  <div class="row">
+    <div class="col-md-4">
+      <a class="btn btn-primary" href="{{urlFor 'trees.families.index'}}">Familias</a>
+      <br>
+      <br>
+    </div>
+  </div>
+
+  <div class="row">
+
+    <div class="col-md-3">
+      <div class="panel panel-primary">
+        <div class="panel-heading">Nuevo árbol</div>
+        <div class="panel-body">
+          <a class="btn btn-primary" href="{{pathFor 'trees.add'}}" role="button">Añadir árbol</a>
+        </div>
+      </div>
+    </div>
+
+    {{#each trees}}
+      {{> treesTableItem}}
+    {{/each}}
+
+  </div>
+
+</template>
+
+<template name="treesTableItem">
+
+  <div class="col-md-3">
+    <div class="panel panel-default">
+      <div class="panel-heading"><a href="{{pathFor 'trees.one'}}">{{variant}}</a></div>
+      <div class="panel-body">
+        <a class="btn btn-default" href="{{pathFor 'trees.one.edit'}}">Editar</a>
+        <a class="btn btn-danger remove-item" href="#">Eliminar</a>
+      </div>
+    </div>
+  </div>
+
+</template>
+
+<template name="treesOne">
+
+  {{> breadcrumb}}
+  
+  show tree info
+
+</template>
+
+<template name="treesAdd">
+  {{> breadcrumb}}
+  <h2 class="page-header">Crear nuevo árbol</h2>
+  {{> quickForm collection="Trees" id="treeFormNew" type="insert"}}
+</template>
+
+<template name="treesOneEdit">
+  {{> breadcrumb}}
+  <h2 class="page-header">Actualizar: {{tree.variant}}</h2>
+  {{> quickForm collection="Trees" id="treeFormUpdate" type="update" doc=tree}}
+</template>
