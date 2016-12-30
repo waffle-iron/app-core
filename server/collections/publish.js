@@ -30,8 +30,14 @@ Meteor.publish('Trees', (treeId) => {
   return treeId ? Trees.find({_id: treeId}) : Trees.find({})
 })
 
-Meteor.publish('MyOrchards', (myOrchardId) => {
-  return myOrchardId ? MyOrchards.find({_id: myOrchardId}) : MyOrchards.find({})
+Meteor.publish('MyOrchards', function (myOrchardId) {
+
+  if (!this.userId) { return null; }
+
+  let q = myOrchardId ? {_id: myOrchardId} : {};
+      q.userId = this.userId;
+
+  return MyOrchards.find(q);
 })
 
 Meteor.publish('MyTrees', function(myOrchardId, mytreeId) {

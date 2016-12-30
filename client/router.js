@@ -1,8 +1,32 @@
 document.documentElement.lang = 'es'
+accountsUIBootstrap3.setLanguage('es');
 
 Router.configure({
   layoutTemplate: 'appLayout'
 })
+
+Router.onBeforeAction(function () {    
+  if  (!Meteor.userId() && !Meteor.loggingIn()) {
+    this.redirect('home');
+    this.stop();
+  } else {
+    this.next();
+  }
+}, {except: [
+  'home',
+  'seeds.index', 
+  'seeds.families.index',
+  'seeds.families.one',
+  'seeds.one',
+  'seeds.calendar',
+  'trees.index',
+  'trees.one',
+  'trees.families.index',
+  'trees.families.one',
+  'herbs.index',
+  'herbs.one',
+  'myorchards.index',
+] });
 
 Router.route('/', function () {
   this.render('home')
