@@ -91,35 +91,7 @@
       </div>
     </div>
 
-    <div class="col-md-6">
-      <div class="panel panel-default">
-        <div class="panel-heading">
-          <h3 class="panel-title">Recursos</h3>
-        </div>
-        <ul class="list-group">
-          {{#each seed.info.seed}}
-            <li class="list-group-item">
-              <a href="{{url}}" target="_blank">{{name}}</a>
-            </li>
-          {{/each}}
-          {{#each seed.info.seeding}}
-            <li class="list-group-item">
-              <a href="{{url}}" target="_blank">{{name}}</a>
-            </li>
-          {{/each}}
-          {{#each seed.info.harvest}}
-            <li class="list-group-item">
-              <a href="{{url}}" target="_blank">{{name}}</a>
-            </li>
-          {{/each}}
-          {{#each seed.info.general}}
-            <li class="list-group-item">
-              <a href="{{url}}" target="_blank">{{name}}</a>
-            </li>
-          {{/each}}
-        </ul>
-      </div>
-    </div>
+    {{> resourcesList seed}}
     
   </div>
 
@@ -133,14 +105,14 @@
     <div class="col-md-6">
       <div class="bs-callout bs-callout-success" id="callout-input-needs-type">
         <h4>Compatibles</h4>
-        <p>{{{compatiblePlants}}}</p>
+        <p>{{{compatibleSeeds seed}}}</p>
       </div>
     </div>
 
     <div class="col-md-6">
       <div class="bs-callout bs-callout-danger" id="callout-input-needs-type">
         <h4>Incompatibles</h4>
-        <p>{{{incompatiblePlants}}}</p>
+        <p>{{{incompatibleSeeds seed}}}</p>
       </div>
     </div>
   </div>

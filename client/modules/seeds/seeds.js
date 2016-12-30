@@ -30,7 +30,7 @@ Template.seedsAdd.events({
   }
 })
 
-Template.registerHelper('compatiblePlants', function() {
+Template.registerHelper('compatibleSeeds', function() {
   if (!this.seed || !this.seed.associations || !this.seed.associations.ok) return;
   let r = '';
   this.seed.associations.ok.forEach(function(ok) {
@@ -41,7 +41,7 @@ Template.registerHelper('compatiblePlants', function() {
   return r;
 })
 
-Template.registerHelper('incompatiblePlants', function() {
+Template.registerHelper('incompatibleSeeds', function() {
   if (!this.seed || !this.seed.associations || !this.seed.associations.no) return;
   let r = '';
   this.seed.associations.no.forEach(function(no) {

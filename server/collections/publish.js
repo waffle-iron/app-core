@@ -2,6 +2,10 @@ Meteor.publish('Seeds', (seedId) => {
   return seedId ? Seeds.find({_id: seedId}) : Seeds.find()
 })
 
+Meteor.publish('Herbs', (herbId) => {
+  return herbId ? Herbs.find({_id: herbId}) : Herbs.find()
+})
+
 Meteor.publish('SeedsNames', () => {
   return Seeds.find({}, {fields: {name: 1, variant: 1}})
 })

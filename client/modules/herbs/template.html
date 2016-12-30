@@ -1,0 +1,92 @@
+<template name="herbs">
+
+  {{> breadcrumb}}
+
+  <h2 class="page-header">Hierbas</h2>
+
+  <div class="row">
+
+    <div class="col-md-3">
+      <div class="panel panel-primary">
+        <div class="panel-heading">Nueva hierba</div>
+        <div class="panel-body">
+          <p>Crear una nueva hierba</p>
+          <a class="btn btn-primary" href="{{pathFor 'herbs.add'}}" role="button">Añadir hierba</a>
+        </div>
+      </div>
+    </div>
+
+    {{#each herbs}}
+      {{> herbsTableItem}}
+    {{/each}}
+
+  </div>
+
+</template>
+
+<template name="herbsTableItem">
+
+  <div class="col-md-3">
+    <div class="panel panel-default">
+      <div class="panel-heading"><a href="{{pathFor 'herbs.one'}}">{{name}}</a></div>
+      <div class="panel-body">
+        <a class="btn btn-default" href="{{pathFor 'herbs.one.edit'}}">Editar</a>
+        <a class="btn btn-danger remove-item" href="#">Eliminar</a>
+      </div>
+    </div>
+  </div>
+
+</template>
+
+<template name="herbsView">
+
+  {{> breadcrumb}}
+
+  <h2 class="page-header">{{herb.name}}</h2>
+  
+  <div class="row">
+    <div class="col-md-6">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h3 class="panel-title">Información general</h3>
+        </div>
+        <ul class="list-group">
+          <li class="list-group-item">{{herb.name}}</li>
+        </ul>
+      </div>
+    </div>
+    
+    {{> resourcesList herb}}
+    
+  </div>
+
+  <div class="row">
+    {{#each herb.notes}}
+      <div class="col-md-4">
+        <div class="note note-yellow">
+          <p>{{.}}</p>
+        </div>
+      </div>
+    {{/each}}
+  </div>
+
+  <div class="row">
+    <div class="col-md-4">
+      <a class="btn btn-primary" href="{{urlFor 'herbs.one.edit' _id=herb._id}}">Editar</a>
+    </div>
+  </div>
+
+
+</template>
+
+<template name="herbsAdd">
+  {{> breadcrumb}}
+  <h2 class="page-header">Crear una nueva hierba</h2>
+  {{> quickForm collection="Herbs" id="herbFormInsert" type="insert"}}
+</template>
+
+<template name="herbsEdit">
+  {{> breadcrumb}}
+  <h2 class="page-header">Actualizar: {{herb.name}}</h2>
+  {{> quickForm collection="Herbs" id="herbFormUpdate" type="update" doc=herb}}
+</template>

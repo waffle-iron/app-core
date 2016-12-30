@@ -29,6 +29,7 @@
             <th width="25px"></th>
             <th width="15%">Nombre</th>
             <th>Huerto</th>
+            <th width="100px"></th>
           </tr>
         </thead>
         <tbody>
@@ -50,6 +51,7 @@
     <td>🌱</td>
     <td>{{name}}</td>
     <td>{{myOrchardName orchardId}}</td>
+    <td><a href="{{pathFor "myorchards.one.benchs.one.edit" _bench=benchId _id=_id}}">editar</a></td>
   </tr>
 </template>
 
@@ -58,6 +60,7 @@
     <td>🌳</td>
     <td>{{name}}</td>
     <td>{{myOrchardName orchardId}}</td>
+    <td><a haref="{{pathFor "myorchards.trees.one.edit"}}"></a></td>
   </tr>
 </template>
 
