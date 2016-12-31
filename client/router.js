@@ -26,13 +26,46 @@ Router.onBeforeAction(function () {
   'herbs.index',
   'herbs.one',
   'myorchards.index',
+  'blog.index',
+  'blog.one',
 ] });
 
 Router.route('/', function () {
   this.render('home')
 }, {
+  subscriptions: function() {
+    return [
+      Meteor.subscribe('wordpress','http://tiempodesiembra.es/api?json=get_posts&count=3')
+    ]
+  },
   name: 'home',
   title: 'Inicio'
+})
+
+Router.route('/blog', function () {
+  this.render('blog')
+}, {
+  subscriptions: function() {
+    return [
+      Meteor.subscribe('wordpress','http://tiempodesiembra.es/api?json=get_posts&count=10')
+    ]
+  },
+  name: 'blog.index',
+  parent: 'home',
+  title: 'Blog'
+})
+
+Router.route('/blog/:_slug', function () {
+  this.render('blogOne')
+}, {
+  subscriptions: function() {
+    return [
+      Meteor.subscribe('wordpress','http://tiempodesiembra.es/api?json=get_posts&count=10')
+    ]
+  },
+  name: 'blog.one',
+  parent: 'blog.index',
+  title: 'Blog'
 })
 
 Router.route('/seeds/families', function () {

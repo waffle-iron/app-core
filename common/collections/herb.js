@@ -163,6 +163,10 @@ Herbschema = new SimpleSchema({
     autoform: {
       type: 'hidden'
     }
+  },
+  imageHighlighted: {
+    type: String,
+    optional: true
   }
 });
 

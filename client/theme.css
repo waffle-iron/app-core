@@ -1,0 +1,40 @@
+body {
+  background: #F0F0ED;
+}
+
+.navbar-default {
+  background: #33363C;
+}
+
+.navbar-default .navbar-nav > li > a {
+  color: #fff;
+  font-weight: bold;
+}
+
+.navbar-default .navbar-nav > li > a:hover {
+  color: #fff;
+}
+
+.breadcrumb,
+.jumbotron {
+  background: #fff
+}
+
+.panel-body p:last-child {
+  margin: 0;
+}
+
+.bs-callout {
+  background: white;
+  border-color: #ddd;
+  border-radius: 4px;
+}
+
+.thumbnail img {
+  width: 350px !important;
+  height: 263px !important;
+}
+
+.s-alert-box {
+  z-index: 9999;
+}

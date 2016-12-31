@@ -8,15 +8,19 @@
 
   <div class="row">
 
-    <div class="col-md-3">
-      <div class="panel panel-primary">
-        <div class="panel-heading">Nueva semilla</div>
-        <div class="panel-body">
-          <p>Crear una nueva semilla</p>
-          <a class="btn btn-primary" href="{{pathFor 'seeds.add'}}" role="button">Añadir semilla</a>
+    {{#if isInRole 'super-admin,admin,editor'}}
+      
+      <div class="col-md-4">
+        <div class="panel panel-primary">
+          <div class="panel-heading">Nueva semilla</div>
+          <div class="panel-body">
+            <p>Crear una nueva semilla</p>
+            <a class="btn btn-primary" href="{{pathFor 'seeds.add'}}" role="button">Añadir semilla</a>
+          </div>
         </div>
       </div>
-    </div>
+      
+    {{/if}}
 
     {{#each seeds}}
       {{> seedsTableItem}}
@@ -56,15 +60,41 @@
 
 <template name="seedsTableItem">
 
-  <div class="col-md-3">
-    <div class="panel panel-default">
-      <div class="panel-heading"><a href="{{pathFor 'seeds.one'}}">{{variant}}</a></div>
-      <div class="panel-body">
+  <div class="col-xs-6 col-md-4">
+
+    <div class="thumbnail">
+      <a href="{{pathFor 'seeds.one'}}">
+        {{#if highlightedImage}}
+          <img src="{{highlightedImage}}" alt="{{variant}}" title="{{variant}}">   
+        {{else}}
+          <img src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9InllcyI/PjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB3aWR0aD0iMjQyIiBoZWlnaHQ9IjIwMCIgdmlld0JveD0iMCAwIDI0MiAyMDAiIHByZXNlcnZlQXNwZWN0UmF0aW89Im5vbmUiPjwhLS0KU291cmNlIFVSTDogaG9sZGVyLmpzLzEwMCV4MjAwCkNyZWF0ZWQgd2l0aCBIb2xkZXIuanMgMi42LjAuCkxlYXJuIG1vcmUgYXQgaHR0cDovL2hvbGRlcmpzLmNvbQooYykgMjAxMi0yMDE1IEl2YW4gTWFsb3BpbnNreSAtIGh0dHA6Ly9pbXNreS5jbwotLT48ZGVmcz48c3R5bGUgdHlwZT0idGV4dC9jc3MiPjwhW0NEQVRBWyNob2xkZXJfMTU5NTU0MTI3MjggdGV4dCB7IGZpbGw6I0FBQUFBQTtmb250LXdlaWdodDpib2xkO2ZvbnQtZmFtaWx5OkFyaWFsLCBIZWx2ZXRpY2EsIE9wZW4gU2Fucywgc2Fucy1zZXJpZiwgbW9ub3NwYWNlO2ZvbnQtc2l6ZToxMnB0IH0gXV0+PC9zdHlsZT48L2RlZnM+PGcgaWQ9ImhvbGRlcl8xNTk1NTQxMjcyOCI+PHJlY3Qgd2lkdGg9IjI0MiIgaGVpZ2h0PSIyMDAiIGZpbGw9IiNFRUVFRUUiLz48Zz48dGV4dCB4PSI4OS44NTE1NjI1IiB5PSIxMDUuMzYyNSI+MjQyeDIwMDwvdGV4dD48L2c+PC9nPjwvc3ZnPg==" alt="{{variant}}" title="{{variant}}">   
+        {{/if}}
+      </a>
+      <div class="caption">
+        <h3><a href="{{pathFor 'seeds.one'}}">{{variant}}</a></h3>
         <p>{{monthName seedTime.from}} ~ {{monthName harvestTime.from}}</p>
-        <a class="btn btn-default" href="{{pathFor 'seeds.one.edit'}}">Editar</a>
-        <a class="btn btn-danger remove-item" href="#">Eliminar</a>
+        
+        {{#if isInRole 'super-admin,admin,editor'}}
+          <a class="btn btn-default" href="{{pathFor 'seeds.one.edit'}}">Editar</a>
+          <a class="btn btn-danger remove-item" href="#">Eliminar</a>
+        {{/if}}
+
       </div>
     </div>
+
+    <!-- <div class="panel panel-default">
+      <div class="panel-heading"><a href="{{pathFor 'seeds.one'}}">{{variant}}</a></div>
+      <div class="panel-body">
+        
+        <p>{{monthName seedTime.from}} ~ {{monthName harvestTime.from}}</p>
+
+        {{#if isInRole 'super-admin,admin,editor'}}
+          <a class="btn btn-default" href="{{pathFor 'seeds.one.edit'}}">Editar</a>
+          <a class="btn btn-danger remove-item" href="#">Eliminar</a>
+        {{/if}}
+
+      </div>
+    </div> -->
   </div>
 
 </template>
@@ -299,11 +329,13 @@
     {{/each}}
   </div>
 
-  <div class="row">
-    <div class="col-md-4">
-      <a class="btn btn-primary" href="{{urlFor 'seeds.one.edit' _id=seed._id}}">Editar</a>
+  {{#if isInRole 'super-admin,admin,editor'}}
+    <div class="row">
+      <div class="col-md-4">
+        <a class="btn btn-primary" href="{{urlFor 'seeds.one.edit' _id=seed._id}}">Editar</a>
+      </div>
     </div>
-  </div>
+  {{/if}}
   
 </template>
 

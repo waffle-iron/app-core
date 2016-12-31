@@ -14,14 +14,16 @@
 
   <div class="row">
 
-    <div class="col-md-3">
-      <div class="panel panel-primary">
-        <div class="panel-heading">Nuevo árbol</div>
-        <div class="panel-body">
-          <a class="btn btn-primary" href="{{pathFor 'trees.add'}}" role="button">Añadir árbol</a>
+    {{#if isInRole 'super-admin,admin,editor'}}
+      <div class="col-md-3">
+        <div class="panel panel-primary">
+          <div class="panel-heading">Nuevo árbol</div>
+          <div class="panel-body">
+            <a class="btn btn-primary" href="{{pathFor 'trees.add'}}" role="button">Añadir árbol</a>
+          </div>
         </div>
       </div>
-    </div>
+    {{/if}}
 
     {{#each trees}}
       {{> treesTableItem}}
@@ -37,8 +39,10 @@
     <div class="panel panel-default">
       <div class="panel-heading"><a href="{{pathFor 'trees.one'}}">{{variant}}</a></div>
       <div class="panel-body">
-        <a class="btn btn-default" href="{{pathFor 'trees.one.edit'}}">Editar</a>
-        <a class="btn btn-danger remove-item" href="#">Eliminar</a>
+        {{#if isInRole 'super-admin,admin,editor'}}
+          <a class="btn btn-default" href="{{pathFor 'trees.one.edit'}}">Editar</a>
+          <a class="btn btn-danger remove-item" href="#">Eliminar</a>
+        {{/if}}
       </div>
     </div>
   </div>

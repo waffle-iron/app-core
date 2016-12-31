@@ -1,0 +1,32 @@
+<template name="blog">
+  {{#each wpPosts}}
+    <div class="panel panel-default">
+      <div class="panel-body">
+        {{> blogEntry}}
+      </div>
+    </div>
+  {{/each}}
+</template>
+
+<template name="blogShort">
+  {{#each wpPosts}}
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <a href="{{pathFor "blog.one" _slug=slug}}">{{{title_plain}}}</a>
+      </div>
+      <div class="panel-body">
+        {{debug}}
+        {{> blogEntry}}
+      </div>
+    </div>
+  {{/each}}
+</template>
+
+<template name="blogOne">
+  {{{title}}}
+  {{{content}}}
+</template>
+
+<template name="blogEntry">
+  {{{content}}}
+</template>

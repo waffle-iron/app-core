@@ -327,6 +327,12 @@ SeedSchema = new SimpleSchema({
     optional: true,
     label: "Última comprobación"
   },
+
+  highlightedImage: {
+    type: String,
+    optional: true,
+    label: "Imagen destacada"
+  },
   
   createdAt: {
     type: Date,
@@ -357,7 +363,9 @@ SeedSchema = new SimpleSchema({
     autoform: {
       type: 'hidden'
     }
-  }
+  },
+
+
 });
 
 Seeds.attachSchema(SeedSchema);
