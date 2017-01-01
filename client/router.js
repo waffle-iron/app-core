@@ -150,7 +150,7 @@ Router.route('/seeds', function () {
 }, {
   subscriptions: function() {
     return [
-      Meteor.subscribe('Seeds')
+      Meteor.subscribe('SeedsResume')
     ]
   },
   data: function() {

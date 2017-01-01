@@ -248,6 +248,11 @@ SeedSchema = new SimpleSchema({
     optional: true,
     label: "URL"
   },
+  'info.seed.$.isVideo': {
+    type: Boolean,
+    optional: true,
+    label: "¿En un vídeo?"
+  },
   'info.seed.$.lastChecked': {
     type: Date,
     optional: true,
@@ -272,6 +277,11 @@ SeedSchema = new SimpleSchema({
     type: String,
     optional: true,
     label: "URL"
+  },
+  'info.seeding.$.isVideo': {
+    type: Boolean,
+    optional: true,
+    label: "¿En un vídeo?"
   },
   'info.seeding.$.lastChecked': {
     type: Date,
@@ -298,6 +308,11 @@ SeedSchema = new SimpleSchema({
     type: String,
     optional: true
   },
+  'info.harvest.$.isVideo': {
+    type: Boolean,
+    optional: true,
+    label: "¿En un vídeo?"
+  },
   'info.harvest.$.lastChecked': {
     type: Date,
     optional: true,
@@ -321,6 +336,11 @@ SeedSchema = new SimpleSchema({
     type: String,
     optional: true,
     label: "URL"
+  },
+  'info.general.$.isVideo': {
+    type: Boolean,
+    optional: true,
+    label: "¿En un vídeo?"
   },
   'info.general.$.lastChecked': {
     type: Date,

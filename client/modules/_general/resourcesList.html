@@ -6,24 +6,44 @@
       </div>
       <ul class="list-group">
         {{#each info.seed}}
-          <li class="list-group-item">
-            <a href="{{url}}" target="_blank">{{name}}</a>
-          </li>
+          {{#if url}}
+            <li class="list-group-item">
+              {{#if isVideo}}
+                <i class="fa fa-youtube-play" aria-hidden="true"></i>
+              {{/if}}
+              <a href="{{url}}" target="_blank">{{name}}</a>
+            </li>
+          {{/if}}
         {{/each}}
         {{#each info.seeding}}
-          <li class="list-group-item">
-            <a href="{{url}}" target="_blank">{{name}}</a>
-          </li>
+          {{#if url}}
+            <li class="list-group-item">
+              {{#if isVideo}}
+                <i class="fa fa-youtube-play" aria-hidden="true"></i>
+              {{/if}}
+              <a href="{{url}}" target="_blank">{{name}}</a>
+            </li>
+          {{/if}}
         {{/each}}
         {{#each info.harvest}}
-          <li class="list-group-item">
-            <a href="{{url}}" target="_blank">{{name}}</a>
-          </li>
+          {{#if url}}
+            <li class="list-group-item">
+              {{#if isVideo}}
+                <i class="fa fa-youtube-play" aria-hidden="true"></i>
+              {{/if}}
+              <a href="{{url}}" target="_blank">{{name}}</a>
+            </li>
+          {{/if}}
         {{/each}}
         {{#each info.general}}
-          <li class="list-group-item">
-            <a href="{{url}}" target="_blank">{{name}}</a>
-          </li>
+          {{#if url}}
+            <li class="list-group-item">
+              {{#if isVideo}}
+                <i class="fa fa-youtube-play" aria-hidden="true"></i>
+              {{/if}}
+              <a href="{{url}}" target="_blank">{{name}}</a>
+            </li>
+          {{/if}}
         {{/each}}
       </ul>
     </div>

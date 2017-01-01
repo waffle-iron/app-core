@@ -8,20 +8,6 @@
 
   <div class="row">
 
-    {{#if isInRole 'super-admin,admin,editor'}}
-      
-      <div class="col-md-4">
-        <div class="panel panel-primary">
-          <div class="panel-heading">Nueva semilla</div>
-          <div class="panel-body">
-            <p>Crear una nueva semilla</p>
-            <a class="btn btn-primary" href="{{pathFor 'seeds.add'}}" role="button">Añadir semilla</a>
-          </div>
-        </div>
-      </div>
-      
-    {{/if}}
-
     {{#each seeds}}
       {{> seedsTableItem}}
     {{/each}}
@@ -33,6 +19,11 @@
 <template name="seedsMenu">
   <div class="row">
     <div class="col-md-4">
+  
+      {{#if isInRole 'super-admin,admin,editor'}}
+        <a class="btn btn-success" href="{{pathFor 'seeds.add'}}" role="button">Añadir semilla</a>
+      {{/if}}
+
       <a class="btn btn-primary" href="{{urlFor 'seeds.families.index'}}">Familias</a>
       <a class="btn btn-primary" href="{{urlFor 'seeds.calendar'}}">
         <i class="fa fa-calendar" aria-hidden="true"></i>
