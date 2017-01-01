@@ -1,7 +1,5 @@
 <template name="appLayout">
-  
   {{ > navbar }}
-
   {{> sAlert}}
   {{> commentsModal}}
 
@@ -16,10 +14,8 @@
         {{> yield}}
       </div>
     </div>
-
     {{> footer}}
   </div>
-
 </template>
 
 <template name="footer">
@@ -28,9 +24,7 @@
       <p class="navbar-text pull-left">© 2017 - Algunos derechos reservados - hecho por 
         <a href="http://joseconstela.com" target="_blank" >Jose Constela</a>
       </p>
-      
       {{> commentsModalButton}}
-      
     </div>
   </div>
 </template>
