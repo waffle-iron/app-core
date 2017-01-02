@@ -1,0 +1,30 @@
+<template name="appLayout">
+  {{ > navbar }}
+  {{> sAlert}}
+  {{> commentsModal}}
+
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <!-- {{> breadcrumb}} -->
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12" role="main">
+        {{> yield}}
+      </div>
+    </div>
+    {{> footer}}
+  </div>
+</template>
+
+<template name="footer">
+  <div class="navbar navbar-default navbar-fixed-bottom">
+    <div class="container">
+      <p class="navbar-text pull-left">© 2017 - Algunos derechos reservados - hecho por 
+        <a href="http://joseconstela.com" target="_blank" >Jose Constela</a>
+      </p>
+      {{> commentsModalButton}}
+    </div>
+  </div>
+</template>

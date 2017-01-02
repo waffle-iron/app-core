@@ -1,0 +1,61 @@
+<template name="myOrchardsBenchs">
+
+  {{> breadcrumb}}
+
+  <h2 class="page-header">Las camas de: {{myOrchard.name}}</h2>
+
+  <div class="row">
+
+    <div class="col-md-4">
+      <div class="panel panel-primary">
+        <div class="panel-heading">Nueva cama</div>
+        <div class="panel-body">
+          <a class="btn btn-primary" href="{{pathFor 'myorchards.one.benchs.new' _id=myOrchard._id}}" role="button">Añadir cama</a>
+        </div>
+      </div>
+    </div>
+
+    {{#each myBenchs}}
+      {{> myOrchardsBenchsTableItem}}
+    {{/each}}
+
+  </div>
+
+</template>
+
+<template name="myOrchardsBenchsTableItem">
+
+  <div class="col-md-4">
+    <div class="panel panel-default">
+      <div class="panel-heading"><a href="{{pathFor 'myorchards.one.benchs.one' _id=../myOrchard._id _bench=_id}}">{{name}}</a></div>
+      <div class="panel-body">
+        <a class="btn btn-default" href="{{pathFor 'myorchards.one.benchs.one.edit' _id=../myOrchard._id _bench=_id}}">Editar</a>
+        <a class="btn btn-danger remove-item" href="#">Eliminar</a>
+      </div>
+    </div>
+  </div>
+
+</template>
+
+<template name="myOrchardsBenchsView">
+
+  {{> breadcrumb}}  
+
+</template>
+
+<template name="myOrchardsBenchsNew">
+
+  {{> breadcrumb}}
+
+  <h2 class="page-header">Crear nueva cama</h2>
+  {{> quickForm collection="MyBenchs" id="myBenchsNew" type="insert" doc=myBench}}
+</template>
+
+<template name="myOrchardsBenchsEdit">
+  
+
+  {{> breadcrumb}}
+
+  <h2 class="page-header">Editar: {{myBench.name}}</h2>
+  {{> quickForm collection="MyBenchs" id="myBenchsUpdate" type="update" doc=myBench}}
+</template>

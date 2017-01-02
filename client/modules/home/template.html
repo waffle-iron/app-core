@@ -1,0 +1,23 @@
+<template name="home">
+  
+  {{> breadcrumb}}
+
+  <div class="row">
+    <div class="col-md-9">
+      <!-- {{> s3_tester}} -->
+    </div>
+    <div class="col-md-3">
+      
+    </div>
+  </div>
+
+</template>
+
+<template name="s3_tester">
+	<input type="file" class="file_bag">
+	<button class="upload">Upload</button>
+
+	{{#each files}}
+		<p>{{percent_uploaded}}</p>
+	{{/each}}
+</template>

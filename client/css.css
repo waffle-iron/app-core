@@ -1,0 +1,45 @@
+body {
+  margin-top: 70px !important;
+  margin-bottom: 70px !important;
+}
+
+.seed-calendar {
+  width: 100%;
+}
+
+.bs-callout-danger {
+    border-left-color: #ce4844 !important;
+}
+.bs-callout-success {
+    border-left-color: #58B957 !important;
+}
+.bs-callout {
+    padding: 20px;
+    margin: 0 0 20px 0;
+    border: 1px solid #eee;
+    border-left-width: 5px;
+    border-radius: 3px;
+}
+
+.note {
+  -moz-transform: rotate(7deg);
+  -webkit-transform: rotate(7deg);
+  -o-transform: rotate(7deg);
+  -ms-transform: rotate(7deg);
+  transform: rotate(-0.2deg);
+
+  box-shadow: 0px 4px 6px #888;
+  -moz-box-shadow: 0px 4px 6px #888;
+  -webkit-box-shadow: 0px 4px 6px #888;
+
+  margin-bottom: 20px;
+  background:#fefabc; 
+  padding:18px; 
+  font-family: 'Gloria Hallelujah', cursive; 
+  font-size:17px; 
+  color: #000; 
+}
+
+.note p:last-child {
+  margin: 0;
+}

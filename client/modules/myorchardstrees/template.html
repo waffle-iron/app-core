@@ -1,0 +1,56 @@
+<template name="myOrchardsTrees">
+
+  {{> breadcrumb}}
+
+  <h2 class="page-header">Los árboles de: {{myOrchard.name}}</h2>
+
+  <div class="row">
+
+    <div class="col-md-4">
+      <div class="panel panel-primary">
+        <div class="panel-heading">Nuevo arbol</div>
+        <div class="panel-body">
+          <a class="btn btn-primary" href="{{pathFor 'myorchards.one.trees.new' _id=myOrchard._id}}" role="button">Añadir árbol</a>
+        </div>
+      </div>
+    </div>
+
+    {{#each myTrees}}
+      {{>myOrchardsTreesTableItem}}
+    {{/each}}
+
+  </div>
+
+</template>
+
+<template name="orchardsTreesView">
+
+  {{> breadcrumb}}
+
+</template>
+
+<template name="myOrchardsTreesTableItem">
+
+  <div class="col-md-4">
+    <div class="panel panel-default">
+      <div class="panel-heading"><a href="{{pathFor 'myorchards.trees.one' _id=../myOrchard._id _tree=_id}}">{{name}}</a></div>
+      <div class="panel-body">
+        <a class="btn btn-default" href="{{pathFor 'myorchards.trees.one.edit' _id=../myOrchard._id _tree=_id}}">Editar</a>
+        <a class="btn btn-danger remove-item" href="#">Eliminar</a>
+      </div>
+    </div>
+  </div>
+
+</template>
+
+<template name="myOrchardsTreesNew">
+  {{> breadcrumb}}
+  <h2 class="page-header">Crear un nuevo árbol</h2>
+  {{> quickForm collection="MyTrees" id="myOrchardsTreesInsert" type="insert" doc=myTree}}
+</template>
+
+<template name="orchardsTreesEdit">
+  {{> breadcrumb}}
+  <h2 class="page-header">Editar: {{myTree.name}}</h2>
+  {{> quickForm collection="MyTrees" id="myOrchardsTreesUpdate" type="update" doc=myTree}}
+</template>
