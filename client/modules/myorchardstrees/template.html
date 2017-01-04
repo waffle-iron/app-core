@@ -1,7 +1,5 @@
 <template name="myOrchardsTrees">
 
-  {{> breadcrumb}}
-
   <h2 class="page-header">Los árboles de: {{myOrchard.name}}</h2>
 
   <div class="row">
@@ -25,8 +23,6 @@
 
 <template name="orchardsTreesView">
 
-  {{> breadcrumb}}
-
 </template>
 
 <template name="myOrchardsTreesTableItem">
@@ -44,13 +40,11 @@
 </template>
 
 <template name="myOrchardsTreesNew">
-  {{> breadcrumb}}
   <h2 class="page-header">Crear un nuevo árbol</h2>
   {{> quickForm collection="MyTrees" id="myOrchardsTreesInsert" type="insert" doc=myTree}}
 </template>
 
 <template name="orchardsTreesEdit">
-  {{> breadcrumb}}
   <h2 class="page-header">Editar: {{myTree.name}}</h2>
   {{> quickForm collection="MyTrees" id="myOrchardsTreesUpdate" type="update" doc=myTree}}
 </template>

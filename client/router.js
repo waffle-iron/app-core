@@ -1,6 +1,3 @@
-document.documentElement.lang = 'es'
-accountsUIBootstrap3.setLanguage('es');
-
 Router.configure({
   layoutTemplate: 'appLayout'
 })
@@ -35,11 +32,23 @@ Router.route('/', function () {
 }, {
   subscriptions: function() {
     return [
-      Meteor.subscribe('wordpress','http://tiempodesiembra.es/api?json=get_posts&count=3')
+      Meteor.subscribe('wordpress','http://syswp.tiempodesiembra.es/api?json=get_posts&count=3')
     ]
   },
   name: 'home',
-  title: 'Inicio'
+  title: 'Inicio',
+  onAfterAction: function() {
+    SEO.set({
+      title: 'post.title',
+      meta: {
+        'description': 'post.description'
+      },
+      og: {
+        'title': 'post.title',
+        'description': 'post.description'
+      }
+    })
+  }
 })
 
 Router.route('/blog', function () {
@@ -52,7 +61,19 @@ Router.route('/blog', function () {
   },
   name: 'blog.index',
   parent: 'home',
-  title: 'Blog'
+  title: 'Blog',
+  onAfterAction: function() {
+    SEO.set({
+      title: 'post.title',
+      meta: {
+        'description': 'post.description'
+      },
+      og: {
+        'title': 'post.title',
+        'description': 'post.description'
+      }
+    })
+  }
 })
 
 Router.route('/blog/:_slug', function () {

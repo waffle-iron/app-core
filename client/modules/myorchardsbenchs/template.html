@@ -1,7 +1,5 @@
 <template name="myOrchardsBenchs">
 
-  {{> breadcrumb}}
-
   <h2 class="page-header">Las camas de: {{myOrchard.name}}</h2>
 
   <div class="row">
@@ -39,23 +37,14 @@
 
 <template name="myOrchardsBenchsView">
 
-  {{> breadcrumb}}  
-
 </template>
 
 <template name="myOrchardsBenchsNew">
-
-  {{> breadcrumb}}
-
   <h2 class="page-header">Crear nueva cama</h2>
   {{> quickForm collection="MyBenchs" id="myBenchsNew" type="insert" doc=myBench}}
 </template>
 
 <template name="myOrchardsBenchsEdit">
-  
-
-  {{> breadcrumb}}
-
   <h2 class="page-header">Editar: {{myBench.name}}</h2>
   {{> quickForm collection="MyBenchs" id="myBenchsUpdate" type="update" doc=myBench}}
 </template>

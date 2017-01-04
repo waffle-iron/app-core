@@ -1,7 +1,4 @@
 <template name="seeds">
-
-  {{> breadcrumb}}
-
   <h2 class="page-header">Semillas</h2>
 
   {{> seedsMenu}}
@@ -36,8 +33,6 @@
 </template>
 
 <template name="seedTimeCalendar">
-
-  {{> breadcrumb}}
 
   <h2 class="page-header">Calendario de siembra</h2>
 
@@ -91,8 +86,6 @@
 </template>
 
 <template name="seedsView">
-
-  {{> breadcrumb}}
 
   <h2 class="page-header">{{seed.variant}}</h2>
   
@@ -331,13 +324,11 @@
 </template>
 
 <template name="seedsAdd">
-  {{> breadcrumb}}
   <h2 class="page-header">Crear una nueva semilla</h2>
   {{> quickForm collection="Seeds" id="seedFormInsert" type="insert"}}
 </template>
 
 <template name="seedsEdit">
-  {{> breadcrumb}}
   <h2 class="page-header">Actualizar: {{seed.variant}}</h2>
   {{> quickForm collection="Seeds" id="seedFormUpdate" type="update" doc=seed}}
 </template>

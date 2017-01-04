@@ -15,8 +15,18 @@ Si no has solicitado este email, simplemente ingnóralo.
 ¡Gracias!
 El equipo detrás de Tiempo de Siembra.
 `
-}/*,
-  html(user, url) {}*/
+},
+  html(user, url) {
+    return `¡Hola! <br>
+Visita el siguiente enlace para restrableder tu contraseña en Tiempo de Siembra.
+${url} <br> <br>
+
+Si no has solicitado este email, simplemente ingnóralo. <br> <br>
+
+¡Gracias! <br>
+El equipo detrás de Tiempo de Siembra.
+`
+  }
 };
 
 Accounts.emailTemplates.sendEnrollmentEmail = {

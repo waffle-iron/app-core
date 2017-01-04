@@ -1,22 +1,13 @@
 <template name="myOrchards">
+  <h2 class="page-header">Huertos</h2>
 
-  {{> breadcrumb}}
+  {{> myOrchardsMenu}}
 
-  {{#if currentUser}}
-  
-
-  <h2 class="page-header">Mis huertos</h2>
+  <!-- <div class="map-container">
+    {{> googleMap name="exampleMap" options=exampleMapOptions}}
+  </div> -->
 
   <div class="row">
-
-    <div class="col-md-4">
-      <div class="panel panel-primary">
-        <div class="panel-heading">Nuevo huerto</div>
-        <div class="panel-body">
-          <a class="btn btn-primary" href="{{pathFor 'myorchards.new'}}" role="button">Añadir huerto</a>
-        </div>
-      </div>
-    </div>
 
     {{#each myOrchards}}
       {{> myOrchardsTableItem}}
@@ -47,10 +38,16 @@
     </div>
   </div>
 
-  {{else}}
-    {{> myOrchardNotLogged}}
-  {{/if}}
+</template>
 
+<template name="myOrchardsMenu">
+  <div class="row">
+    <div class="col-md-4">
+      <a class="btn btn-success" href="{{pathFor 'myorchards.new'}}" role="button">Añadir huerto</a>
+      <br>
+      <br>
+    </div>
+  </div>
 </template>
 
 <template name="myOrchardNotLogged">
@@ -67,7 +64,7 @@
     <td>🌱</td>
     <td>{{name}}</td>
     <td>{{myOrchardName orchardId}}</td>
-    <td><a href="{{pathFor "myorchards.one.benchs.one.edit" _bench=benchId _id=_id}}">editar</a></td>
+    <td><a href="{{pathFor "myorchards.one.benchs.one.edit" _bench=benchId _id=_id}}">Editar</a></td>
   </tr>
 </template>
 
@@ -76,7 +73,7 @@
     <td>🌳</td>
     <td>{{name}}</td>
     <td>{{myOrchardName orchardId}}</td>
-    <td><a haref="{{pathFor "myorchards.trees.one.edit"}}"></a></td>
+    <td><a haref="{{pathFor "myorchards.trees.one.edit"}}">Editar</a></td>
   </tr>
 </template>
 
@@ -96,8 +93,6 @@
 
 <template name="myOrchardsView">
   
-  {{> breadcrumb}}
-
   <h2 class="page-header">Huerto: {{myOrchard.name}}</h2>
 
   <div class="row">
@@ -157,13 +152,11 @@
 </template>
 
 <template name="myOrchardsNew">
-  {{> breadcrumb}}
   <h2 class="page-header">Crear nuevo huerto</h2>
   {{> quickForm collection="MyOrchards" id="myOrchardsInsert" type="insert"}}
 </template>
 
 <template name="myOrchardsEdit">
-  {{> breadcrumb}}
   <h2 class="page-header">Editar: {{myOrchard.name}}</h2>
   {{> quickForm collection="MyOrchards" id="myOrchardsUpdate" type="update" doc=myOrchard}}
 </template>

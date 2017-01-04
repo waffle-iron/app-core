@@ -2,6 +2,10 @@ body {
   background: #F0F0ED;
 }
 
+h2.page-header {
+  margin: 10px 0;
+}
+
 .navbar-default {
   background: #33363C;
 }

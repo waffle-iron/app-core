@@ -1,7 +1,5 @@
 <template name="treeFamilies">
 
-  {{> breadcrumb}}
-
   <h2 class="page-header">Familias de árboles</h2>
 
   <div class="row">
@@ -42,15 +40,11 @@
 </template>
 
 <template name="treeFamiliesAdd">
-  {{> breadcrumb}}
-  
   <h2 class="page-header">Crear una nueva familia.</h2>
   {{> quickForm collection="TreeFamilies" id="treesFamilyFormInsert" type="insert"}}
 </template>
 
 <template name="treeFamiliesEdit">
-  {{> breadcrumb}}
-  
   <h2 class="page-header">Actualizar: {{treesFamily.name}}</h2>
   {{> quickForm collection="TreeFamilies" id="treesFamilyFormUpdate" type="update" doc=treesFamily}}
 </template>

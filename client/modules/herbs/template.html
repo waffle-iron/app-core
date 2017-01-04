@@ -1,29 +1,28 @@
 <template name="herbs">
 
-  {{> breadcrumb}}
-
   <h2 class="page-header">Hierbas</h2>
 
+  {{> herbsMenu}}
+
   <div class="row">
-
-    {{#if isInRole 'super-admin,admin,editor'}}
-      <div class="col-md-3">
-        <div class="panel panel-primary">
-          <div class="panel-heading">Nueva hierba</div>
-          <div class="panel-body">
-            <p>Crear una nueva hierba</p>
-            <a class="btn btn-primary" href="{{pathFor 'herbs.add'}}" role="button">Añadir hierba</a>
-          </div>
-        </div>
-      </div>
-    {{/if}}
-
     {{#each herbs}}
       {{> herbsTableItem}}
     {{/each}}
-
   </div>
 
+</template>
+
+<template name="herbsMenu">
+  <div class="row">
+    <div class="col-md-4">
+  
+      {{#if isInRole 'super-admin,admin,editor'}}
+        <a class="btn btn-success" href="{{pathFor 'herbs.add'}}" role="button">Añadir hierba</a>
+      {{/if}}
+      <br>
+      <br>
+    </div>
+  </div>
 </template>
 
 <template name="herbsTableItem">
