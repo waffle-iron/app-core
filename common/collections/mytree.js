@@ -1,4 +1,4 @@
-MyTrees = new Mongo.Collection("mytrees");
+MyTrees = new Mongo.Collection("mytree");
 
 MyTrees.allow({
   insert: function () { return !!Meteor.user(); },

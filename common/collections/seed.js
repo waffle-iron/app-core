@@ -221,13 +221,12 @@ SeedSchema = new SimpleSchema({
       }
     }
   },
+  
   info: {
     type: Object,
     label: "Info",
     optional: true
   },
-  
-
 
   'info.seed': {
     type: Array,
@@ -252,6 +251,11 @@ SeedSchema = new SimpleSchema({
     type: Boolean,
     optional: true,
     label: "¿En un vídeo?"
+  },
+  'info.seed.$.isHighlighted': {
+    type: Boolean,
+    optional: true,
+    label: "¿Es un contenido destacado?"
   },
   'info.seed.$.lastChecked': {
     type: Date,
@@ -283,6 +287,11 @@ SeedSchema = new SimpleSchema({
     optional: true,
     label: "¿En un vídeo?"
   },
+  'info.seeding.$.isHighlighted': {
+    type: Boolean,
+    optional: true,
+    label: "¿Es un contenido destacado?"
+  },
   'info.seeding.$.lastChecked': {
     type: Date,
     optional: true,
@@ -313,6 +322,11 @@ SeedSchema = new SimpleSchema({
     optional: true,
     label: "¿En un vídeo?"
   },
+  'info.harvest.$.isHighlighted': {
+    type: Boolean,
+    optional: true,
+    label: "¿Es un contenido destacado?"
+  },
   'info.harvest.$.lastChecked': {
     type: Date,
     optional: true,
@@ -341,6 +355,11 @@ SeedSchema = new SimpleSchema({
     type: Boolean,
     optional: true,
     label: "¿En un vídeo?"
+  },
+  'info.general.$.isHighlighted': {
+    type: Boolean,
+    optional: true,
+    label: "¿Es un contenido destacado?"
   },
   'info.general.$.lastChecked': {
     type: Date,

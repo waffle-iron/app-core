@@ -1,14 +1,14 @@
 <template name="myOrchardsBenchs">
 
-  <h2 class="page-header">Las camas de: {{myOrchard.name}}</h2>
+  <h2 class="page-header">Los bancales de: {{myOrchard.name}}</h2>
 
   <div class="row">
 
     <div class="col-md-4">
       <div class="panel panel-primary">
-        <div class="panel-heading">Nueva cama</div>
+        <div class="panel-heading">Nuevo bancal</div>
         <div class="panel-body">
-          <a class="btn btn-primary" href="{{pathFor 'myorchards.one.benchs.new' _id=myOrchard._id}}" role="button">Añadir cama</a>
+          <a class="btn btn-primary" href="{{pathFor 'myorchards.one.benchs.new' _id=myOrchard._id}}" role="button">Añadir</a>
         </div>
       </div>
     </div>
@@ -25,9 +25,9 @@
 
   <div class="col-md-4">
     <div class="panel panel-default">
-      <div class="panel-heading"><a href="{{pathFor 'myorchards.one.benchs.one' _id=../myOrchard._id _bench=_id}}">{{name}}</a></div>
+      <div class="panel-heading"><a href="{{pathFor 'myorchards.one.benchs.one'}}">{{name}}</a></div>
       <div class="panel-body">
-        <a class="btn btn-default" href="{{pathFor 'myorchards.one.benchs.one.edit' _id=../myOrchard._id _bench=_id}}">Editar</a>
+        <a class="btn btn-default" href="{{pathFor 'myorchards.one.benchs.one.edit'}}">Editar</a>
         <a class="btn btn-danger remove-item" href="#">Eliminar</a>
       </div>
     </div>
@@ -40,7 +40,7 @@
 </template>
 
 <template name="myOrchardsBenchsNew">
-  <h2 class="page-header">Crear nueva cama</h2>
+  <h2 class="page-header">Crear nuevo bancal</h2>
   {{> quickForm collection="MyBenchs" id="myBenchsNew" type="insert" doc=myBench}}
 </template>
 

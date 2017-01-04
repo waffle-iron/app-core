@@ -25,14 +25,14 @@ MyOrchardsSchema = new SimpleSchema({
     max: 200,
     label: "Nombre"
   },
-  description: {
-    type: String,
+  /* location: {
+    type: AddressSchema,
     optional: true,
+    label: "Localización",
     autoform: {
-      rows: 5
-    },
-    label: "Descripción"
-  },
+        type: "googleplace"
+    }
+  }, */
   notes: {
     type: Array,
     optional: true,

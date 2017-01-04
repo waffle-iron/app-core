@@ -36,19 +36,7 @@ Router.route('/', function () {
     ]
   },
   name: 'home',
-  title: 'Inicio',
-  onAfterAction: function() {
-    SEO.set({
-      title: 'post.title',
-      meta: {
-        'description': 'post.description'
-      },
-      og: {
-        'title': 'post.title',
-        'description': 'post.description'
-      }
-    })
-  }
+  title: 'Inicio'
 })
 
 Router.route('/blog', function () {
@@ -61,19 +49,7 @@ Router.route('/blog', function () {
   },
   name: 'blog.index',
   parent: 'home',
-  title: 'Blog',
-  onAfterAction: function() {
-    SEO.set({
-      title: 'post.title',
-      meta: {
-        'description': 'post.description'
-      },
-      og: {
-        'title': 'post.title',
-        'description': 'post.description'
-      }
-    })
-  }
+  title: 'Blog'
 })
 
 Router.route('/blog/:_slug', function () {
@@ -550,7 +526,11 @@ Router.route('/trees/:_id/edit', function () {
 })
 
 Router.route('/myorchards', function () {
-  this.render('myOrchards')
+  if (Meteor.user()) {
+    this.render('myOrchards')
+  } else {
+    this.render('myOrchardsNotLogged')
+  }
 }, {
   subscriptions: function() {
     return [
@@ -636,20 +616,20 @@ Router.route('/myorchards/:_id/edit', function () {
   title: 'Editar'
 })
 
-Router.route('/myorchards/:_id/trees', function () {
+Router.route('/myorchards/:orchardId/trees', function () {
   this.render('myOrchardsTrees')
 }, {
   subscriptions: function() {
     return [
-      Meteor.subscribe('MyOrchards', this.params._id),
-      Meteor.subscribe('MyTrees', this.params._id)
+      Meteor.subscribe('MyOrchards', this.params.orchardId),
+      Meteor.subscribe('MyTrees', this.params.orchardId)
     ]
   },
   data: function() {
     if (this.ready) {
       return {
-        myOrchard:  MyOrchards.findOne(this.params._id),
-        myTrees:  MyTrees.find({orchardId:this.params._id}),
+        myOrchard:  MyOrchards.findOne(this.params.orchardId),
+        myTrees:  MyTrees.find({orchardId:this.params.orchardId}),
       }
     }
   },
@@ -682,92 +662,72 @@ Router.route('/myorchards/:_id/trees/new', function () {
 
 
 
-Router.route('/myorchards/:_id/trees/:_tree', function () {
+Router.route('/myorchards/:orchardId/trees/:_id', function () {
   this.render('orchardsTreesView')
 }, {
   subscriptions: function() {
     return [
-      Meteor.subscribe('MyOrchards', this.params._id),
-      Meteor.subscribe('MyTrees', this.params._id, this.params._tree)
+      Meteor.subscribe('MyOrchards', this.params.orchardId),
+      Meteor.subscribe('MyTrees', this.params.orchardId, this.params._id)
     ]
   },
   data: function() {
     if (this.ready) {
       return {
-        myOrchard: MyOrchards.findOne({_id:this.params._id}),
-        myTree: MyTrees.findOne({_id:this.params._tree}),
+        myOrchard: MyOrchards.findOne({_id:this.params.orchardId}),
+        myTree: MyTrees.findOne({_id:this.params._id}),
       }
     }
   },
-  name: 'myorchards.trees.one',
+  name: 'myorchards.one.trees.one',
   parent: 'myorchards.one.trees.index',
   title: function() { 
     return this.data().myTree ? this.data().myTree.name : null
   }
 })
 
-Router.route('/myorchards/:_id/trees/:_tree/edit', function () {
-  this.render('orchardsTreesEdit')
+Router.route('/myorchards/:orchardId/trees/:_id/edit', function () {
+  this.render('myOrchardsTreesEdit')
 }, {
   subscriptions: function() {
     return [
       Meteor.subscribe('MyOrchards'),
-      Meteor.subscribe('MyTrees', this.params._id, this.params._tree),
+      Meteor.subscribe('MyTrees', this.params.orchardId, this.params._id),
       Meteor.subscribe('TreesVariants')
     ]
   },
   data: function() {
     if (this.ready) {
       return {
-        myTree: MyTrees.findOne({_id:this.params._tree}),
+        myTree: MyTrees.findOne({_id:this.params._id}),
       }
     }
   },
-  name: 'myorchards.trees.one.edit',
-  parent: 'myorchards.trees.one',
+  name: 'myorchards.one.trees.one.edit',
+  parent: 'myorchards.one.trees.one',
   title: 'Editar'
 })
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-Router.route('/myorchards/:_id/benchs', function () {
+Router.route('/myorchards/:orchardId/benchs', function () {
   this.render('myOrchardsBenchs')
 }, {
   subscriptions: function() {
     return [
-      Meteor.subscribe('MyOrchards', this.params._id),
-      Meteor.subscribe('MyBenchs', this.params._id)
+      Meteor.subscribe('MyOrchards', this.params.orchardId),
+      Meteor.subscribe('MyBenchs', this.params.orchardId)
     ]
   },
   data: function() {
     if (this.ready) {
       return {
-        myOrchard:  MyOrchards.findOne({_id:this.params._id}),
-        myBenchs:  MyBenchs.find({orchardId:this.params._id}),
+        myOrchard:  MyOrchards.findOne({_id:this.params.orchardId}),
+        myBenchs:  MyBenchs.find({orchardId:this.params.orchardId}),
       }
     }
   },
   name: 'myorchards.one.benchs.index',
   parent: 'myorchards.one',
-  title: 'Camas'
+  title: 'Bancales'
 })
 
 Router.route('/myorchards/:_id/benchs/new', function () {
@@ -791,20 +751,20 @@ Router.route('/myorchards/:_id/benchs/new', function () {
   title: 'Nueva'
 })
 
-Router.route('/myorchards/:_id/benchs/:_bench', function () {
+Router.route('/myorchards/:orchardId/benchs/:_id', function () {
   this.render('myOrchardsBenchsView')
 }, {
   subscriptions: function() {
     return [
-      Meteor.subscribe('MyOrchards', this.params._id),
-      Meteor.subscribe('MyBenchs', this.params._id, this.params._bench)
+      Meteor.subscribe('MyOrchards', this.params.orchardId),
+      Meteor.subscribe('MyBenchs', this.params.orchardId, this.params._id)
     ]
   },
   data: function() {
     if (this.ready) {
       return {
-        myOrchard: MyOrchards.findOne({_id:this.params._id}),
-        myBench: MyBenchs.findOne({_id:this.params._bench}),
+        myOrchard: MyOrchards.findOne({_id:this.params.orchardId}),
+        myBench: MyBenchs.findOne({_id:this.params._id}),
       }
     }
   },
@@ -813,19 +773,19 @@ Router.route('/myorchards/:_id/benchs/:_bench', function () {
   title: function() { return this.data().myBench ? this.data().myBench.name : null }
 })
 
-Router.route('/myorchards/:_id/benchs/:_bench/edit', function () {
+Router.route('/myorchards/:orchardId/benchs/:_id/edit', function () {
   this.render('myOrchardsBenchsEdit')
 }, {
   subscriptions: function() {
     return [
       Meteor.subscribe('MyOrchards'),
-      Meteor.subscribe('MyBenchs', this.params._id, this.params._bench)
+      Meteor.subscribe('MyBenchs', this.params.orchardId, this.params._id)
     ]
   },
   data: function() {
     if (this.ready) {
       return {
-        myBench:  MyBenchs.findOne({_id:this.params._bench}),
+        myBench: MyBenchs.findOne({_id:this.params._id}),
       }
     }
   },
@@ -837,55 +797,48 @@ Router.route('/myorchards/:_id/benchs/:_bench/edit', function () {
 
 
 
-Router.route('/myorchards/benchs/:_bench/edit', function () {
+
+
+
+Router.route('/myorchards/benchs/:_id/edit', function () {
   this.render('myOrchardsBenchsEdit')
 }, {
   subscriptions: function() {
     return [
       Meteor.subscribe('MyOrchards'),
-      Meteor.subscribe('MyBenchs', this.params._id, this.params._bench)
+      Meteor.subscribe('MyBenchs', null, this.params._id)
     ]
   },
   data: function() {
     if (this.ready) {
       return {
-        myBench:  MyBenchs.findOne({_id:this.params._bench}),
+        myBench: MyBenchs.findOne({_id:this.params._id}),
       }
     }
   },
   name: 'myorchards.benchs.one.edit',
   parent: 'myorchards.index',
-  title: 'Editar'
+  title: 'Editar bancal'
 })
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+Router.route('/myorchards/trees/:_id/edit', function () {
+  this.render('myOrchardsTreesEdit')
+}, {
+  subscriptions: function() {
+    return [
+      Meteor.subscribe('MyOrchards'),
+      Meteor.subscribe('MyTrees', null, this.params._id),
+      Meteor.subscribe('TreesVariants')
+    ]
+  },
+  data: function() {
+    if (this.ready) {
+      return {
+        myTree: MyTrees.findOne({_id:this.params._id}),
+      }
+    }
+  },
+  name: 'myorchards.trees.one.edit',
+  parent: 'myorchards.index',
+  title: 'Editar árbol'
+})

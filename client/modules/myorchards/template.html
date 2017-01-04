@@ -1,4 +1,5 @@
 <template name="myOrchards">
+
   <h2 class="page-header">Huertos</h2>
 
   {{> myOrchardsMenu}}
@@ -50,7 +51,7 @@
   </div>
 </template>
 
-<template name="myOrchardNotLogged">
+<template name="myOrchardsNotLogged">
   <div class="jumbotron">
       <div class="container">
         <h1 class="display-3">¡Administra tus huertos!</h1>
@@ -63,8 +64,15 @@
   <tr>
     <td>🌱</td>
     <td>{{name}}</td>
-    <td>{{myOrchardName orchardId}}</td>
-    <td><a href="{{pathFor "myorchards.one.benchs.one.edit" _bench=benchId _id=_id}}">Editar</a></td>
+    <td>
+      <a href="{{pathFor "myorchards.one" _id=orchardId}}">{{myOrchardName orchardId}}</a>
+    </td>
+
+    {{#if orchardId}}
+      <td><a href="{{pathFor "myorchards.one.benchs.one.edit"}}">Editar</a></td>
+    {{else}}
+      <td><a href="{{pathFor "myorchards.benchs.one.edit"}}">Editar</a></td>
+    {{/if}}
   </tr>
 </template>
 
@@ -72,8 +80,15 @@
   <tr>
     <td>🌳</td>
     <td>{{name}}</td>
-    <td>{{myOrchardName orchardId}}</td>
-    <td><a haref="{{pathFor "myorchards.trees.one.edit"}}">Editar</a></td>
+    <td>
+      <a href="{{pathFor "myorchards.one" _id=orchardId}}">{{myOrchardName orchardId}}</a>
+    </td>
+
+    {{#if orchardId}}
+      <td><a href="{{pathFor "myorchards.one.trees.one.edit"}}">Editar</a></td>
+    {{else}}
+      <td><a href="{{pathFor "myorchards.trees.one.edit"}}">Editar</a></td>
+    {{/if}}
   </tr>
 </template>
 
@@ -89,66 +104,6 @@
     </div>
   </div>
 
-</template>
-
-<template name="myOrchardsView">
-  
-  <h2 class="page-header">Huerto: {{myOrchard.name}}</h2>
-
-  <div class="row">
-
-    <div class="col-md-12">
-      <p>{{myOrchard.description}}</p>
-    </div>
-
-    {{#each myOrchard.notes}}
-      <div class="col-md-4">
-        <div class="note note-yellow">
-          <p>{{.}}</p>
-        </div>
-      </div>
-    {{/each}}
-
-  </div>
-
-  <div class="row">
-    <div class="col-md-12">
-      <br>
-      <a class="btn btn-primary" href="{{pathFor 'myorchards.one.edit' _id=myOrchard._id}}">Editar</a>
-    </div>
-  </div>
-
-  <div class="row">
-    <div class="col-md-6">
-      <h3>Camas</h3>
-
-      <ul class="list-group">
-        {{#each myBenchs}}
-          {{> myTreesAndBenchsListItem}}
-        {{/each}}
-      </ul>
-
-      <a href="{{pathFor 'myorchards.one.benchs.index' _id=myOrchard._id}}">ver todos</a>
-
-    </div>
-    <div class="col-md-6">
-      <h3>Árboles</h3>
-
-      <ul class="list-group">
-        {{#each myTrees}}
-          {{> myTreesAndBenchsListItem}}
-        {{/each}}
-      </ul>
-
-      <a href="{{pathFor 'myorchards.one.trees.index' _id=myOrchard._id}}">ver todos</a>
-
-    </div>
-  </div>
-
-</template>
-
-<template name="myTreesAndBenchsListItem">
-  <li class="list-group-item">{{name}}</li>
 </template>
 
 <template name="myOrchardsNew">

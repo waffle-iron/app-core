@@ -30,11 +30,78 @@ TreesSchema = new SimpleSchema({
     max: 200,
     label: "Variante"
   },
+  origin: {
+    type: String,
+    label: "Lugar de origen",
+    optional: true
+  },
+  etymology: {
+    type: String,
+    label: "Etimología",
+    optional: true
+  },
+  description: {
+    type: String,
+    label: "Description",
+    optional: true
+  },
+  cultivationAndUses: {
+    type: String,
+    label: "Cultivo y usos",
+    optional: true
+  },
   url: {
     type: String,
     label: "URL",
     optional: true
   },
+
+  highlightedImage: {
+    type: String,
+    optional: true,
+    label: "Imagen destacada"
+  },
+
+  info: {
+    type: Object,
+    label: "Info",
+    optional: true
+  },
+
+  'info.general': {
+    type: Array,
+    optional: true
+  },
+  'info.general.$': {
+    type: Object,
+    optional: true
+  },
+  'info.general.$.name': {
+    type: String,
+    optional: true,
+    label: "Nombre"
+  },
+  'info.general.$.url': {
+    type: String,
+    optional: true,
+    label: "URL"
+  },
+  'info.general.$.isVideo': {
+    type: Boolean,
+    optional: true,
+    label: "¿En un vídeo?"
+  },
+  'info.general.$.isHighlighted': {
+    type: Boolean,
+    optional: true,
+    label: "¿Es un contenido destacado?"
+  },
+  'info.general.$.lastChecked': {
+    type: Date,
+    optional: true,
+    label: "Última comprobación"
+  },
+
   createdAt: {
     type: Date,
     autoValue: function() {

@@ -16,11 +16,9 @@ Template.myOrchards.helpers({
 })
 
 Template.myOrchardsTableItem.events({
-  "click .remove-item": function(event, template){
-    if (confirm("¿Eliminar este huerto?")) {
-       MyOrchards.remove({
-         _id: template.data._id
-       })
+  'click .remove-item': function(event, template){
+    if (confirm('¿Eliminar este huerto?')) {
+      Meteor.call('myOrchards-remove', template.data._id)
     }
   }
 })

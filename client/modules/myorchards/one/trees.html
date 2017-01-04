@@ -1,0 +1,26 @@
+<template name="myOrchardsOneTreesTable">
+  <div class="row">
+    <div class="col-md-12">
+      <table class="table table-condensed table-bordered table-striped">
+        <thead>
+          <tr>
+            <th>Nombre</th>
+            <th width="100px"></th>
+          </tr>
+        </thead>
+        <tbody>
+          {{#each myTrees}}
+            {{> myOrchardsOneTreesTableItem}}
+          {{/each}}
+        </tbody>
+      </table>
+    </div>
+  </div>
+</template>
+
+<template name="myOrchardsOneTreesTableItem">
+  <tr>
+    <td><a href="{{pathFor "myorchards.one.trees.one"}}">{{name}}</a></td>
+    <td><a href="{{pathFor "myorchards.one.trees.one.edit"}}">Editar</a></td>
+  </tr>
+</template>

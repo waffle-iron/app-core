@@ -12,3 +12,31 @@ monthSelector = [
   {  label: 'Noviembre',  value: 11 },
   {  label: 'Diciembre',  value: 12 },
 ]
+
+AddressSchema = new SimpleSchema({
+  formattedAddress: {
+    type: String,
+    optional: true
+  },
+  geopoint: {
+    type: [Number], //[longitude, latitude]
+    decimal: true,
+    optional: true
+  },
+  city: {
+    type: String,
+    optional: true
+  },
+  postalCode: {
+    type: String,
+    optional: true
+  },
+  country: {
+    type: String,
+    optional: true
+  },
+  countryName: {
+    type: String,
+    optional: true
+  }
+});
