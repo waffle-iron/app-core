@@ -20,22 +20,16 @@
     </div>
   </div>
 
+  <br>
+
   <div class="row">
     <div class="col-md-6">
-      <h3>Bancales</h3>
-
       {{> myOrchardsOneBenchsTable}}
-
-      <a href="{{pathFor 'myorchards.one.benchs.index' orchardId=myOrchard._id}}">ver todos</a>
-
+      <a href="{{pathFor 'myorchards.one.benchs.index' _id=myOrchard._id}}">ver todos</a>
     </div>
     <div class="col-md-6">
-      <h3>Árboles</h3>
-
       {{> myOrchardsOneTreesTable}}
-
-      <a href="{{pathFor 'myorchards.one.trees.index' orchardId=myOrchard._id}}">ver todos</a>
-
+      <a href="{{pathFor 'myorchards.one.trees.index' _id=myOrchard._id}}">ver todos</a>
     </div>
   </div>
 

@@ -25,9 +25,9 @@
 
   <div class="col-md-4">
     <div class="panel panel-default">
-      <div class="panel-heading"><a href="{{pathFor 'myorchards.one.benchs.one'}}">{{name}}</a></div>
+      <div class="panel-heading"><a href="{{pathFor 'myorchards.one.benchs.one' _id=orchardId bench=_id}}">{{name}}</a></div>
       <div class="panel-body">
-        <a class="btn btn-default" href="{{pathFor 'myorchards.one.benchs.one.edit'}}">Editar</a>
+        <a class="btn btn-default" href="{{pathFor 'myorchards.one.benchs.one.edit' _id=orchardId bench=_id}}">Editar</a>
         <a class="btn btn-danger remove-item" href="#">Eliminar</a>
       </div>
     </div>
@@ -36,6 +36,81 @@
 </template>
 
 <template name="myOrchardsBenchsView">
+
+  <h2 class="page-header">
+    {{myBench.name}} 
+    {{> toolUuid}}
+  </h2>
+
+  <div class="row">
+
+    <div class="col-md-8">
+      
+      {{> myOrchardsBenchsViewPlants}}
+
+    </div>
+    <div class="col-md-4">
+      {{> myOrchardsBenchsViewSidebar}}
+    </div>
+
+  </div>
+
+</template>
+
+<template name="myOrchardsBenchsViewSidebar">
+
+  <div class="row">
+
+    <div class="col-md-12">
+      <div class="panel panel-default">
+        <div class="panel-heading">Acerca de</div>
+        <table class="table table-condensed table-bordered table-striped">
+          <tbody>
+            <tr>
+              <td>Creado</td>
+              <td>{{moment 'shortest' myBench.createdAt}}</td>
+            </tr>
+            <tr>
+              <td>Actualización</td>
+              <td>{{moment 'shortest' myBench.updatedAt}}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    
+    <div class="col-md-12">
+      <span class="label label-primary">Primary</span>
+      <span class="label label-success">success</span>
+      <span class="label label-info">info</span>
+    </div>
+
+  </div>
+
+  <div class="row">
+    <div class="col-md-12">
+      
+      <br>
+
+      <div class="panel panel-default">
+        <div class="panel-heading">Actualizaciones</div>
+        <div class="panel-body">
+          {{#autoForm collection="MyLogEntries" id="logentryInsert" type="insert"}}
+            <fieldset>
+              {{> afQuickField name='message' label=false}}
+              {{> afQuickField name='type' value='bench' type='hidden'}}
+              {{> afQuickField name='typeId' value=myBench._id type='hidden'}}
+            </fieldset>
+            <button type="submit" class="btn btn-primary">Insert</button>
+          {{/autoForm}}
+        </div>
+
+        {{> MyLogEntries}}
+        
+      </div>
+
+    </div>
+  </div>
 
 </template>
 

@@ -8,6 +8,25 @@ MyBenchs.allow({
 
 // Define the schema
 MyBenchsSchema = new SimpleSchema({
+  uuid: {
+    type: String,
+    optional: false,
+    autoValue: function() {
+      if (this.isInsert) {
+        return uuid.new();
+      } else if (this.isUpsert) {
+        return {$setOnInsert: uuid.new()};
+      } else {
+        if (!this.isSet) {
+          return uuid.new()
+        }
+        this.unset();  // Prevent user from supplying their own value
+      }
+    },
+    autoform: {
+      type: 'hidden'
+    }
+  },
   userId: {
     type: String,
     optional: false,
@@ -50,6 +69,36 @@ MyBenchsSchema = new SimpleSchema({
       type: 'hidden'
     }
   },
+  dimmensions: {
+    type: Object,
+    optional: true,
+    label: 'Dimensiones (en cm)'
+  },
+  'dimmensions.long': {
+    type: Number,
+    optional: true,
+    label: 'Largo'
+  },
+  'dimmensions.high': {
+    type: Number,
+    optional: true,
+    label: 'Alto'
+  },
+  'dimmensions.width': {
+    type: Number,
+    optional: true,
+    label: 'Ancho'
+  },
+  plants: {
+    type: Array,
+    optional: true,
+    autoform: {
+      type: 'hidden'
+    }
+  },
+  'plants.$': {
+    type: String
+  },
   createdAt: {
     type: Date,
     autoValue: function() {
@@ -70,11 +119,8 @@ MyBenchsSchema = new SimpleSchema({
   updatedAt: {
     type: Date,
     autoValue: function() {
-      if (this.isUpdate) {
-        return new Date();
-      }
+      return new Date();
     },
-    denyInsert: true,
     optional: true,
     autoform: {
       type: 'hidden'

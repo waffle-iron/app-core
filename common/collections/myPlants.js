@@ -1,13 +1,13 @@
-MyLogEntries = new Mongo.Collection("mylogentries");
+MyPlants = new Mongo.Collection("myplant");
 
-MyLogEntries.allow({
+MyPlants.allow({
   insert: function () { return !!Meteor.user(); },
   update: function () { return !!Meteor.user(); },
   remove: function () { return !!Meteor.user(); }
 });
 
 // Define the schema
-MyLogEntriesSchema = new SimpleSchema({
+MyPlantsSchema = new SimpleSchema({
   userId: {
     type: String,
     optional: false,
@@ -20,22 +20,47 @@ MyLogEntriesSchema = new SimpleSchema({
       type: 'hidden'
     }
   },
-  type: {
-    type: String,
-    optional: false,
-    allowedValues: ['tree', 'bench', 'orchard', 'plant', 'experiment']
-  },
-  typeId: {
-    type: String,
-    optional: false,
-  },
-  message: {
+  orchardId: {
     type: String,
     optional: true,
+    max: 20,
     autoform: {
-      rows: 1
+      type: 'hidden'
+    }
+  },
+  benchId: {
+    type: String,
+    optional: true,
+    max: 20,
+    autoform: {
+      options: () => {
+        return MyBenchs.find().map( (c) => {
+          return {label: `${c.name}`, value: c._id}
+        })
+      }
     },
-    label: "Mensaje"
+    label: "Bancal"
+  },
+  seedId: {
+    type: String,
+    max: 20,
+    autoform: {
+      options: () => {
+        return Seeds.find().map( (c) => {
+          return {label: `${c.variant}`, value: c._id}
+        })
+      }
+    },
+    label: "Semilla"
+  },
+  name: {
+    type: String,
+    max: 200,
+    label: "Nombre"
+  },
+  amount: {
+    type: Number,
+    label: "Cantidad"
   },
   createdAt: {
     type: Date,
@@ -61,12 +86,12 @@ MyLogEntriesSchema = new SimpleSchema({
         return new Date();
       }
     },
+    denyInsert: true,
+    optional: true,
     autoform: {
       type: 'hidden'
-    },
-    denyInsert: true,
-    optional: true
+    }
   }
 });
 
-MyLogEntries.attachSchema(MyLogEntriesSchema);
+MyPlants.attachSchema(MyPlantsSchema);

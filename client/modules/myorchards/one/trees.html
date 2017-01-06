@@ -1,26 +1,29 @@
 <template name="myOrchardsOneTreesTable">
   <div class="row">
     <div class="col-md-12">
-      <table class="table table-condensed table-bordered table-striped">
-        <thead>
-          <tr>
-            <th>Nombre</th>
-            <th width="100px"></th>
-          </tr>
-        </thead>
-        <tbody>
-          {{#each myTrees}}
-            {{> myOrchardsOneTreesTableItem}}
-          {{/each}}
-        </tbody>
-      </table>
+      <div class="panel panel-default">
+        <div class="panel-heading">Árboles</div>
+        <table class="table table-condensed table-bordered table-striped">
+          <tbody>
+            {{#each myTrees}}
+              {{> myOrchardsOneTreesTableItem}}
+            {{/each}}
+          </tbody>
+        </table>
+        <div class="panel-footer">
+          <a href="{{pathFor "myorchards.one.trees.new" _id=myOrchard._id}}" class="btn btn-success btn-xs">
+            <i class="fa fa-plus" aria-hidden="true"></i>
+            Nuevo
+          </a>
+        </div>
+      </div>
     </div>
   </div>
 </template>
 
 <template name="myOrchardsOneTreesTableItem">
   <tr>
-    <td><a href="{{pathFor "myorchards.one.trees.one"}}">{{name}}</a></td>
-    <td><a href="{{pathFor "myorchards.one.trees.one.edit"}}">Editar</a></td>
+    <td><a href="{{pathFor "myorchards.one.trees.one" _id=orchardId tree=_id}}">{{name}}</a></td>
+    <td width="100px"><a href="{{pathFor "myorchards.one.trees.one.edit" _id=orchardId tree=_id}}">Editar</a></td>
   </tr>
 </template>

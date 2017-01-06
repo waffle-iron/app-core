@@ -69,7 +69,7 @@
     </td>
 
     {{#if orchardId}}
-      <td><a href="{{pathFor "myorchards.one.benchs.one.edit"}}">Editar</a></td>
+      <td><a href="{{pathFor "myorchards.one.benchs.one.edit" _id=orchardId bench=_id}}">Editar</a></td>
     {{else}}
       <td><a href="{{pathFor "myorchards.benchs.one.edit"}}">Editar</a></td>
     {{/if}}
@@ -85,7 +85,7 @@
     </td>
 
     {{#if orchardId}}
-      <td><a href="{{pathFor "myorchards.one.trees.one.edit"}}">Editar</a></td>
+      <td><a href="{{pathFor "myorchards.one.trees.one.edit" _id=orchardId tree=_id}}">Editar</a></td>
     {{else}}
       <td><a href="{{pathFor "myorchards.trees.one.edit"}}">Editar</a></td>
     {{/if}}

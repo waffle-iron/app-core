@@ -50,6 +50,36 @@ Meteor.publish('MyOrchards', function (myOrchardId) {
   return MyOrchards.find(q);
 })
 
+
+Meteor.publish('MyPlants', function(orchardId, benchId) {
+
+  if (!this.userId) { return null }
+
+  let q = { 
+    orchardId: orchardId,
+    benchId: benchId,
+    userId: this.userId
+  }
+
+  return MyPlants.find(q)
+})
+
+
+Meteor.publish('MyLogEntries', function(type, typeId) {
+
+  if (!this.userId) { return null }
+
+  let q = { type: type }
+
+  if (typeId) {
+    q.typeId = typeId
+  }
+
+  q.userId = this.userId
+
+  return MyLogEntries.find(q, {fields: { type: false, typeId: false }})
+})
+
 Meteor.publish('MyTrees', function(myOrchardId, mytreeId) {
 
   if (mytreeId) {

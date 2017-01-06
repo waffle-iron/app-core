@@ -1,0 +1,42 @@
+<template name="myOrchardsBenchsViewPlants">
+
+  {{#each myPlants}}
+    {{name}}
+  {{/each}}
+
+  {{> myOrchardsBenchsViewPlantsModalInsert}}
+
+  <button type="button" data-toggle="modal" data-target="#plant-modal-insert" class="btn-sm btn-success btn">
+    <span class="glyphicon glyphicon-star"></span>  
+    Añadir planta
+  </button>
+
+  <h3>Sugerencias:</h3>
+
+</template>
+
+<template name="myOrchardsBenchsViewPlantsModalInsert">
+  <div class="modal fade" id="plant-modal-insert" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+      {{#autoForm collection="MyPlants" id="myPlantsInsert" type="insert"}}
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title">Añadir planta</h4>
+          </div>
+          <div class="modal-body">
+            {{> afQuickField name='seedId'}}
+            {{> afQuickField name='name'}}
+            {{> afQuickField name='amount'}}
+            {{> afQuickField name='orchardId' type='hidden' value=myOrchard._id}}
+            {{> afQuickField name='benchId' type='hidden' value=myBench._id}}
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+            <button type="submit" class="btn btn-primary">Añadir</button>
+          </div>
+        </div>
+      {{/autoForm}}
+    </div>
+  </div>
+</template>
