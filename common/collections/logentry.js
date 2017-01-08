@@ -25,9 +25,14 @@ MyLogEntriesSchema = new SimpleSchema({
     optional: false,
     allowedValues: ['tree', 'bench', 'orchard', 'plant', 'experiment']
   },
+  target: {
+    type: String,
+    optional: true,
+    allowedValues: ['general', 'tree', 'bench', 'orchard', 'plant', 'experiment']
+  },
   typeId: {
     type: String,
-    optional: false,
+    optional: true,
   },
   message: {
     type: String,

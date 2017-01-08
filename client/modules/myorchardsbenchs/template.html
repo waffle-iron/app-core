@@ -1,17 +1,13 @@
 <template name="myOrchardsBenchs">
 
-  <h2 class="page-header">Los bancales de: {{myOrchard.name}}</h2>
+  <h2 class="page-header">
+    Los bancales de: {{myOrchard.name}}
+    <div class="pull-right">
+      <a class="btn btn-primary" href="{{pathFor 'myorchards.one.benchs.new' _id=myOrchard._id}}" role="button">Nuevo bancal</a>
+    </div>
+  </h2>
 
   <div class="row">
-
-    <div class="col-md-4">
-      <div class="panel panel-primary">
-        <div class="panel-heading">Nuevo bancal</div>
-        <div class="panel-body">
-          <a class="btn btn-primary" href="{{pathFor 'myorchards.one.benchs.new' _id=myOrchard._id}}" role="button">Añadir</a>
-        </div>
-      </div>
-    </div>
 
     {{#each myBenchs}}
       {{> myOrchardsBenchsTableItem}}
@@ -38,16 +34,20 @@
 <template name="myOrchardsBenchsView">
 
   <h2 class="page-header">
-    {{myBench.name}} 
+    {{myBench.name}}
     {{> toolUuid}}
+    <div class="pull-right">
+      <button type="button" data-toggle="modal" data-target="#plant-modal-insert" class="btn-default btn">
+        Añadir planta
+      </button>
+      <a href="{{pathFor 'myorchards.one.benchs.one.edit' _id=myOrchard._id bench=myBench._id}}" class="btn btn-success">Editar</a>
+    </div>
   </h2>
 
   <div class="row">
 
     <div class="col-md-8">
-      
       {{> myOrchardsBenchsViewPlants}}
-
     </div>
     <div class="col-md-4">
       {{> myOrchardsBenchsViewSidebar}}
@@ -105,7 +105,7 @@
           {{/autoForm}}
         </div>
 
-        {{> MyLogEntries}}
+        {{> MyLogEntriesItem}}
         
       </div>
 

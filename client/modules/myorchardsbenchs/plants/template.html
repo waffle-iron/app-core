@@ -1,18 +1,72 @@
 <template name="myOrchardsBenchsViewPlants">
 
   {{#each myPlants}}
-    {{name}}
+    {{> myOrchardsBenchsViewPlantsItem}}
   {{/each}}
 
   {{> myOrchardsBenchsViewPlantsModalInsert}}
+  {{> myOrchardsBenchsViewPlantsModalUpdate}}
 
-  <button type="button" data-toggle="modal" data-target="#plant-modal-insert" class="btn-sm btn-success btn">
-    <span class="glyphicon glyphicon-star"></span>  
-    Añadir planta
-  </button>
+</template>
 
-  <h3>Sugerencias:</h3>
+<template name="myOrchardsBenchsViewPlantsItem">
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      {{name}} - {{seedProperty seedId 'variant'}}
+      <div class="pull-right">
+        <a href="#" class="fa fa-pencil plant-modal-update"></a>
+      </div>
+    </div>
+    <table class="table table-condensed table-bordered">
+      <tbody>
+        <tr>
+          <td width="50%">Fecha de plantación</td>
+          <td>{{moment 'shortestDay' seedTime}}</td>
+        </tr>
+      </tbody>
+    </table>
+    {{#if description}}
+      <div class="panel-body">
+        {{description}}
+      </div>
+    {{/if}}
+  </div>
+</template>
 
+<template name="myOrchardsBenchsViewPlantsModalUpdate">
+  <div class="modal fade" id="plant-modal-update" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+      {{#autoForm collection="MyPlants" id="myPlantsUpdate" type="update" doc=doc}}
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title">Actualizar planta</h4>
+          </div>
+          <div class="modal-body">
+            <div class="row">
+              <div class="col-md-6">
+                {{> afQuickField name='seedId'}}
+                {{> afQuickField name='name'}}
+                {{> afQuickField name='orchardId' type='hidden' value=myOrchard._id}}
+                {{> afQuickField name='benchId' type='hidden' value=myBench._id}}
+              </div>
+              <div class="col-md-6">
+                {{> afQuickField name='seedTime' type="bootstrap-datepicker"}}
+                {{> afQuickField name='amount'}}
+              </div>
+              <div class="col-md-12">
+                {{> afQuickField name='description'}}
+              </div>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+            <button type="submit" class="btn btn-primary">Actualizar</button>
+          </div>
+        </div>
+      {{/autoForm}}
+    </div>
+  </div>
 </template>
 
 <template name="myOrchardsBenchsViewPlantsModalInsert">
@@ -25,11 +79,21 @@
             <h4 class="modal-title">Añadir planta</h4>
           </div>
           <div class="modal-body">
-            {{> afQuickField name='seedId'}}
-            {{> afQuickField name='name'}}
-            {{> afQuickField name='amount'}}
-            {{> afQuickField name='orchardId' type='hidden' value=myOrchard._id}}
-            {{> afQuickField name='benchId' type='hidden' value=myBench._id}}
+            <div class="row">
+              <div class="col-md-6">
+                {{> afQuickField name='seedId'}}
+                {{> afQuickField name='name'}}
+                {{> afQuickField name='orchardId' type='hidden' value=myOrchard._id}}
+                {{> afQuickField name='benchId' type='hidden' value=myBench._id}}
+              </div>
+              <div class="col-md-6">
+                {{> afQuickField name='seedTime' type="bootstrap-datepicker"}}
+                {{> afQuickField name='amount'}}
+              </div>
+              <div class="col-md-12">
+                {{> afQuickField name='description'}}
+              </div>
+            </div>
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>

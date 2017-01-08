@@ -21,6 +21,7 @@ shell-server@0.2.1            # Server-side component of the `meteor shell` comm
 aldeed:simple-schema
 aldeed:collection2
 aldeed:autoform
+aldeed:autoform-bs-datepicker
 iron:router
 fortawesome:fontawesome
 twbs:bootstrap
@@ -44,3 +45,6 @@ dburles:google-maps
 manuelschoebel:ms-seo
 rwatts:uuid
 momentjs:moment
+http
+rajit:bootstrap3-datepicker
+rzymek:moment-locale-es

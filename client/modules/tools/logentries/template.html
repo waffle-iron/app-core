@@ -1,16 +1,16 @@
-<template name="MyLogEntries">
+<template name="MyLogEntriesItem">
   
   <ul class="list-group">
     {{#each myLogEntries}}
-      {{> MyLogEntriesItem}}
+      {{> MyLogEntriesItemItem}}
     {{/each}}
   </ul>
 
 </template>
 
-<template name="MyLogEntriesItem">
+<template name="MyLogEntriesItemItem">
   <li class="list-group-item">
     <small class="text-right">{{moment 'shortest' createdAt}}</small>
-    <p>{{message}}</p>
+    <p>{{{brNl message}}}</p>
   </li>
 </template>

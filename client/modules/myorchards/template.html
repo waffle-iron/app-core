@@ -1,63 +1,129 @@
 <template name="myOrchards">
 
-  <h2 class="page-header">Huertos</h2>
+  {{#if checkArray myOrchards}}
+    
+    <h2 class="page-header">
+      Huertos
+      <div class="pull-right">
+        <a class="btn btn-success" href="{{pathFor 'myorchards.new'}}" role="button">Añadir huerto</a>
+      </div>
+    </h2>
 
-  {{> myOrchardsMenu}}
+    <!-- <div class="map-container">
+      {{> googleMap name="exampleMap" options=exampleMapOptions}}
+    </div> -->
 
-  <!-- <div class="map-container">
-    {{> googleMap name="exampleMap" options=exampleMapOptions}}
-  </div> -->
+    <div class="row">
 
-  <div class="row">
+      <div class="col-md-12">
 
-    {{#each myOrchards}}
-      {{> myOrchardsTableItem}}
-    {{/each}}
+        <div class="panel panel-default">
+          <table class="table valign">
+            <thead>
+              <tr>
+                <th>Nombre</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody>
+              {{#each myOrchards}}
+                {{> myOrchardsTableItem}}
+              {{/each}}
+            </tbody>
+          </table>
+        </div>
 
-  </div>
+      </div>
 
-  <div class="row">
-    <div class="col-md-12">
-      <table class="table table-condensed table-bordered table-striped">
-        <thead>
-          <tr>
-            <th width="25px"></th>
-            <th width="15%">Nombre</th>
-            <th>Huerto</th>
-            <th width="100px"></th>
-          </tr>
-        </thead>
-        <tbody>
-          {{#each myBenchs}}
-            {{> myOrchardBenchsTableItem}}
-          {{/each}}
-          {{#each myTrees}}
-            {{> myOrchardTreesTableItem}}
-          {{/each}}
-        </tbody>
-      </table>
     </div>
-  </div>
+
+    <h3>Elementos</h3>
+
+    <div class="row">
+      <div class="col-md-12">
+        <table class="table table-condensed table-bordered table-striped">
+          <thead>
+            <tr>
+              <th width="25px"></th>
+              <th width="15%">Nombre</th>
+              <th>Huerto</th>
+              <th width="100px"></th>
+            </tr>
+          </thead>
+          <tbody>
+            {{#each myBenchs}}
+              {{> myOrchardBenchsTableItem}}
+            {{/each}}
+            {{#each myTrees}}
+              {{> myOrchardTreesTableItem}}
+            {{/each}}
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+  {{else}}
+   {{> myOrchardsNoContent}}
+  {{/if}}
 
 </template>
 
-<template name="myOrchardsMenu">
+<template name="myOrchardsNoContent">
+  <h2 class="page-header">Administra tus huertos</h2>
+  
   <div class="row">
-    <div class="col-md-4">
-      <a class="btn btn-success" href="{{pathFor 'myorchards.new'}}" role="button">Añadir huerto</a>
-      <br>
-      <br>
+    <div class="col-md-12">
+      <p>Los huertos de Tiempo de Siembra te facilitan la gestión
+        y registro de actividades de tus huertos, además de sugerirte asociaciones
+        de cultivos en base a tus plantaciones y más cosas.</p>
+      {{#autoForm collection="MyOrchards" id="myOrchardsInsert" type="insert"}}
+        <fieldset>
+          {{> afQuickField autofocus='true' name='name' label='Nombre para tu primer huerto'}}
+        </fieldset>
+        <button type="submit" class="btn btn-primary">Comenzar</button>
+      {{/autoForm}}
     </div>
   </div>
 </template>
 
 <template name="myOrchardsNotLogged">
   <div class="jumbotron">
-      <div class="container">
-        <h1 class="display-3">¡Administra tus huertos!</h1>
-        <p>Necesitas iniciar sesión para utilizar esta opción.</p>
-      </div>
+    <div class="container">
+      <h1 class="display-3">Administra tus huertos</h1>
+      <p>Necesitas iniciar sesión para utilizar esta opción.</p>
     </div>
+  </div>
+
+  <!-- <div class="row">
+
+    <div class="col-md-12">
+      <h2>¿Para qué sirven los huertos de Tiempo de Siembra?</h2>
+      <p></p>
+    </div>
+
+    <div class="col-md-4">
+      <h3>Gestiona tus huertos</h3>
+      Los huertos de Tiempo de Siembra te facilitan la gestión
+      y registro de actividades de tus huertos, además de
+      sugerirte asociaciones de cultivos en base a tus
+      plantaciones y más cosas.
+    </div>
+    <div class="col-md-4">
+      <h3>Registro de actividades</h3>
+      Los huertos de Tiempo de Siembra te facilitan la gestión
+      y registro de actividades de tus huertos, además de
+      sugerirte asociaciones de cultivos en base a tus
+      plantaciones y más cosas.
+    </div>
+    <div class="col-md-4">
+      <h3>Tus progresos</h3>
+      Los huertos de Tiempo de Siembra te facilitan la gestión
+      y registro de actividades de tus huertos, además de
+      sugerirte asociaciones de cultivos en base a tus
+      plantaciones y más cosas.
+    </div>
+  </div> -->
+
 </template>
 
 <template name="myOrchardBenchsTableItem">
@@ -94,15 +160,15 @@
 
 <template name="myOrchardsTableItem">
 
-  <div class="col-md-4">
-    <div class="panel panel-default">
-      <div class="panel-heading"><a href="{{pathFor 'myorchards.one'}}">{{name}}</a></div>
-      <div class="panel-body">
-        <a class="btn btn-default" href="{{pathFor 'myorchards.one.edit'}}">Editar</a>
-        <a class="btn btn-danger remove-item" href="#">Eliminar</a>
+  <tr>
+    <td> <a href="{{pathFor 'myorchards.one'}}">{{name}}</a> </td>
+    <td>
+      <div class="pull-right">
+        <a class="btn btn-sm btn-default" href="{{pathFor 'myorchards.one.edit'}}">Editar</a>
+        <a class="btn btn-sm btn-danger remove-item" href="#">Eliminar</a>
       </div>
-    </div>
-  </div>
+    </td>
+  </tr>
 
 </template>
 

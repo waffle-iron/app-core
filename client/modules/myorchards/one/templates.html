@@ -1,6 +1,13 @@
 <template name="myOrchardsView">
   
-  <h2 class="page-header">Huerto: {{myOrchard.name}}</h2>
+  <h2 class="page-header">
+    Huerto: {{myOrchard.name}}
+
+    <div class="pull-right">
+      <a class="btn btn-primary" href="{{pathFor 'myorchards.one.edit' _id=myOrchard._id}}">Editar</a>
+    </div>
+
+  </h2>
 
   <div class="row">
 
@@ -15,21 +22,11 @@
   </div>
 
   <div class="row">
-    <div class="col-md-12">
-      <a class="btn btn-primary" href="{{pathFor 'myorchards.one.edit' _id=myOrchard._id}}">Editar</a>
-    </div>
-  </div>
-
-  <br>
-
-  <div class="row">
     <div class="col-md-6">
       {{> myOrchardsOneBenchsTable}}
-      <a href="{{pathFor 'myorchards.one.benchs.index' _id=myOrchard._id}}">ver todos</a>
     </div>
     <div class="col-md-6">
       {{> myOrchardsOneTreesTable}}
-      <a href="{{pathFor 'myorchards.one.trees.index' _id=myOrchard._id}}">ver todos</a>
     </div>
   </div>
 

@@ -752,7 +752,7 @@ Router.route('/myorchards/:_id/benchs/:bench', function () {
     return [
       Meteor.subscribe('MyOrchards', this.params._id),
       Meteor.subscribe('MyBenchs', this.params._id, this.params.bench),
-      Meteor.subscribe('MyPlants', this.params._id, this.params.bench),
+      Meteor.subscribe('MyPlants',            null, this.params.bench),
       Meteor.subscribe('MyLogEntries', 'bench', this.params.bench),
       Meteor.subscribe('SeedsNames')
     ]

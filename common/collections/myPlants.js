@@ -58,8 +58,28 @@ MyPlantsSchema = new SimpleSchema({
     max: 200,
     label: "Nombre"
   },
+  description: {
+    type: String,
+    label: "Descripción",
+    autoform: {
+      rows: 2
+    },
+    optional: true
+  },
+  seedTime: {
+    type: Date,
+    label: "Fecha de plantación",
+    optional: true,
+    autoform: {
+      type: "bootstrap-datepicker",
+      datePickerOptions: {
+          format: "dd/mm/yyyy"
+      }
+    }
+  },
   amount: {
     type: Number,
+    optional: true,
     label: "Cantidad"
   },
   createdAt: {

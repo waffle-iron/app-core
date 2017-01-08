@@ -3,7 +3,7 @@
     <div class="col-md-12">
       <div class="panel panel-default">
         <div class="panel-heading">Árboles</div>
-        <table class="table table-condensed table-bordered table-striped">
+        <table class="table table-condensed table-bordered">
           <tbody>
             {{#each myTrees}}
               {{> myOrchardsOneTreesTableItem}}
@@ -15,6 +15,9 @@
             <i class="fa fa-plus" aria-hidden="true"></i>
             Nuevo
           </a>
+          <div class="pull-right">
+            <a href="{{pathFor 'myorchards.one.trees.index' _id=myOrchard._id}}">ver todos</a>
+          </div>
         </div>
       </div>
     </div>

@@ -1,11 +1,34 @@
 <template name="home">
   
+  <h2 class="page-header">
+    Inicio
+
+    {{#if currentUser}}
+      <div class="pull-right">
+        <div class="btn btn-success">NUEVA ACTIVIDAD</div>
+      </div>
+    {{/if}}
+  </h2>
+
   <div class="row">
-    <div class="col-md-9">
-      <!-- {{> s3_tester}} -->
-    </div>
-    <div class="col-md-3">
+    <div class="col-md-12">
       
+      <div class="row">
+        <div class="col-md-12">
+          {{#if currentUser}}
+            {{> weatherHome}}
+          {{/if}}
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-12">
+          <a href="http://porelclima.es/" target="_blank">
+            <img src="/porelclima3.gif">
+          </a>
+        </div>
+      </div>
+
     </div>
   </div>
 

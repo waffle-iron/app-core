@@ -7,3 +7,13 @@ Template.myOrchardsBenchsTableItem.events({
     }
   }
 });
+
+Template.myOrchardsBenchsViewSidebar.rendered = () => {
+  $('#logentryInsert textarea').bind('input propertychange', function() {
+    $(this).attr('rows', $(this).val().split('\n').length )
+  })
+
+  $('#logentryInsert').on('submit', function() {
+    $('#logentryInsert textarea').attr('rows', $(this).val().split('\n').length )
+  })
+}

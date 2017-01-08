@@ -1,0 +1,36 @@
+<template name="weatherHome">
+  <div class="panel panel-default">
+    <div class="panel-heading">El tiempo según tu ubicación</div>
+      <div class="panel-body"></div>
+      <table class="table">
+        <tbody>
+          <tr>
+            <th scope="row">Ahora mismo</th>
+            <td>{{data.currently.temperature}}º</td>
+            <td>{{data.currently.summary}}</td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="panel-body"></div>
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Día</th>
+            <th>Min</th>
+            <th>Max</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          {{#each data.daily.data}}
+            <tr class="{{weatherRowClass}}">
+              <th scope="row">{{momentUnix 'dowD' time}}</th>
+              <td>{{temperatureMin}}º</td>
+              <td>{{temperatureMax}}º</td>
+              <td>{{summary}}</td>
+            </tr>
+          {{/each}}
+        </tbody>
+      </table>
+  </div>
+</template>

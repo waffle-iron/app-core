@@ -21,6 +21,10 @@ body {
     border-radius: 3px;
 }
 
+.page-header {
+  margin-top: 0 !important;
+}
+
 .note {
   -moz-transform: rotate(7deg);
   -webkit-transform: rotate(7deg);
@@ -40,6 +44,22 @@ body {
   color: #000; 
 }
 
+.col-slack {
+  font-size: 1.3em;
+  line-height: 1.6em;
+  margin-bottom: 2em;
+}
+
 .note p:last-child {
   margin: 0;
+}
+
+.fa.red { color: red; }
+.fa.green { color: green; }
+
+.table.valign tbody>tr>td{
+    vertical-align: middle !important;
+}
+img {
+  max-width: 100%;
 }

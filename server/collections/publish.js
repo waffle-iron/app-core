@@ -56,9 +56,12 @@ Meteor.publish('MyPlants', function(orchardId, benchId) {
   if (!this.userId) { return null }
 
   let q = { 
-    orchardId: orchardId,
     benchId: benchId,
     userId: this.userId
+  }
+
+  if (orchardId) {
+    q.orchardId = orchardId
   }
 
   return MyPlants.find(q)
