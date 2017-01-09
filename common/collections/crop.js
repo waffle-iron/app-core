@@ -1,13 +1,13 @@
-Seeds = new Mongo.Collection("seed");
+Crops = new Mongo.Collection("crop");
 
-Seeds.allow({
+Crops.allow({
   insert: function () { return !!Meteor.user(); },
   update: function () { return !!Meteor.user(); },
   remove: function () { return !!Meteor.user(); }
 });
 
 // Define the schema
-SeedSchema = new SimpleSchema({
+CropSchema = new SimpleSchema({
   name: {
     type: String,
     label: "Nombre",
@@ -23,7 +23,7 @@ SeedSchema = new SimpleSchema({
     label: "Familia",
     autoform: {
       options: () => {
-        return SeedFamilies.find().map( (c) => {
+        return CropFamilies.find().map( (c) => {
           return {label: c.name, value: c._id}
         })
       }
@@ -200,7 +200,7 @@ SeedSchema = new SimpleSchema({
     type: String,
     autoform: {
       options: () => {
-        return Seeds.find().map( (c) => {
+        return Crops.find().map( (c) => {
           return {label: `${c.variant} - ${c.name}`, value: c._id}
         })
       }
@@ -215,7 +215,7 @@ SeedSchema = new SimpleSchema({
     type: String,
     autoform: {
       options: () => {
-        return Seeds.find().map( (c) => {
+        return Crops.find().map( (c) => {
           return {label: `${c.variant} - ${c.name}`, value: c._id}
         })
       }
@@ -297,7 +297,6 @@ SeedSchema = new SimpleSchema({
     optional: true,
     label: "Última comprobación"
   },
-
 
   'info.harvest': {
     type: Array,
@@ -407,4 +406,4 @@ SeedSchema = new SimpleSchema({
 
 });
 
-Seeds.attachSchema(SeedSchema);
+Crops.attachSchema(CropSchema);

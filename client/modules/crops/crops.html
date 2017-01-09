@@ -1,12 +1,12 @@
-<template name="seeds">
+<template name="crops">
   <h2 class="page-header">
-    Semillas
+    Cultivos
     <div class="pull-right">
       {{#if isInRole 'super-admin,admin,editor'}}
-        <a class="btn btn-success" href="{{pathFor 'seeds.add'}}" role="button">Añadir semilla</a>
+        <a class="btn btn-success" href="{{pathFor 'crops.add'}}" role="button">Añadir cultivo</a>
       {{/if}}
-      <a class="btn btn-primary" href="{{urlFor 'seeds.families.index'}}">Familias</a>
-      <a class="btn btn-primary" href="{{urlFor 'seeds.calendar'}}">
+      <a class="btn btn-primary" href="{{urlFor 'crops.families.index'}}">Familias</a>
+      <a class="btn btn-primary" href="{{urlFor 'crops.calendar'}}">
         <i class="fa fa-calendar" aria-hidden="true"></i>
         Calendario
       </a>
@@ -14,8 +14,8 @@
   </h2>
 
   <div class="row">
-    {{#each seeds}}
-      {{> seedsTableItem}}
+    {{#each crops}}
+      {{> cropsTableItem}}
     {{/each}}
   </div>
 
@@ -27,18 +27,18 @@
 
   <div class="row">
     <div class="col-md-12">
-      {{> seedsCalendar}}
+      {{> cropsCalendar}}
     </div>
   </div>
 
 </template>
 
-<template name="seedsTableItem">
+<template name="cropsTableItem">
 
   <div class="col-xs-6 col-md-3">
 
     <div class="thumbnail">
-      <a href="{{pathFor 'seeds.one'}}">
+      <a href="{{pathFor 'crops.one'}}">
         {{#if highlightedImage}}
           <img src="{{highlightedImage}}" alt="{{variant}}" title="{{variant}}">   
         {{else}}
@@ -46,11 +46,11 @@
         {{/if}}
       </a>
       <div class="caption">
-        <h3><a href="{{pathFor 'seeds.one'}}">{{variant}}</a></h3>
+        <h3><a href="{{pathFor 'crops.one'}}">{{variant}}</a></h3>
         <p>{{monthName seedTime.from}} ~ {{monthName harvestTime.from}}</p>
         
         {{#if isInRole 'super-admin,admin,editor'}}
-          <a class="btn btn-default" href="{{pathFor 'seeds.one.edit'}}">Editar</a>
+          <a class="btn btn-default" href="{{pathFor 'crops.one.edit'}}">Editar</a>
           <a class="btn btn-danger remove-item" href="#">Eliminar</a>
         {{/if}}
 
@@ -58,13 +58,13 @@
     </div>
 
     <!-- <div class="panel panel-default">
-      <div class="panel-heading"><a href="{{pathFor 'seeds.one'}}">{{variant}}</a></div>
+      <div class="panel-heading"><a href="{{pathFor 'crops.one'}}">{{variant}}</a></div>
       <div class="panel-body">
         
         <p>{{monthName seedTime.from}} ~ {{monthName harvestTime.from}}</p>
 
         {{#if isInRole 'super-admin,admin,editor'}}
-          <a class="btn btn-default" href="{{pathFor 'seeds.one.edit'}}">Editar</a>
+          <a class="btn btn-default" href="{{pathFor 'crops.one.edit'}}">Editar</a>
           <a class="btn btn-danger remove-item" href="#">Eliminar</a>
         {{/if}}
 
@@ -74,9 +74,9 @@
 
 </template>
 
-<template name="seedsView">
+<template name="cropsView">
 
-  <h2 class="page-header">{{seed.variant}}</h2>
+  <h2 class="page-header">{{crop.variant}}</h2>
   
   <div class="row">
     <div class="col-md-6">
@@ -85,22 +85,22 @@
           <h3 class="panel-title">Información general</h3>
         </div>
         <ul class="list-group">
-          <li class="list-group-item">{{seed.name}}</li>
-          <li class="list-group-item">{{familyName seed.family}}</li>
-          {{#if seed.coldSupport}}
-          <li class="list-group-item">Resistencia al frío. Mínimo {{seed.coldSupport}} grados.</li>
+          <li class="list-group-item">{{crop.name}}</li>
+          <li class="list-group-item">{{familyName crop.family}}</li>
+          {{#if crop.coldSupport}}
+          <li class="list-group-item">Resistencia al frío. Mínimo {{crop.coldSupport}} grados.</li>
           {{/if}}
         </ul>
       </div>
     </div>
 
-    {{> resourcesList seed}}
+    {{> resourcesList crop}}
     
   </div>
 
   <div class="row">
     <div class="col-md-12">
-      {{> seedCalendar}}
+      {{> cropCalendar}}
     </div>
   </div>
 
@@ -108,14 +108,14 @@
     <div class="col-md-6">
       <div class="bs-callout bs-callout-success" id="callout-input-needs-type">
         <h4>Compatibles</h4>
-        <p>{{{compatibleSeeds seed}}}</p>
+        <p>{{{compatibleCrops crop}}}</p>
       </div>
     </div>
 
     <div class="col-md-6">
       <div class="bs-callout bs-callout-danger" id="callout-input-needs-type">
         <h4>Incompatibles</h4>
-        <p>{{{incompatibleSeeds seed}}}</p>
+        <p>{{{incompatibleCrops crop}}}</p>
       </div>
     </div>
   </div>
@@ -131,8 +131,8 @@
             <tr>
               <td width="65%">Entre semillas</td>
               <td>
-                {{#if seed.spaccing.seed}}
-                  {{seed.spaccing.seed}}
+                {{#if crop.spaccing.seed}}
+                  {{crop.spaccing.seed}}
                 {{else}}
                   -
                 {{/if}}
@@ -141,8 +141,8 @@
             <tr>
               <td>Profundidad semillas</td>
               <td>
-                {{#if seed.spaccing.seedDeep}}
-                  {{seed.spaccing.seedDeep}}
+                {{#if crop.spaccing.seedDeep}}
+                  {{crop.spaccing.seedDeep}}
                 {{else}}
                   -
                 {{/if}}
@@ -151,8 +151,8 @@
             <tr>
               <td>Entre plantas</td>
               <td>
-                {{#if seed.spaccing.plants}}
-                  {{seed.spaccing.plants}}
+                {{#if crop.spaccing.plants}}
+                  {{crop.spaccing.plants}}
                 {{else}}
                   -
                 {{/if}}
@@ -161,8 +161,8 @@
             <tr>
               <td>Entre líneas de plantación</td>
               <td>
-                {{#if seed.spaccing.plantLines}}
-                  {{seed.spaccing.plantLines}}
+                {{#if crop.spaccing.plantLines}}
+                  {{crop.spaccing.plantLines}}
                 {{else}}
                   -
                 {{/if}}
@@ -187,15 +187,15 @@
                 Grado de exposición al sol
               </td>
               <td>
-                {{stars seed.sun.sunExposition}} ️
+                {{stars crop.sun.sunExposition}} ️
               </td>
             </tr>
             <tr>
               <td>
               </td>
               <td>
-                {{#if seed.sun.sunExpositionDescription}}
-                  {{seed.sun.sunExpositionDescription}}
+                {{#if crop.sun.sunExpositionDescription}}
+                  {{crop.sun.sunExpositionDescription}}
                 {{else}}
                   -
                 {{/if}}
@@ -206,15 +206,15 @@
                 Grado de exposición a la sombra
               </td>
               <td>
-                {{moons seed.sun.shadowExposition}}
+                {{moons crop.sun.shadowExposition}}
               </td>
             </tr>
             <tr>
               <td>
               </td>
               <td>
-                {{#if seed.sun.shadowExpositionDescription}}
-                  {{seed.sun.shadowExpositionDescription}}
+                {{#if crop.sun.shadowExpositionDescription}}
+                  {{crop.sun.shadowExpositionDescription}}
                 {{else}}
                   -
                 {{/if}}
@@ -239,15 +239,15 @@
                 Grado de regado
               </td>
               <td>
-                {{water seed.water.exposition}} ️
+                {{water crop.water.exposition}} ️
               </td>
             </tr>
             <tr>
               <td>
               </td>
               <td>
-                {{#if seed.water.expositionDescription}}
-                  {{seed.water.expositionDescription}}
+                {{#if crop.water.expositionDescription}}
+                  {{crop.water.expositionDescription}}
                 {{else}}
                   -
                 {{/if}}
@@ -270,7 +270,7 @@
             <tr>
               <td width="65%">Admite cualquier tipo de tierra</td>
               <td>
-                {{#if seed.land.type.any}}
+                {{#if crop.land.type.any}}
                   ✅
                 {{else}}
                   ❌
@@ -280,9 +280,9 @@
             <tr>
               <td>PH</td>
               <td>
-                {{seed.land.ph.from}}
-                {{#if seed.land.ph.to}}
-                  a {{seed.land.ph.to}}
+                {{crop.land.ph.from}}
+                {{#if crop.land.ph.to}}
+                  a {{crop.land.ph.to}}
                 {{/if}}
               </td>
             </tr>
@@ -293,7 +293,7 @@
   </div>
 
   <div class="row">
-    {{#each seed.notes}}
+    {{#each crop.notes}}
       <div class="col-md-4">
         <div class="note note-yellow">
           <p>{{.}}</p>
@@ -305,19 +305,19 @@
   {{#if isInRole 'super-admin,admin,editor'}}
     <div class="row">
       <div class="col-md-4">
-        <a class="btn btn-primary" href="{{urlFor 'seeds.one.edit' _id=seed._id}}">Editar</a>
+        <a class="btn btn-primary" href="{{urlFor 'crops.one.edit' _id=crop._id}}">Editar</a>
       </div>
     </div>
   {{/if}}
   
 </template>
 
-<template name="seedsAdd">
-  <h2 class="page-header">Crear una nueva semilla</h2>
-  {{> quickForm collection="Seeds" id="seedFormInsert" type="insert"}}
+<template name="cropsAdd">
+  <h2 class="page-header">Crear un nuevo cultivo</h2>
+  {{> quickForm collection="Crops" id="cropFormInsert" type="insert"}}
 </template>
 
-<template name="seedsEdit">
-  <h2 class="page-header">Actualizar: {{seed.variant}}</h2>
-  {{> quickForm collection="Seeds" id="seedFormUpdate" type="update" doc=seed}}
+<template name="cropsEdit">
+  <h2 class="page-header">Actualizar: {{crop.variant}}</h2>
+  {{> quickForm collection="Crops" id="cropFormUpdate" type="update" doc=crop}}
 </template>

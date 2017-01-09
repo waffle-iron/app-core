@@ -12,7 +12,7 @@
 <template name="myOrchardsBenchsViewPlantsItem">
   <div class="panel panel-default">
     <div class="panel-heading">
-      {{name}} - {{seedProperty seedId 'variant'}}
+      {{name}} - {{cropProperty cropId 'variant'}}
       <div class="pull-right">
         <a href="#" class="fa fa-pencil plant-modal-update"></a>
       </div>
@@ -21,7 +21,7 @@
       <tbody>
         <tr>
           <td width="50%">Fecha de plantación</td>
-          <td>{{moment 'shortestDay' seedTime}}</td>
+          <td>{{moment 'shortestDay' cropTime}}</td>
         </tr>
       </tbody>
     </table>
@@ -45,13 +45,13 @@
           <div class="modal-body">
             <div class="row">
               <div class="col-md-6">
-                {{> afQuickField name='seedId'}}
+                {{> afQuickField name='cropId'}}
                 {{> afQuickField name='name'}}
                 {{> afQuickField name='orchardId' type='hidden' value=myOrchard._id}}
                 {{> afQuickField name='benchId' type='hidden' value=myBench._id}}
               </div>
               <div class="col-md-6">
-                {{> afQuickField name='seedTime' type="bootstrap-datepicker"}}
+                {{> afQuickField name='cropTime' type="bootstrap-datepicker"}}
                 {{> afQuickField name='amount'}}
               </div>
               <div class="col-md-12">
@@ -81,13 +81,13 @@
           <div class="modal-body">
             <div class="row">
               <div class="col-md-6">
-                {{> afQuickField name='seedId'}}
+                {{> afQuickField name='cropId'}}
                 {{> afQuickField name='name'}}
                 {{> afQuickField name='orchardId' type='hidden' value=myOrchard._id}}
                 {{> afQuickField name='benchId' type='hidden' value=myBench._id}}
               </div>
               <div class="col-md-6">
-                {{> afQuickField name='seedTime' type="bootstrap-datepicker"}}
+                {{> afQuickField name='cropTime' type="bootstrap-datepicker"}}
                 {{> afQuickField name='amount'}}
               </div>
               <div class="col-md-12">

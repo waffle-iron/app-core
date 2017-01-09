@@ -1,35 +1,35 @@
-Meteor.publish('Seeds', (seedId) => {
-  return seedId ? Seeds.find({_id: seedId}) : Seeds.find()
+Meteor.publish('Crops', (cropId) => {
+  return cropId ? Crops.find({_id: cropId}) : Crops.find()
 })
 
-Meteor.publish('SeedsResume', (seedId) => {
+Meteor.publish('CropsResume', (cropId) => {
   let f = {
     variant: 1,
     highlightedImage: 1,
     'seedTime': 1,
     'harvestTime': 1
   }
-  return seedId ? Seeds.find({_id: seedId}, {fields: f}) : Seeds.find({}, {fields: f})
+  return cropId ? Crops.find({_id: cropId}, {fields: f}) : Crops.find({}, {fields: f})
 })
 
 Meteor.publish('Herbs', (herbId) => {
   return herbId ? Herbs.find({_id: herbId}) : Herbs.find()
 })
 
-Meteor.publish('SeedsNames', () => {
-  return Seeds.find({}, {fields: {name: 1, variant: 1}})
+Meteor.publish('CropsNames', () => {
+  return Crops.find({}, {fields: {name: 1, variant: 1}})
 })
 
-Meteor.publish('SeedsTiming', () => {
-  return Seeds.find({}, {fields: {name: 1, variant: 1, seedTime: 1, harvestTime: 1}})
+Meteor.publish('CropsTiming', () => {
+  return Crops.find({}, {fields: {name: 1, variant: 1, seedTime: 1, harvestTime: 1}})
 })
 
 Meteor.publish('TreesVariants', () => {
   return Trees.find({}, {fields: {variant: 1}})
 })
 
-Meteor.publish('SeedFamilies', (seedFamilyId) => {
-  return seedFamilyId ? SeedFamilies.find({_id: seedFamilyId}) : SeedFamilies.find({})
+Meteor.publish('CropFamilies', (cropFamilyId) => {
+  return cropFamilyId ? CropFamilies.find({_id: cropFamilyId}) : CropFamilies.find({})
 })
 
 Meteor.publish('TreeFamilies', (treeFamilyId) => {

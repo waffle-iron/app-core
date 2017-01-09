@@ -15,7 +15,7 @@ Template.registerHelper('incompatiblePlants', function(plant) {
   plant.associations.no.forEach(function(no) {
     if (!no) return;
     let n = Seeds.findOne({_id:no})
-    if (n) r += `<span data-action="seed" data-seedId="${no}" class="btn btn-default btn-default">${n.variant}</span>`
+    if (n) r += `<span data-action="crop" data-cropId="${no}" class="btn btn-default btn-default">${n.variant}</span>`
   })
   return r;
 })

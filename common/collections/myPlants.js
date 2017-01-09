@@ -41,17 +41,17 @@ MyPlantsSchema = new SimpleSchema({
     },
     label: "Bancal"
   },
-  seedId: {
+  cropId: {
     type: String,
     max: 20,
     autoform: {
       options: () => {
-        return Seeds.find().map( (c) => {
+        return Crops.find().map( (c) => {
           return {label: `${c.variant}`, value: c._id}
         })
       }
     },
-    label: "Semilla"
+    label: "Cultivo"
   },
   name: {
     type: String,

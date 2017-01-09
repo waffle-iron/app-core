@@ -11,11 +11,11 @@ Router.onBeforeAction(function () {
   }
 }, {except: [
   'home',
-  'seeds.index', 
-  'seeds.families.index',
-  'seeds.families.one',
-  'seeds.one',
-  'seeds.calendar',
+  'crops.index', 
+  'crops.families.index',
+  'crops.families.one',
+  'crops.one',
+  'crops.calendar',
   'trees.index',
   'trees.one',
   'trees.families.index',
@@ -74,31 +74,31 @@ Router.route('/blog/:_slug', function () {
 })
 
 // *****************************************************************************
-// Seeds
+// Crops
 // *****************************************************************************
 
-Router.route('/seeds/families', function () {
-  this.render('seedFamilies')
+Router.route('/crops/families', function () {
+  this.render('cropFamilies')
 }, {
   subscriptions: function() {
     return [
-      Meteor.subscribe('SeedFamilies'),
+      Meteor.subscribe('CropFamilies'),
     ]
   },
   data: function() {
     if (this.ready) {
       return {
-        seedsFamilies: SeedFamilies.find({}, {sort: {name: 1}})
+        cropsFamilies: CropFamilies.find({}, {sort: {name: 1}})
       }
     }
   },
-  name: 'seeds.families.index',
-  parent: 'seeds.index',
+  name: 'crops.families.index',
+  parent: 'crops.index',
   title: 'Familias'
 })
 
-Router.route('/seeds/families/add', function () {
-  this.render('seedFamiliesAdd')
+Router.route('/crops/families/add', function () {
+  this.render('cropFamiliesAdd')
 }, {
   subscriptions: function() {
     return [
@@ -110,154 +110,154 @@ Router.route('/seeds/families/add', function () {
       }
     }
   },
-  name: 'seeds.families.add',
-  parent: 'seeds.families.index',
+  name: 'crops.families.add',
+  parent: 'crops.families.index',
   title: 'Nueva'
 })
 
-Router.route('/seeds/families/:_id/edit', function () {
-  this.render('seedFamiliesEdit')
+Router.route('/crops/families/:_id/edit', function () {
+  this.render('cropFamiliesEdit')
 }, {
   subscriptions: function() {
     return [
-      Meteor.subscribe('SeedFamilies', this.params._id)
+      Meteor.subscribe('CropFamilies', this.params._id)
     ]
   },
   data: function() {
     if (this.ready) {
       return {
-        seedsFamily: SeedFamilies.findOne({_id: this.params._id})
+        cropsFamily: CropFamilies.findOne({_id: this.params._id})
       }
     }
   },
-  name: 'seeds.families.edit',
+  name: 'crops.families.edit',
   title: 'Editar'
 })
 
-Router.route('/seeds/families/:_id', function () {
-  this.render('seedFamiliesView')
+Router.route('/crops/families/:_id', function () {
+  this.render('cropFamiliesView')
 }, {
   subscriptions: function() {
     return [
-      Meteor.subscribe('SeedFamilies', this.params._id)
+      Meteor.subscribe('CropFamilies', this.params._id)
     ]
   },
   data: function() {
     if (this.ready) {
       return {
-        seedsFamily: SeedFamilies.findOne({_id: this.params._id})
+        cropsFamily: CropFamilies.findOne({_id: this.params._id})
       }
     }
   },
-  name: 'seeds.families.one',
-  parent: 'seeds.families.index',
-  title: () => seedsFamily.name
+  name: 'crops.families.one',
+  parent: 'crops.families.index',
+  title: () => cropsFamily.name
 })
 
-Router.route('/seeds', function () {
-  this.render('seeds')
+Router.route('/crops', function () {
+  this.render('crops')
 }, {
   subscriptions: function() {
     return [
-      Meteor.subscribe('SeedsResume')
+      Meteor.subscribe('CropsResume')
     ]
   },
   data: function() {
     if (this.ready) {
       return {
-        seeds: Seeds.find({}, {sort: {name: 1}})
+        crops: Crops.find({}, {sort: {name: 1}})
       }
     }
   },
-  name: 'seeds.index',
+  name: 'crops.index',
   parent: 'home',
-  title: 'Semillas'
+  title: 'Cultivos'
 })
 
-Router.route('/seeds/calendar', function () {
-  this.render('seedTimeCalendar')
+Router.route('/crops/calendar', function () {
+  this.render('cropsCalendar')
 }, {
   subscriptions: function() {
     return [
-      Meteor.subscribe('SeedsTiming')
+      Meteor.subscribe('CropsTiming')
     ]
   },
   data: function() {
     if (this.ready) {
       return {
-        seeds: Seeds.find({}, {sort: {name: 1}})
+        crops: Crops.find({}, {sort: {name: 1}})
       }
     }
   },
-  name: 'seeds.calendar',
-  parent: 'seeds.index',
+  name: 'crops.calendar',
+  parent: 'crops.index',
   title: 'Calendario'
 })
 
-Router.route('/seeds/add', function () {
-  this.render('seedsAdd')
+Router.route('/crops/add', function () {
+  this.render('cropsAdd')
 }, {
   subscriptions: function() {
     return [
-      Meteor.subscribe('SeedFamilies'),
-      Meteor.subscribe('SeedsNames')
+      Meteor.subscribe('CropFamilies'),
+      Meteor.subscribe('CropsNames')
     ]
   },
   data: function() {
     if (this.ready) {
       return {
-        seedFamilies: SeedFamilies.find({}),
-        seedNames: Seeds.find({}, {fields: {name:1}, sort: { name: -1 }})
+        cropFamilies: CropFamilies.find({}),
+        cropNames: Crops.find({}, {fields: {name:1}, sort: { name: -1 }})
       }
     }
   },
-  name: 'seeds.add',
+  name: 'crops.add',
   title: 'Añadir',
-  parent: 'seeds.index'
+  parent: 'crops.index'
 })
 
-Router.route('/seeds/:_id', function () {
-  this.render('seedsView')
+Router.route('/crops/:_id', function () {
+  this.render('cropsView')
 }, {
   subscriptions: function() {
     return [
-      Meteor.subscribe('SeedFamilies'),
-      Meteor.subscribe('Seeds', this.params._id),
-      Meteor.subscribe('SeedsNames')
+      Meteor.subscribe('CropFamilies'),
+      Meteor.subscribe('Crops', this.params._id),
+      Meteor.subscribe('CropsNames')
     ]
   },
   data: function() {
     if (this.ready) {
       return {
-        seed: Seeds.findOne({_id: this.params._id})
+        crop: Crops.findOne({_id: this.params._id})
       }
     }
   },
-  name: 'seeds.one',
-  title: function() { return this.data().seed ? this.data().seed.variant : '' },
-  parent: 'seeds.index'
+  name: 'crops.one',
+  title: function() { return this.data().crop ? this.data().crop.variant : '' },
+  parent: 'crops.index'
 })
 
-Router.route('/seeds/:_id/edit', function () {
-  this.render('seedsEdit')
+Router.route('/crops/:_id/edit', function () {
+  this.render('cropsEdit')
 }, {
   subscriptions: function() {
     return [
-      Meteor.subscribe('Seeds', this.params._id),
-      Meteor.subscribe('SeedFamilies'),
-      Meteor.subscribe('SeedsNames')
+      Meteor.subscribe('Crops', this.params._id),
+      Meteor.subscribe('CropFamilies'),
+      Meteor.subscribe('CropsNames')
     ]
   },
   data: function() {
     if (this.ready) {
       return {
-        seed: Seeds.findOne({_id: this.params._id})
+        crop: Crops.findOne({_id: this.params._id})
       }
     }
   },
-  name: 'seeds.one.edit',
+  name: 'crops.one.edit',
   title: 'Editar',
-  parent: 'seeds.one'
+  parent: 'crops.one'
 })
 
 // *****************************************************************************
@@ -391,13 +391,13 @@ Router.route('/herbs/add', function () {
 }, {
   subscriptions: function() {
     return [
-      Meteor.subscribe('SeedsNames')
+      Meteor.subscribe('CropsNames')
     ]
   },
   data: function() {
     if (this.ready) {
       return {
-        seedNames: Seeds.find({}, {fields: {name:1}, sort: { name: -1 }})
+        cropNames: Crops.find({}, {fields: {name:1}, sort: { name: -1 }})
       }
     }
   },
@@ -412,7 +412,7 @@ Router.route('/herbs/:_id', function () {
   subscriptions: function() {
     return [
       Meteor.subscribe('Herbs', this.params._id),
-      Meteor.subscribe('SeedsNames')
+      Meteor.subscribe('CropsNames')
     ]
   },
   data: function() {
@@ -433,7 +433,7 @@ Router.route('/herbs/:_id/edit', function () {
   subscriptions: function() {
     return [
       Meteor.subscribe('Herbs', this.params._id),
-      Meteor.subscribe('SeedsNames')
+      Meteor.subscribe('CropsNames')
     ]
   },
   data: function() {
@@ -754,7 +754,7 @@ Router.route('/myorchards/:_id/benchs/:bench', function () {
       Meteor.subscribe('MyBenchs', this.params._id, this.params.bench),
       Meteor.subscribe('MyPlants',            null, this.params.bench),
       Meteor.subscribe('MyLogEntries', 'bench', this.params.bench),
-      Meteor.subscribe('SeedsNames')
+      Meteor.subscribe('CropsNames')
     ]
   },
   data: function() {

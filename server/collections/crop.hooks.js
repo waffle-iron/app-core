@@ -1,9 +1,9 @@
-SeedsAfterUpdate = (userId, doc) => {
+CropsAfterUpdate = (userId, doc) => {
   if (!doc.associations) {
     return;
   }
 
-  Seeds.direct.update(
+  Crops.direct.update(
     {},
     {
       $pull: {
@@ -17,7 +17,7 @@ SeedsAfterUpdate = (userId, doc) => {
   )
 
   if (!!doc.associations.ok) {
-    Seeds.direct.update(
+    Crops.direct.update(
       {_id: { $in: doc.associations.ok }},
       {
         $addToSet: { 'associations.ok': doc._id }
@@ -29,7 +29,7 @@ SeedsAfterUpdate = (userId, doc) => {
   }
 
   if (!!doc.associations.no) {
-    Seeds.direct.update(
+    Crops.direct.update(
       {_id: { $in: doc.associations.no }},
       {
         $addToSet: { 'associations.no': doc._id }
@@ -43,10 +43,10 @@ SeedsAfterUpdate = (userId, doc) => {
   return;
 }
 
-Seeds.after.insert( function(userId, doc) {
-  return SeedsAfterUpdate(userId, doc)
+Crops.after.insert( function(userId, doc) {
+  return CropsAfterUpdate(userId, doc)
 } );
 
-Seeds.after.update(function (userId, doc, fieldNames, modifier, options) {
-  return SeedsAfterUpdate(userId, doc);
+Crops.after.update(function (userId, doc, fieldNames, modifier, options) {
+  return CropsAfterUpdate(userId, doc);
 });

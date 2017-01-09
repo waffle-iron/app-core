@@ -1,5 +1,5 @@
-Template.registerHelper('seedProperty', function(seedId, property) {
-  if (!seedId) return
-  const seed = Seeds.findOne({_id:seedId})
-  return seed ? seed[property] : null
+Template.registerHelper('cropProperty', function(cropId, property) {
+  if (!cropId) return
+  const crop = Crops.findOne({_id:cropId})
+  return crop ? crop[property] : null
 })

@@ -1,13 +1,13 @@
-SeedFamilies = new Mongo.Collection("seedfamily");
+CropFamilies = new Mongo.Collection("cropfamily");
 
-SeedFamilies.allow({
+CropFamilies.allow({
   insert: function () { return !!Meteor.user(); },
   update: function () { return !!Meteor.user(); },
   remove: function () { return !!Meteor.user(); }
 });
 
 // Define the schema
-SeedFamiliesSchema = new SimpleSchema({
+CropFamiliesSchema = new SimpleSchema({
   name: {
     type: String,
     max: 200,
@@ -45,4 +45,4 @@ SeedFamiliesSchema = new SimpleSchema({
   }
 });
 
-SeedFamilies.attachSchema(SeedFamiliesSchema);
+CropFamilies.attachSchema(CropFamiliesSchema);

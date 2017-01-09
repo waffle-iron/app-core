@@ -45,7 +45,7 @@ Template.registerHelper('water', (number) => {
 
 Template.registerHelper('familyName', function(familyId) {
   if (!familyId) return;
-  return SeedFamilies.findOne({_id:familyId}).name;
+  return CropFamilies.findOne({_id:familyId}).name;
 })
 
 Template.registerHelper('myOrchardName', function(orchardId) {

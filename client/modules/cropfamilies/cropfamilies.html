@@ -1,0 +1,54 @@
+<template name="cropFamilies">
+
+  <h2 class="page-header">Familias de semillas</h2>
+
+  <div class="row">
+
+    {{#if isInRole 'super-admin,admin,editor'}}
+      <div class="col-md-4">
+        <div class="panel panel-primary">
+          <div class="panel-heading">Nueva familia de semillas</div>
+          <div class="panel-body">
+            <a class="btn btn-primary" href="{{pathFor 'crops.families.add'}}" role="button">Aádir familia</a>
+          </div>
+        </div>
+      </div>
+    {{/if}}
+
+    {{#each cropsFamilies}}
+      {{> cropsFamiliesTableItem}}
+    {{/each}}
+
+  </div>
+
+</template>
+
+<template name="cropFamiliesView">
+
+</template>
+
+<template name="cropsFamiliesTableItem">
+
+  <div class="col-md-4">
+    <div class="panel panel-default">
+      <div class="panel-heading"><a href="{{pathFor 'crops.families.edit'}}">{{name}}</a></div>
+      <div class="panel-body">
+        {{#if isInRole 'super-admin,admin,editor'}}
+          <a class="btn btn-default" href="{{pathFor 'crops.families.edit'}}">Editar</a>
+          <a class="btn btn-danger remove-item" href="#">Eliminar</a>
+        {{/if}}
+      </div>
+    </div>
+  </div>
+
+</template>
+
+<template name="cropFamiliesAdd">
+  <h2 class="page-header">Crear una nueva familia de semillas</h2>
+  {{> quickForm collection="CropFamilies" id="cropsFamilyFormInsert" type="insert"}}
+</template>
+
+<template name="cropFamiliesEdit">
+  <h2 class="page-header">Actualizar: {{cropFamily.name}}</h2>
+  {{> quickForm collection="CropFamilies" id="cropsFamilyFormUpdate" type="update" doc=cropsFamily}}
+</template>

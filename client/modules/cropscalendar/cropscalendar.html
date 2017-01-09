@@ -1,0 +1,51 @@
+<template name="cropsCalendar">
+
+  <p>Siembra: <span class="btn btn-success btn-xs">verde</span></p>
+  <p>Cosecha: <span class="btn btn-warning btn-xs">amarillo</span></p>
+
+  <table class="seed-calendar table table-bordered table-striped responsive-utilities">
+      <thead>
+          <tr>
+              <th class="{{cropsCalendarMonthClass 1}}"> Enero </th>
+              <th class="{{cropsCalendarMonthClass 2}}"> Febrero </th>
+              <th class="{{cropsCalendarMonthClass 3}}"> Marzo </th>
+              <th class="{{cropsCalendarMonthClass 4}}"> Abril </th>
+              <th class="{{cropsCalendarMonthClass 5}}"> Mayo </th>
+              <th class="{{cropsCalendarMonthClass 6}}"> Junio </th>
+          </tr>
+      </thead>
+      <tbody>
+          <tr>
+              <td>{{{cropsCalendarText 1}}}</td>
+              <td>{{{cropsCalendarText 2}}}</td>
+              <td>{{{cropsCalendarText 3}}}</td>
+              <td>{{{cropsCalendarText 4}}}</td>
+              <td>{{{cropsCalendarText 5}}}</td>
+              <td>{{{cropsCalendarText 6}}}</td>
+          </tr>
+      </tbody>
+  </table>
+
+  <table class="seed-calendar table table-bordered table-striped responsive-utilities">
+      <thead>
+          <tr>
+              <th class="{{cropsCalendarMonthClass 7}}"> Julio </th>
+              <th class="{{cropsCalendarMonthClass 8}}"> Agosto </th>
+              <th class="{{cropsCalendarMonthClass 9}}"> Septiembre </th>
+              <th class="{{cropsCalendarMonthClass 10}}"> Octubre </th>
+              <th class="{{cropsCalendarMonthClass 11}}"> Noviembre </th>
+              <th class="{{cropsCalendarMonthClass 12}}"> Diciembre </th>
+          </tr>
+      </thead>
+      <tbody>
+          <tr>
+              <td>{{{cropsCalendarText 7}}}</td>
+              <td>{{{cropsCalendarText 8}}}</td>
+              <td>{{{cropsCalendarText 9}}}</td>
+              <td>{{{cropsCalendarText 10}}}</td>
+              <td>{{{cropsCalendarText 11}}}</td>
+              <td>{{{cropsCalendarText 12}}}</td>
+          </tr>
+      </tbody>
+  </table>
+</template>

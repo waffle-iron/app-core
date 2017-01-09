@@ -1,19 +1,19 @@
-.seed-calendar .green {
+.crop-calendar .green {
   color: #468847;
   background-color: #dff0d8!important;
 }
 
-.seed-calendar .yellow {
+.crop-calendar .yellow {
   color: #468847;
   background-color: #FCEF8D!important;
 }
 
-.seed-calendar .gray {
+.crop-calendar .gray {
   color: #ccc;
   background-color: #f9f9f9!important;
 }
 
-.seed-calendar .blue {
+.crop-calendar .blue {
   
   /* color: #ccc; */
   background-color:#27C9F5!important;
