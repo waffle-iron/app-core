@@ -401,7 +401,7 @@ CropSchema = new SimpleSchema({
   'composition.fresh.energy': {
     optional: true,
     type: Object,
-    label: "Energía"
+    label: "Energía (kcal)"
   },
   'composition.fresh.energy.from': {
     optional: true,
@@ -417,7 +417,7 @@ CropSchema = new SimpleSchema({
   'composition.fresh.lipids': {
     optional: true,
     type: Object,
-    label: "Lípidos"
+    label: "Lípidos (g)"
   },
   'composition.fresh.lipids.from': {
     optional: true,
@@ -433,7 +433,7 @@ CropSchema = new SimpleSchema({
   'composition.fresh.fibers': {
     optional: true,
     type: Object,
-    label: "Fibras"
+    label: "Fibras (g)"
   },
   'composition.fresh.fibers.from': {
     optional: true,
@@ -449,7 +449,7 @@ CropSchema = new SimpleSchema({
   'composition.fresh.proteins': {
     optional: true,
     type: Object,
-    label: "Proteínas"
+    label: "Proteínas (kcal)"
   },
   'composition.fresh.proteins.from': {
     optional: true,
@@ -465,7 +465,7 @@ CropSchema = new SimpleSchema({
   'composition.fresh.carbohydrates': {
     optional: true,
     type: Object,
-    label: "Carbohidratos"
+    label: "Carbohidratos (g)"
   },
   'composition.fresh.carbohydrates.from': {
     optional: true,
@@ -491,7 +491,7 @@ CropSchema = new SimpleSchema({
   'composition.fresh.fattyAcids.saturated': {
     optional: true,
     type: Object,
-    label: "Saturados"
+    label: "Saturados (g)"
   },
 
   'composition.fresh.fattyAcids.saturated.from': {
@@ -506,10 +506,28 @@ CropSchema = new SimpleSchema({
     label: "A"
   },
 
+  'composition.fresh.fattyAcids.monoins': {
+    optional: true,
+    type: Object,
+    label: "Monoinsat (g)"
+  },
+
+  'composition.fresh.fattyAcids.monoins.from': {
+    optional: true,
+    type: Number,
+    label: "De"
+  },
+
+  'composition.fresh.fattyAcids.monoins.to': {
+    optional: true,
+    type: Number,
+    label: "A"
+  },
+
   'composition.fresh.fattyAcids.poliinsaturated': {
     optional: true,
     type: Object,
-    label: "Poliinsat"
+    label: "Poliinsat (g)"
   },
 
   'composition.fresh.fattyAcids.poliinsaturated.from': {
@@ -537,7 +555,7 @@ CropSchema = new SimpleSchema({
   'composition.fresh.minerals.calcium': {
     optional: true,
     type: Object,
-    label: "Calcio"
+    label: "Calcio (mg)"
   },
   'composition.fresh.minerals.calcium.from': {
     optional: true,
@@ -553,7 +571,7 @@ CropSchema = new SimpleSchema({
   'composition.fresh.minerals.zinc': {
     optional: true,
     type: Object,
-    label: "Cinc"
+    label: "Cinc (mg)"
   },
   'composition.fresh.minerals.zinc.from': {
     optional: true,
@@ -569,7 +587,7 @@ CropSchema = new SimpleSchema({
   'composition.fresh.minerals.chlorine': {
     optional: true,
     type: Object,
-    label: "Calcio"
+    label: "Cloro (mg)"
   },
   'composition.fresh.minerals.chlorine.from': {
     optional: true,
@@ -584,7 +602,7 @@ CropSchema = new SimpleSchema({
   'composition.fresh.minerals.phosphorus': {
     optional: true,
     type: Object,
-    label: "Fósforo"
+    label: "Fósforo (mg)"
   },
   'composition.fresh.minerals.phosphorus.from': {
     optional: true,
@@ -599,7 +617,7 @@ CropSchema = new SimpleSchema({
   'composition.fresh.minerals.iron': {
     optional: true,
     type: Object,
-    label: "Hierro"
+    label: "Hierro (mg)"
   },
   'composition.fresh.minerals.iron.from': {
     optional: true,
@@ -615,7 +633,7 @@ CropSchema = new SimpleSchema({
   'composition.fresh.minerals.magnesium': {
     optional: true,
     type: Object,
-    label: "Magnesio"
+    label: "Magnesio (mg)"
   },
   'composition.fresh.minerals.magnesium.from': {
     optional: true,
@@ -631,7 +649,7 @@ CropSchema = new SimpleSchema({
   'composition.fresh.minerals.manganese': {
     optional: true,
     type: Object,
-    label: "Manganeso"
+    label: "Manganeso (mg)"
   },
   'composition.fresh.minerals.manganese.from': {
     optional: true,
@@ -646,7 +664,7 @@ CropSchema = new SimpleSchema({
   'composition.fresh.minerals.potassium': {
     optional: true,
     type: Object,
-    label: "Potasio"
+    label: "Potasio (mg)"
   },
   'composition.fresh.minerals.potassium.from': {
     optional: true,
@@ -661,7 +679,7 @@ CropSchema = new SimpleSchema({
   'composition.fresh.minerals.selenium': {
     optional: true,
     type: Object,
-    label: "Selenio"
+    label: "Selenio (µg)"
   },
   'composition.fresh.minerals.selenium.from': {
     optional: true,
@@ -676,7 +694,7 @@ CropSchema = new SimpleSchema({
   'composition.fresh.minerals.sodium': {
     optional: true,
     type: Object,
-    label: "Sodio"
+    label: "Sodio (mg)"
   },
   'composition.fresh.minerals.sodium.from': {
     optional: true,
@@ -691,7 +709,7 @@ CropSchema = new SimpleSchema({
   'composition.fresh.minerals.iodo': {
     optional: true,
     type: Object,
-    label: "Yodo"
+    label: "Yodo (µg)"
   },
   'composition.fresh.minerals.iodo.from': {
     optional: true,
@@ -711,7 +729,7 @@ CropSchema = new SimpleSchema({
   'composition.fresh.fatsolubleVitamin.AReti': {
     optional: true,
     type: Object,
-    label: "A Retinol"
+    label: "A Retinol (µg)"
   },
   'composition.fresh.fatsolubleVitamin.AReti.from': {
     optional: true,
@@ -726,7 +744,7 @@ CropSchema = new SimpleSchema({
   'composition.fresh.fatsolubleVitamin.ACarot': {
     optional: true,
     type: Object,
-    label: "A Carotenoides"
+    label: "A Carotenoides (µg)"
   },
   'composition.fresh.fatsolubleVitamin.ACarot.from': {
     optional: true,
@@ -742,7 +760,7 @@ CropSchema = new SimpleSchema({
   'composition.fresh.fatsolubleVitamin.EToco': {
     optional: true,
     type: Object,
-    label: "E o Tocoferol"
+    label: "E o Tocoferol (mg)"
   },
   'composition.fresh.fatsolubleVitamin.EToco.from': {
     optional: true,
@@ -758,7 +776,7 @@ CropSchema = new SimpleSchema({
   'composition.fresh.fatsolubleVitamin.KFilo': {
     optional: true,
     type: Object,
-    label: "K o Filoquinona"
+    label: "K o Filoquinona (µg)"
   },
   'composition.fresh.fatsolubleVitamin.KFilo.from': {
     optional: true,
@@ -774,7 +792,7 @@ CropSchema = new SimpleSchema({
   'composition.fresh.fatsolubleVitamin.B1Tia': {
     optional: true,
     type: Object,
-    label: "B1 o Tiamina"
+    label: "B1 o Tiamina (mg)"
   },
   'composition.fresh.fatsolubleVitamin.B1Tia.from': {
     optional: true,
@@ -790,7 +808,7 @@ CropSchema = new SimpleSchema({
   'composition.fresh.fatsolubleVitamin.B2Ribo': {
     optional: true,
     type: Object,
-    label: "B2 o Riboflavina"
+    label: "B2 o Riboflavina (mg)"
   },
   'composition.fresh.fatsolubleVitamin.B2Ribo.from': {
     optional: true,
@@ -806,7 +824,7 @@ CropSchema = new SimpleSchema({
   'composition.fresh.fatsolubleVitamin.B3Nia': {
     optional: true,
     type: Object,
-    label: "B3 o Niacina"
+    label: "B3 o Niacina (mg)"
   },
   'composition.fresh.fatsolubleVitamin.B3Nia.from': {
     optional: true,
@@ -822,7 +840,7 @@ CropSchema = new SimpleSchema({
   'composition.fresh.fatsolubleVitamin.B5Pan': {
     optional: true,
     type: Object,
-    label: "B5 o Ác. Pantoténico"
+    label: "B5 o Ác. Pantoténico (mg)"
   },
   'composition.fresh.fatsolubleVitamin.B5Pan.from': {
     optional: true,
@@ -838,7 +856,7 @@ CropSchema = new SimpleSchema({
   'composition.fresh.fatsolubleVitamin.B6Piri': {
     optional: true,
     type: Object,
-    label: "B6 o Piridoxina"
+    label: "B6 o Piridoxina (mg)"
   },
   'composition.fresh.fatsolubleVitamin.B6Piri.from': {
     optional: true,
@@ -855,7 +873,7 @@ CropSchema = new SimpleSchema({
   'composition.fresh.fatsolubleVitamin.B9Afo': {
     optional: true,
     type: Object,
-    label: "B9 o Ácido Fólico"
+    label: "B9 o Ácido Fólico (mg)"
   },
   'composition.fresh.fatsolubleVitamin.B9Afo.from': {
     optional: true,
@@ -871,7 +889,7 @@ CropSchema = new SimpleSchema({
   'composition.fresh.fatsolubleVitamin.CAsc': {
     optional: true,
     type: Object,
-    label: "C o Ác. Ascórbico"
+    label: "C o Ác. Ascórbico (mg)"
   },
   'composition.fresh.fatsolubleVitamin.CAsc.from': {
     optional: true,
@@ -896,7 +914,7 @@ CropSchema = new SimpleSchema({
   'composition.boiled.energy': {
     optional: true,
     type: Object,
-    label: "Energía"
+    label: "Energía (kcal)"
   },
   'composition.boiled.energy.from': {
     optional: true,
@@ -912,7 +930,7 @@ CropSchema = new SimpleSchema({
   'composition.boiled.lipids': {
     optional: true,
     type: Object,
-    label: "Lípidos"
+    label: "Lípidos (g)"
   },
   'composition.boiled.lipids.from': {
     optional: true,
@@ -928,7 +946,7 @@ CropSchema = new SimpleSchema({
   'composition.boiled.fibers': {
     optional: true,
     type: Object,
-    label: "Fibras"
+    label: "Fibras (g)"
   },
   'composition.boiled.fibers.from': {
     optional: true,
@@ -944,7 +962,7 @@ CropSchema = new SimpleSchema({
   'composition.boiled.proteins': {
     optional: true,
     type: Object,
-    label: "Proteínas"
+    label: "Proteínas (kcal)"
   },
   'composition.boiled.proteins.from': {
     optional: true,
@@ -960,7 +978,7 @@ CropSchema = new SimpleSchema({
   'composition.boiled.carbohydrates': {
     optional: true,
     type: Object,
-    label: "Carbohidratos"
+    label: "Carbohidratos (g)"
   },
   'composition.boiled.carbohydrates.from': {
     optional: true,
@@ -986,7 +1004,7 @@ CropSchema = new SimpleSchema({
   'composition.boiled.fattyAcids.saturated': {
     optional: true,
     type: Object,
-    label: "Saturados"
+    label: "Saturados (g)"
   },
 
   'composition.boiled.fattyAcids.saturated.from': {
@@ -1004,7 +1022,7 @@ CropSchema = new SimpleSchema({
   'composition.boiled.fattyAcids.monoins': {
     optional: true,
     type: Object,
-    label: "Monoinsat"
+    label: "Monoinsat (g)"
   },
 
   'composition.boiled.fattyAcids.monoins.from': {
@@ -1022,7 +1040,7 @@ CropSchema = new SimpleSchema({
   'composition.boiled.fattyAcids.poliinsaturated': {
     optional: true,
     type: Object,
-    label: "Poliinsat"
+    label: "Poliinsat (g)"
   },
 
   'composition.boiled.fattyAcids.poliinsaturated.from': {
@@ -1050,7 +1068,7 @@ CropSchema = new SimpleSchema({
   'composition.boiled.minerals.calcium': {
     optional: true,
     type: Object,
-    label: "Calcio"
+    label: "Calcio (mg)"
   },
   'composition.boiled.minerals.calcium.from': {
     optional: true,
@@ -1066,7 +1084,7 @@ CropSchema = new SimpleSchema({
   'composition.boiled.minerals.zinc': {
     optional: true,
     type: Object,
-    label: "Cinc"
+    label: "Cinc (mg)"
   },
   'composition.boiled.minerals.zinc.from': {
     optional: true,
@@ -1082,7 +1100,7 @@ CropSchema = new SimpleSchema({
   'composition.boiled.minerals.chlorine': {
     optional: true,
     type: Object,
-    label: "Calcio"
+    label: "Cloro (mg)"
   },
   'composition.boiled.minerals.chlorine.from': {
     optional: true,
@@ -1097,7 +1115,7 @@ CropSchema = new SimpleSchema({
   'composition.boiled.minerals.phosphorus': {
     optional: true,
     type: Object,
-    label: "Fósforo"
+    label: "Fósforo (mg)"
   },
   'composition.boiled.minerals.phosphorus.from': {
     optional: true,
@@ -1112,7 +1130,7 @@ CropSchema = new SimpleSchema({
   'composition.boiled.minerals.iron': {
     optional: true,
     type: Object,
-    label: "Hierro"
+    label: "Hierro (mg)"
   },
   'composition.boiled.minerals.iron.from': {
     optional: true,
@@ -1128,7 +1146,7 @@ CropSchema = new SimpleSchema({
   'composition.boiled.minerals.magnesium': {
     optional: true,
     type: Object,
-    label: "Magnesio"
+    label: "Magnesio (mg)"
   },
   'composition.boiled.minerals.magnesium.from': {
     optional: true,
@@ -1144,7 +1162,7 @@ CropSchema = new SimpleSchema({
   'composition.boiled.minerals.manganese': {
     optional: true,
     type: Object,
-    label: "Manganeso"
+    label: "Manganeso (mg)"
   },
   'composition.boiled.minerals.manganese.from': {
     optional: true,
@@ -1159,7 +1177,7 @@ CropSchema = new SimpleSchema({
   'composition.boiled.minerals.potassium': {
     optional: true,
     type: Object,
-    label: "Potasio"
+    label: "Potasio (mg)"
   },
   'composition.boiled.minerals.potassium.from': {
     optional: true,
@@ -1174,7 +1192,7 @@ CropSchema = new SimpleSchema({
   'composition.boiled.minerals.selenium': {
     optional: true,
     type: Object,
-    label: "Selenio"
+    label: "Selenio (µg)"
   },
   'composition.boiled.minerals.selenium.from': {
     optional: true,
@@ -1189,7 +1207,7 @@ CropSchema = new SimpleSchema({
   'composition.boiled.minerals.sodium': {
     optional: true,
     type: Object,
-    label: "Sodio"
+    label: "Sodio (mg)"
   },
   'composition.boiled.minerals.sodium.from': {
     optional: true,
@@ -1204,7 +1222,7 @@ CropSchema = new SimpleSchema({
   'composition.boiled.minerals.iodo': {
     optional: true,
     type: Object,
-    label: "Yodo"
+    label: "Yodo (µg)"
   },
   'composition.boiled.minerals.iodo.from': {
     optional: true,
@@ -1224,7 +1242,7 @@ CropSchema = new SimpleSchema({
   'composition.boiled.fatsolubleVitamin.AReti': {
     optional: true,
     type: Object,
-    label: "A Retinol"
+    label: "A Retinol (µg)"
   },
   'composition.boiled.fatsolubleVitamin.AReti.from': {
     optional: true,
@@ -1239,7 +1257,7 @@ CropSchema = new SimpleSchema({
   'composition.boiled.fatsolubleVitamin.ACarot': {
     optional: true,
     type: Object,
-    label: "A Carotenoides"
+    label: "A Carotenoides (µg)"
   },
   'composition.boiled.fatsolubleVitamin.ACarot.from': {
     optional: true,
@@ -1255,7 +1273,7 @@ CropSchema = new SimpleSchema({
   'composition.boiled.fatsolubleVitamin.EToco': {
     optional: true,
     type: Object,
-    label: "E o Tocoferol"
+    label: "E o Tocoferol (mg)"
   },
   'composition.boiled.fatsolubleVitamin.EToco.from': {
     optional: true,
@@ -1271,7 +1289,7 @@ CropSchema = new SimpleSchema({
   'composition.boiled.fatsolubleVitamin.KFilo': {
     optional: true,
     type: Object,
-    label: "K o Filoquinona"
+    label: "K o Filoquinona (µg)"
   },
   'composition.boiled.fatsolubleVitamin.KFilo.from': {
     optional: true,
@@ -1287,7 +1305,7 @@ CropSchema = new SimpleSchema({
   'composition.boiled.fatsolubleVitamin.B1Tia': {
     optional: true,
     type: Object,
-    label: "B1 o Tiamina"
+    label: "B1 o Tiamina (mg)"
   },
   'composition.boiled.fatsolubleVitamin.B1Tia.from': {
     optional: true,
@@ -1303,7 +1321,7 @@ CropSchema = new SimpleSchema({
   'composition.boiled.fatsolubleVitamin.B2Ribo': {
     optional: true,
     type: Object,
-    label: "B2 o Riboflavina"
+    label: "B2 o Riboflavina (mg)"
   },
   'composition.boiled.fatsolubleVitamin.B2Ribo.from': {
     optional: true,
@@ -1319,7 +1337,7 @@ CropSchema = new SimpleSchema({
   'composition.boiled.fatsolubleVitamin.B3Nia': {
     optional: true,
     type: Object,
-    label: "B3 o Niacina"
+    label: "B3 o Niacina (mg)"
   },
   'composition.boiled.fatsolubleVitamin.B3Nia.from': {
     optional: true,
@@ -1335,7 +1353,7 @@ CropSchema = new SimpleSchema({
   'composition.boiled.fatsolubleVitamin.B5Pan': {
     optional: true,
     type: Object,
-    label: "B5 o Ác. Pantoténico"
+    label: "B5 o Ác. Pantoténico (mg)"
   },
   'composition.boiled.fatsolubleVitamin.B5Pan.from': {
     optional: true,
@@ -1351,7 +1369,7 @@ CropSchema = new SimpleSchema({
   'composition.boiled.fatsolubleVitamin.B6Piri': {
     optional: true,
     type: Object,
-    label: "B6 o Piridoxina"
+    label: "B6 o Piridoxina (mg)"
   },
   'composition.boiled.fatsolubleVitamin.B6Piri.from': {
     optional: true,
@@ -1368,7 +1386,7 @@ CropSchema = new SimpleSchema({
   'composition.boiled.fatsolubleVitamin.B9Afo': {
     optional: true,
     type: Object,
-    label: "B9 o Ácido Fólico"
+    label: "B9 o Ácido Fólico (mg)"
   },
   'composition.boiled.fatsolubleVitamin.B9Afo.from': {
     optional: true,
@@ -1384,7 +1402,7 @@ CropSchema = new SimpleSchema({
   'composition.boiled.fatsolubleVitamin.CAsc': {
     optional: true,
     type: Object,
-    label: "C o Ác. Ascórbico"
+    label: "C o Ác. Ascórbico (mg)"
   },
   'composition.boiled.fatsolubleVitamin.CAsc.from': {
     optional: true,
