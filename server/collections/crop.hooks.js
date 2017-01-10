@@ -43,6 +43,16 @@ CropsAfterUpdate = (userId, doc) => {
   return;
 }
 
+Crops.before.insert( function(userId, doc) {
+  
+  if (!Roles.userIsInRole(userId, 'super-admin', Roles.GLOBAL_GROUP)) {
+    doc.userId = userId
+  } else {
+    delete doc.userId
+  }
+
+} )
+
 Crops.after.insert( function(userId, doc) {
   return CropsAfterUpdate(userId, doc)
 } );

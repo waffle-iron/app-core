@@ -1,15 +1,43 @@
 Meteor.publish('Crops', (cropId) => {
-  return cropId ? Crops.find({_id: cropId}) : Crops.find()
+
+  let q = {}
+
+  if (cropId) {
+    q._id = cropId
+  }
+
+  if (!this.userId) { 
+    q.userId = {$exists:false}
+  } 
+  else {
+    q['$or'] = [ {userId:this.userId}, {userId:{$exists:false}} ]
+  }
+
+  return Crops.find(q)
 })
 
 Meteor.publish('CropsResume', (cropId) => {
+
+  let q = {}
+
+  if (cropId) {
+    q._id = cropId
+  }
+
+  if (!this.userId) { 
+    q.userId = {$exists:false}
+  } 
+  else {
+    q['$or'] = [ {userId:this.userId}, {userId:{$exists:false}} ]
+  }
+
   let f = {
     variant: 1,
     highlightedImage: 1,
     'seedTime': 1,
     'harvestTime': 1
   }
-  return cropId ? Crops.find({_id: cropId}, {fields: f}) : Crops.find({}, {fields: f})
+  return Crops.find(q, {fields: f})
 })
 
 Meteor.publish('Herbs', (herbId) => {
@@ -17,11 +45,31 @@ Meteor.publish('Herbs', (herbId) => {
 })
 
 Meteor.publish('CropsNames', () => {
-  return Crops.find({}, {fields: {name: 1, variant: 1}})
+
+  let q = {}
+
+  if (!this.userId) { 
+    q.userId = {$exists:false}
+  } 
+  else {
+    q['$or'] = [ {userId:this.userId}, {userId:{$exists:false}} ]
+  }
+
+  return Crops.find(q, {fields: {name: 1, variant: 1}})
 })
 
 Meteor.publish('CropsTiming', () => {
-  return Crops.find({}, {fields: {name: 1, variant: 1, seedTime: 1, harvestTime: 1}})
+
+  let q = {}
+
+  if (!this.userId) { 
+    q.userId = {$exists:false}
+  } 
+  else {
+    q['$or'] = [ {userId:this.userId}, {userId:{$exists:false}} ]
+  }
+
+  return Crops.find(q, {fields: {name: 1, variant: 1, seedTime: 1, harvestTime: 1}})
 })
 
 Meteor.publish('TreesVariants', () => {
