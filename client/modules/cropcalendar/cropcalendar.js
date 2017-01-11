@@ -1,18 +1,50 @@
 Template.registerHelper('cropCalendarClass', (crop, month) => {
   
-  if ((!!crop && crop.seedTime)
-    && (crop.seedTime.from === month
-     || crop.seedTime.to === month)) {
-      return 'green'
+  if (!crop) return;
+
+  if (!!crop.seedTime) {
+    if (!!crop.seedTime.from) {
+      if (!crop.seedTime.to) {
+        if (crop.seedTime.from === month) {
+          return 'green';
+        }
+      } else {
+        if (crop.seedTime.from <= month) {
+          return 'green';
+        }
+      }
     }
 
-  if ((!!crop && crop.seedTime)
-    && (crop.harvestTime.from === month
-    || crop.harvestTime.to === month)) {
-      return 'yellow'
+    if (!!crop.seedTime.to) {
+      if (crop.seedTime.to >= month) {
+        return 'green';
+      }
     }
+  }
+
+
+  if (!!crop.seedTime) {
+    if (!!crop.harvestTime.from) {
+      if (!crop.harvestTime.to) {
+        if (crop.harvestTime.from === month) {
+          return 'yellow';
+        }
+      } else {
+        if (crop.harvestTime.from <= month) {
+          return 'yellow';
+        }
+      }
+    }
+
+    if (!!crop.harvestTime.to) {
+      if (crop.harvestTime.to >= month) {
+        return 'yellow';
+      }
+    }
+  }
 
   return 'gray';
+  
 })
 
 Template.registerHelper('cropCalendarMonthClass', (month) => {
@@ -22,17 +54,50 @@ Template.registerHelper('cropCalendarMonthClass', (month) => {
 })
 
 Template.registerHelper('cropCalendarText', (crop, month) => {
-  if ((!!crop && crop.seedTime)
-    && (crop.seedTime.from === month
-    || crop.seedTime.to === month)) {
-      return 'Siembra'
+  
+  if (!crop) return;
+
+  if (!!crop.seedTime) {
+    if (!!crop.seedTime.from) {
+      if (!crop.seedTime.to) {
+        if (crop.seedTime.from === month) {
+          return 'Cosecha';
+        }
+      } else {
+        if (crop.seedTime.from <= month) {
+          return 'Cosecha';
+        }
+      }
     }
 
-  if ((!!crop && crop.seedTime)
-    && (crop.harvestTime.from === month
-    || crop.harvestTime.to === month)) {
-      return 'Cosecha'
+    if (!!crop.seedTime.to) {
+      if (crop.seedTime.to >= month) {
+        return 'Cosecha';
+      }
+    }
+  }
+
+
+  if (!!crop.seedTime) {
+    if (!!crop.harvestTime.from) {
+      if (!crop.harvestTime.to) {
+        if (crop.harvestTime.from === month) {
+          return 'Siembra';
+        }
+      } else {
+        if (crop.harvestTime.from <= month) {
+          return 'Siembra';
+        }
+      }
     }
 
-  return '-'
+    if (!!crop.harvestTime.to) {
+      if (crop.harvestTime.to >= month) {
+        return 'Siembra';
+      }
+    }
+  }
+
+  return '-';
+
 })
