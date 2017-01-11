@@ -56,7 +56,8 @@ MyPlantsSchema = new SimpleSchema({
   name: {
     type: String,
     max: 200,
-    label: "Nombre"
+    label: "Nombre",
+    optional: true
   },
   description: {
     type: String,

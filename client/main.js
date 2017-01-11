@@ -4,3 +4,5 @@ TAPi18n.setLanguage('es')
 moment.locale('es')
 
 Meteor.subscribe('userData')
+
+_ = lodash

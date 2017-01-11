@@ -13,3 +13,17 @@ Template.myOrchardsBenchsViewPlantsItem.events({
     $('#plant-modal-update').modal('show')
   }
 })
+
+Template.myOrchardsBenchsViewSidebar.helpers({
+  "recommendations": function() {
+    if (this.myPlants.fetch()) {
+      var ids = _.map(this.myPlants.fetch(), 'cropId');
+      Meteor.call('cropRecomendations', ids, (error, result) => {
+        if (error) {}
+        console.log(result);
+        Session.set('cropRecomendations', result)
+      })
+    }
+    return Session.get('cropRecomendations') || []
+  }
+})

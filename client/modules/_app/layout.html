@@ -18,6 +18,22 @@
   </div>
 </template>
 
+<template name="siteLayout">
+  {{ > navbar }}
+  {{> sAlert}}
+  {{> commentsModal}}
+
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12" role="main">
+        {{> yield}}
+      </div>
+    </div>
+    {{> footer}}
+  </div>
+
+</template>
+
 <template name="footer">
   <div class="navbar navbar-default navbar-fixed-bottom">
     <div class="container">

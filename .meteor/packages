@@ -35,7 +35,6 @@ meteortoys:allthings
 matb33:collection-hooks
 alanning:roles
 email
-redcap3000:wordpress-json-api
 session
 lepozepo:s3
 juliancwirko:s-alert
@@ -48,3 +47,4 @@ momentjs:moment
 http
 rajit:bootstrap3-datepicker
 rzymek:moment-locale-es
+erasaur:meteor-lodash

@@ -33,44 +33,16 @@ Router.onBeforeAction(function () {
 
 Router.route('/', function () {
   this.render('home')
+  if (!Meteor.user()) {
+    this.layout('siteLayout')
+  }
 }, {
   subscriptions: function() {
     return [
-      Meteor.subscribe('wordpress','http://syswp.tiempodesiembra.es/api?json=get_posts&count=3')
     ]
   },
   name: 'home',
   title: 'Inicio'
-})
-
-// *****************************************************************************
-// Blog
-// *****************************************************************************
-
-Router.route('/blog', function () {
-  this.render('blog')
-}, {
-  subscriptions: function() {
-    return [
-      Meteor.subscribe('wordpress','http://tiempodesiembra.es/api?json=get_posts&count=10')
-    ]
-  },
-  name: 'blog.index',
-  parent: 'home',
-  title: 'Blog'
-})
-
-Router.route('/blog/:_slug', function () {
-  this.render('blogOne')
-}, {
-  subscriptions: function() {
-    return [
-      Meteor.subscribe('wordpress','http://tiempodesiembra.es/api?json=get_posts&count=10')
-    ]
-  },
-  name: 'blog.one',
-  parent: 'blog.index',
-  title: 'Blog'
 })
 
 // *****************************************************************************

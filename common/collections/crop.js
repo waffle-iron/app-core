@@ -379,6 +379,8 @@ CropSchema = new SimpleSchema({
     label: "Imagen destacada"
   },
 
+  /*
+
   // XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
   // COMPOSITION
   // XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
@@ -1414,6 +1416,7 @@ CropSchema = new SimpleSchema({
     type: Number,
     label: "A"
   },
+  */
 
   
   
