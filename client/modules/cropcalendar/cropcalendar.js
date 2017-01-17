@@ -9,19 +9,15 @@ Template.registerHelper('cropCalendarClass', (crop, month) => {
           return 'green';
         }
       } else {
-        if (crop.seedTime.from <= month) {
+        if (month >= crop.seedTime.from && month <= crop.seedTime.to) {
           return 'green';
         }
       }
-    }
-
-    if (!!crop.seedTime.to) {
-      if (crop.seedTime.to >= month) {
-        return 'green';
-      }
-    }
+    } 
   }
 
+          console.log(month , crop.seedTime.from);
+          console.log(month , crop.seedTime.to);
 
   if (!!crop.seedTime) {
     if (!!crop.harvestTime.from) {
@@ -30,17 +26,12 @@ Template.registerHelper('cropCalendarClass', (crop, month) => {
           return 'yellow';
         }
       } else {
-        if (crop.harvestTime.from <= month) {
+        if (month >= crop.harvestTime.from && month <= crop.harvestTime.to) {
           return 'yellow';
         }
       }
     }
 
-    if (!!crop.harvestTime.to) {
-      if (crop.harvestTime.to >= month) {
-        return 'yellow';
-      }
-    }
   }
 
   return 'gray';
@@ -64,17 +55,12 @@ Template.registerHelper('cropCalendarText', (crop, month) => {
           return 'Cosecha';
         }
       } else {
-        if (crop.seedTime.from <= month) {
+        if (month >= crop.seedTime.from && month <= crop.seedTime.to) {
           return 'Cosecha';
         }
       }
     }
 
-    if (!!crop.seedTime.to) {
-      if (crop.seedTime.to >= month) {
-        return 'Cosecha';
-      }
-    }
   }
 
   if (!!crop.seedTime) {
@@ -84,17 +70,12 @@ Template.registerHelper('cropCalendarText', (crop, month) => {
           return 'Siembra';
         }
       } else {
-        if (crop.harvestTime.from <= month) {
+        if (month >= crop.harvestTime.from && month <= crop.harvestTime.to) {
           return 'Siembra';
         }
       }
     }
 
-    if (!!crop.harvestTime.to) {
-      if (crop.harvestTime.to >= month) {
-        return 'Siembra';
-      }
-    }
   }
 
   return '-';
