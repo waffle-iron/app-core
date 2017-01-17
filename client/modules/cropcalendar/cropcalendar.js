@@ -77,7 +77,6 @@ Template.registerHelper('cropCalendarText', (crop, month) => {
     }
   }
 
-
   if (!!crop.seedTime) {
     if (!!crop.harvestTime.from) {
       if (!crop.harvestTime.to) {

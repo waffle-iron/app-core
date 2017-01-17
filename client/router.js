@@ -10,7 +10,7 @@ Router.onBeforeAction(function () {
     this.next();
   }
 }, {except: [
-  'home',
+  'home' /*,
   'crops.index', 
   'crops.families.index',
   'crops.families.one',
@@ -24,7 +24,7 @@ Router.onBeforeAction(function () {
   'herbs.one',
   'myorchards.index',
   'blog.index',
-  'blog.one',
+  'blog.one', */
 ] });
 
 // *****************************************************************************
