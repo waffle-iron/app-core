@@ -4,18 +4,18 @@ Meteor.startup(() => {
   
   if ( Meteor.users.find().count() === 0 ) {
 
-    let joseUserId = Accounts.createUser({
-      username: 'joseconstela',
-      email: 'joseconstela@icloud.com',
+    let adminUserId = Accounts.createUser({
+      username: 'admin',
+      email: 'admin@admin.com',
       password: '123456',
       profile: {
-        first_name: 'Jose',
-        last_name: 'Constela',
-        company: 'Jose Constela',
+        first_name: 'admin',
+        last_name: 'admin',
+        company: 'admin',
       }
     });
 
-    Roles.addUsersToRoles(joseUserId, 'super-admin', Roles.GLOBAL_GROUP)
+    Roles.addUsersToRoles(adminUserId, 'super-admin', Roles.GLOBAL_GROUP)
     
   }
   
