@@ -30,7 +30,7 @@ MyOrchardsSchema = new SimpleSchema({
     optional: true,
     label: "Descripción",
     autoform: {
-      rows: 10
+      rows: 5
     }
   },
   /* location: {
