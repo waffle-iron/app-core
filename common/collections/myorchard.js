@@ -25,6 +25,14 @@ MyOrchardsSchema = new SimpleSchema({
     max: 200,
     label: "Nombre"
   },
+  description: {
+    type: String,
+    optional: true,
+    label: "Descripción",
+    autoform: {
+      rows: 10
+    }
+  },
   /* location: {
     type: AddressSchema,
     optional: true,
@@ -39,8 +47,7 @@ MyOrchardsSchema = new SimpleSchema({
     label: "Notas",
     autoform: {
       rows: 10
-    },
-    optional: true
+    }
   },
   'notes.$': {
     type: String,
