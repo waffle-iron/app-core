@@ -4,9 +4,12 @@
     
     <h2 class="page-header">
       Huertos
-      <div class="pull-right">
-        <a class="btn btn-success" href="{{pathFor 'myorchards.new'}}" role="button">Añadir huerto</a>
-      </div>
+
+      {{#if canCreate}}
+        <div class="pull-right">
+          <a class="btn btn-success" href="{{pathFor 'myorchards.new' userId=currentUser._id}}" role="button">Añadir huerto</a>
+        </div>
+      {{/if}}
     </h2>
 
     <!-- <div class="map-container">
@@ -48,7 +51,9 @@
               <th width="25px"></th>
               <th width="15%">Nombre</th>
               <th>Huerto</th>
-              <th width="100px"></th>
+              {{#if canEdit .}}
+                <th width="100px"></th>
+              {{/if}}
             </tr>
           </thead>
           <tbody>
@@ -64,7 +69,11 @@
     </div>
 
   {{else}}
-   {{> myOrchardsNoContent}}
+   {{#if canCreate}}
+    {{> myOrchardsNoContent}}
+   {{else}}
+    {{> noPublicContents}}
+   {{/if}}
   {{/if}}
 
 </template>
@@ -87,27 +96,20 @@
   </div>
 </template>
 
-<template name="myOrchardsNotLogged">
-  <div class="jumbotron">
-    <div class="container">
-      <p class="nom">Necesitas iniciar sesión para utilizar esta opción.</p>
-    </div>
-  </div>
-
-</template>
-
 <template name="myOrchardBenchsTableItem">
   <tr>
     <td>🌱</td>
     <td>{{name}}</td>
     <td>
-      <a href="{{pathFor "myorchards.one" _id=orchardId}}">{{myOrchardName orchardId}}</a>
+      <a href="{{pathFor "myorchards.one" _id=orchardId userId=currentUser._id}}">{{myOrchardName orchardId}}</a>
     </td>
 
-    {{#if orchardId}}
-      <td><a href="{{pathFor "myorchards.one.benchs.one.edit" _id=orchardId bench=_id}}">Editar</a></td>
-    {{else}}
-      <td><a href="{{pathFor "myorchards.benchs.one.edit"}}">Editar</a></td>
+    {{#if canEdit .}}
+      {{#if orchardId}}
+        <td><a href="{{pathFor "myorchards.one.benchs.one.edit" _id=orchardId bench=_id userId=currentUser._id}}">Editar</a></td>
+      {{else}}
+        <td><a href="{{pathFor "myorchards.benchs.one.edit" userId=currentUser._id}}">Editar</a></td>
+      {{/if}}
     {{/if}}
   </tr>
 </template>
@@ -117,13 +119,15 @@
     <td>🌳</td>
     <td>{{name}}</td>
     <td>
-      <a href="{{pathFor "myorchards.one" _id=orchardId}}">{{myOrchardName orchardId}}</a>
+      <a href="{{pathFor "myorchards.one" _id=orchardId userId=currentUser._id}}">{{myOrchardName orchardId}}</a>
     </td>
 
-    {{#if orchardId}}
-      <td><a href="{{pathFor "myorchards.one.trees.one.edit" _id=orchardId tree=_id}}">Editar</a></td>
-    {{else}}
-      <td><a href="{{pathFor "myorchards.trees.one.edit"}}">Editar</a></td>
+    {{#if canEdit .}}
+      {{#if orchardId}}
+        <td><a href="{{pathFor "myorchards.one.trees.one.edit" _id=orchardId tree=_id userId=currentUser._id}}">Editar</a></td>
+      {{else}}
+        <td><a href="{{pathFor "myorchards.trees.one.edit" userId=currentUser._id}}">Editar</a></td>
+      {{/if}}
     {{/if}}
   </tr>
 </template>
@@ -131,12 +135,14 @@
 <template name="myOrchardsTableItem">
 
   <tr>
-    <td> <a href="{{pathFor 'myorchards.one'}}">{{name}}</a> </td>
-    <td> <a href="{{pathFor 'myorchards.one'}}">{{description}}</a> </td>
+    <td> <a href="{{pathFor 'myorchards.one' userId=currentUser._id}}">{{name}}</a> </td>
+    <td> <a href="{{pathFor 'myorchards.one' userId=currentUser._id}}">{{description}}</a> </td>
     <td>
       <div class="pull-right">
-        <a class="btn btn-sm btn-default" href="{{pathFor 'myorchards.one.edit'}}">Editar</a>
-        <a class="btn btn-sm btn-danger remove-item" href="#">Eliminar</a>
+        {{#if canEdit .}}
+          <a class="btn btn-sm btn-default" href="{{pathFor 'myorchards.one.edit' userId=currentUser._id}}">Editar</a>
+          <a class="btn btn-sm btn-danger remove-item" href="#">Eliminar</a>
+        {{/if}}
       </div>
     </td>
   </tr>

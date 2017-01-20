@@ -88,91 +88,96 @@ Meteor.publish('Trees', (treeId) => {
   return treeId ? Trees.find({_id: treeId}) : Trees.find({})
 })
 
-Meteor.publish('MyOrchards', function (myOrchardId) {
-
-  if (!this.userId) { return null; }
+Meteor.publish('MyOrchards', function (userId, myOrchardId) {
 
   let q = myOrchardId ? {_id: myOrchardId} : {};
-      q.userId = this.userId;
+      q.userId = userId;
+
+  if (!this.userId || this.userId !== userId) {
+    q.public = true
+  }
 
   return MyOrchards.find(q);
 })
 
 
-Meteor.publish('MyPlants', function(orchardId, benchId) {
-
-  if (!this.userId) { return null }
+Meteor.publish('MyPlants', function(userId, orchardId, benchId) {
 
   let q = { 
     benchId: benchId,
-    userId: this.userId
+    userId: userId
   }
 
   if (orchardId) {
     q.orchardId = orchardId
   }
 
+  if (!this.userId || this.userId !== userId) {
+    q.public = true
+  }
+
   return MyPlants.find(q)
 })
 
 
-Meteor.publish('MyLogEntries', function(type, typeId) {
+Meteor.publish('MyLogEntries', function(userId, type, typeId) {
 
-  if (!this.userId) { return null }
+  let q = { type: type, userId: userId }
 
-  let q = { type: type }
+  if (!this.userId || this.userId !== userId) {
+    q.public = true
+  }
 
   if (typeId) {
     q.typeId = typeId
   }
 
-  q.userId = this.userId
-
   return MyLogEntries.find(q, {fields: { type: false, typeId: false }})
 })
 
-Meteor.publish('MyTrees', function(myOrchardId, mytreeId) {
+Meteor.publish('MyTrees', function(userId, myOrchardId, mytreeId) {
+
+  let q = {userId: userId}
+
+  if (!this.userId || this.userId !== userId) {
+    q.public = true
+  }
 
   if (mytreeId) {
-    return MyTrees.find({
-      userId: this.userId,
-      _id: mytreeId,
-      orchardId: myOrchardId
-    })
+    q._id = mytreeId
+    q.orchardId = myOrchardId
+    return MyTrees.find(q)
   }
 
   if (myOrchardId) {
-    return MyTrees.find({
-      userId: this.userId,
-      orchardId: myOrchardId
-    })
+    q.orchardId = myOrchardId
+    return MyTrees.find(q)
   }
 
-  return MyTrees.find({
-    userId: this.userId
-  })
+  return MyTrees.find(q)
 
 })
 
-Meteor.publish('MyBenchs', function(myOrchardId, mybenchId) {
+Meteor.publish('MyBenchs', function(userId, myOrchardId, mybenchId) {
   
+  let q = {userId: userId}
+
+  if (!this.userId || this.userId !== userId) {
+    q.public = true
+  }
+
   if (mybenchId) {
-    return MyBenchs.find({
-      userId: this.userId,
-      _id: mybenchId,
-      orchardId: myOrchardId
-    })
+    q._id = mybenchId
+    q.orchardId = myOrchardId
+
+    return MyBenchs.find(q)
   }
 
   if (myOrchardId) {
-    return MyBenchs.find({
-      userId: this.userId,
-      orchardId: myOrchardId
-    })
+    q.orchardId = myOrchardId
+    return MyBenchs.find(q)
   }
 
-  return MyBenchs.find({
-    userId: this.userId
-  })
+  return MyBenchs.find(q)
 
 })

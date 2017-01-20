@@ -4,7 +4,7 @@
     Huerto: {{myOrchard.name}}
 
     <div class="pull-right">
-      <a class="btn btn-primary" href="{{pathFor 'myorchards.one.edit' _id=myOrchard._id}}">Editar</a>
+      <a class="btn btn-primary" href="{{pathFor 'myorchards.one.edit' _id=myOrchard._id userId=currentUser._id}}">Editar</a>
     </div>
 
   </h2>

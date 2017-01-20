@@ -5,14 +5,14 @@ AutoForm.addHooks(['myOrchardsInsert', 'myOrchardsUpdate'], {
       if (error) return
       
       if (docId) {
-        Router.go( 'myorchards.one', { _id: docId } );
+        Router.go( 'myorchards.one', { userId: Meteor.user()._id, _id: docId } );
       }
     },
     update: function(error, result) {
       if (error) return
 
       if (this.currentDoc && this.currentDoc._id) {
-        Router.go( 'myorchards.one', { _id: this.currentDoc._id } );
+        Router.go( 'myorchards.one', { userId: Meteor.user()._id, _id: this.currentDoc._id } );
       }
     }
   }

@@ -17,12 +17,13 @@
       </div>
       <div id="navbar" class="navbar-collapse collapse">
         <ul class="nav navbar-nav">
+          
           {{#if currentUser}}
             <!-- <li class="{{#if isActive 'herbs'}}active{{/if}}"><a href="{{urlFor 'herbs.index'}}">Hierbas</a></li> -->
             <li class="{{#if isActive 'crops'}}active{{/if}}"><a href="{{urlFor 'crops.index'}}">Cultivos</a></li>
             <!-- <li class="{{#if isActive 'trees'}}active{{/if}}"><a href="{{urlFor 'trees.index'}}">Árboles</a></li> -->
-            <li class="{{#if isActive 'myorchards'}}active{{/if}}"><a href="{{urlFor 'myorchards.index'}}">Huertos</a></li>
-            <!-- <li class="{{#if isActive 'logentries'}}active{{/if}}"><a href="{{urlFor 'logentries.index'}}">Actividades</a></li> -->
+            <li class="{{#if isActive 'myorchards'}}active{{/if}}"><a href="{{urlFor 'myorchards.index' userId=currentUser._id}}">Huertos</a></li>
+            <!-- <li class="{{#if isActive 'logentries'}}active{{/if}}"><a href="{{urlFor 'logentries.index' userId=currentUser._id}}">Actividades</a></li> -->
           {{/if}}
         </ul>
 
