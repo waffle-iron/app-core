@@ -34,22 +34,23 @@ Template.registerHelper('moons', (number) => {
 })
 
 Template.registerHelper('water', (number) => {
-  if (!number) return '-';
+  if (!number) return '-'
 
-  let r = '';
+  let r = ''
   for(var i = 0; i<number; i++){
     r += '🚰'
   }
-  return `${r} ${number}/10`;
+  return `${r} ${number}/10`
 })
 
 Template.registerHelper('familyName', function(familyId) {
-  if (!familyId) return;
-  return CropFamilies.findOne({_id:familyId}).name;
+  if (!familyId) return
+  let r = CropFamilies.findOne({_id:familyId})
+  return r ? r.name : null
 })
 
 Template.registerHelper('myOrchardName', function(orchardId) {
-  if (!orchardId) return;
-  return MyOrchards.findOne({_id:orchardId}).name;
+  if (!orchardId) return
+  let r = MyOrchards.findOne({_id:orchardId})
+  return r ? r.name : null
 })
-
