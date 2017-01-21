@@ -32,22 +32,27 @@ let fakeData = () => {
     let fakeUser = Fake.user({
       fields: ['name', 'username', 'email', 'profile.name']
     })
+
     let fakeUserId = Accounts.createUser(fakeUser)
 
+    console.log(`Fake userId: ${fakeUserId}`)
+
     for(var o = 0; o < 10; o++) {
+      let orcharPublic = Fake.fromArray([true, false])
       let orchardId = MyOrchards.insert({
         userId: fakeUserId,
-        name: Fake.word(),
+        name: `${Fake.word()} ${orcharPublic ? 'P' : ''}`,
         description: Fake.paragraph(1),
-        public: Fake.fromArray([true, false])
+        public: orcharPublic
       })
-
+ 
       for(var b = 0; b < 10; b++) {
+        let benchPublic = Fake.fromArray([true, false])
         let benchId = MyBenchs.insert({
           orchardId: orchardId,
-          name: Fake.word(),
+          name: `${Fake.word()} ${benchPublic ? 'P' : ''}`,
           userId: fakeUserId,
-          public: Fake.fromArray([true, false])
+          public: benchPublic
         })
 
         for(var s = 0; s < 10; s++) {
@@ -56,6 +61,7 @@ let fakeData = () => {
             orchardId,
             benchId,
             name: Fake.word(),
+            
             description: Fake.paragraph(1)
           }) */
         }

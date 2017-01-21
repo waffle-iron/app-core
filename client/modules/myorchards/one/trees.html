@@ -12,13 +12,15 @@
         </table>
         <div class="panel-footer">
           {{#if canCreate}}
-            <a href="{{pathFor "myorchards.one.trees.new" _id=myOrchard._id userId=currentUser._id}}" class="btn btn-success btn-xs">
+            <a href="{{pathFor "myorchards.one.trees.new" _id=myOrchard._id userId=userId}}" class="btn btn-success btn-xs">
               <i class="fa fa-plus" aria-hidden="true"></i>
               Nuevo
             </a>
+          {{else}}
+           &nbsp;
           {{/if}}
           <div class="pull-right">
-            <a href="{{pathFor 'myorchards.one.trees.index' _id=myOrchard._id userId=currentUser._id}}">ver todos</a>
+            <a href="{{pathFor 'myorchards.one.trees.index' _id=myOrchard._id userId=userId}}">ver todos</a>
           </div>
         </div>
       </div>
@@ -28,10 +30,10 @@
 
 <template name="myOrchardsOneTreesTableItem">
   <tr>
-    <td><a href="{{pathFor "myorchards.one.trees.one" _id=orchardId tree=_id userId=currentUser._id}}">{{name}}</a></td>
+    <td><a href="{{pathFor "myorchards.one.trees.one" _id=orchardId tree=_id userId=userId}}">{{name}}</a></td>
     <td width="100px">
       {{#if canEdit .}}
-        <a href="{{pathFor "myorchards.one.trees.one.edit" _id=orchardId tree=_id userId=currentUser._id}}">Editar</a>
+        <a href="{{pathFor "myorchards.one.trees.one.edit" _id=orchardId tree=_id userId=userId}}">Editar</a>
       {{/if}}
     </td>
   </tr>

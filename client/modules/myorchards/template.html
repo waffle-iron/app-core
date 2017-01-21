@@ -7,7 +7,7 @@
 
       {{#if canCreate}}
         <div class="pull-right">
-          <a class="btn btn-success" href="{{pathFor 'myorchards.new' userId=currentUser._id}}" role="button">Añadir huerto</a>
+          <a class="btn btn-success" href="{{pathFor 'myorchards.new' userId=userId}}" role="button">Añadir huerto</a>
         </div>
       {{/if}}
     </h2>
@@ -101,14 +101,14 @@
     <td>🌱</td>
     <td>{{name}}</td>
     <td>
-      <a href="{{pathFor "myorchards.one" _id=orchardId userId=currentUser._id}}">{{myOrchardName orchardId}}</a>
+      <a href="{{pathFor "myorchards.one" _id=orchardId userId=userId}}">{{myOrchardName orchardId}}</a>
     </td>
 
     {{#if canEdit .}}
       {{#if orchardId}}
-        <td><a href="{{pathFor "myorchards.one.benchs.one.edit" _id=orchardId bench=_id userId=currentUser._id}}">Editar</a></td>
+        <td><a href="{{pathFor "myorchards.one.benchs.one.edit" _id=orchardId bench=_id userId=userId}}">Editar</a></td>
       {{else}}
-        <td><a href="{{pathFor "myorchards.benchs.one.edit" userId=currentUser._id}}">Editar</a></td>
+        <td><a href="{{pathFor "myorchards.benchs.one.edit" userId=userId}}">Editar</a></td>
       {{/if}}
     {{/if}}
   </tr>
@@ -119,14 +119,14 @@
     <td>🌳</td>
     <td>{{name}}</td>
     <td>
-      <a href="{{pathFor "myorchards.one" _id=orchardId userId=currentUser._id}}">{{myOrchardName orchardId}}</a>
+      <a href="{{pathFor "myorchards.one" _id=orchardId userId=userId}}">{{myOrchardName orchardId}}</a>
     </td>
 
     {{#if canEdit .}}
       {{#if orchardId}}
-        <td><a href="{{pathFor "myorchards.one.trees.one.edit" _id=orchardId tree=_id userId=currentUser._id}}">Editar</a></td>
+        <td><a href="{{pathFor "myorchards.one.trees.one.edit" _id=orchardId tree=_id userId=userId}}">Editar</a></td>
       {{else}}
-        <td><a href="{{pathFor "myorchards.trees.one.edit" userId=currentUser._id}}">Editar</a></td>
+        <td><a href="{{pathFor "myorchards.trees.one.edit" userId=userId}}">Editar</a></td>
       {{/if}}
     {{/if}}
   </tr>
@@ -135,12 +135,12 @@
 <template name="myOrchardsTableItem">
 
   <tr>
-    <td> <a href="{{pathFor 'myorchards.one' userId=currentUser._id}}">{{name}}</a> </td>
-    <td> <a href="{{pathFor 'myorchards.one' userId=currentUser._id}}">{{description}}</a> </td>
+    <td> <a href="{{pathFor 'myorchards.one' userId=userId}}">{{name}}</a> </td>
+    <td> <a href="{{pathFor 'myorchards.one' userId=userId}}">{{description}}</a> </td>
     <td>
       <div class="pull-right">
         {{#if canEdit .}}
-          <a class="btn btn-sm btn-default" href="{{pathFor 'myorchards.one.edit' userId=currentUser._id}}">Editar</a>
+          <a class="btn btn-sm btn-default" href="{{pathFor 'myorchards.one.edit' userId=userId}}">Editar</a>
           <a class="btn btn-sm btn-danger remove-item" href="#">Eliminar</a>
         {{/if}}
       </div>

@@ -3,16 +3,16 @@
   <h2 class="page-header">
     Los bancales de: {{myOrchard.name}}
     <div class="pull-right">
-      <a class="btn btn-primary" href="{{pathFor 'myorchards.one.benchs.new' _id=myOrchard._id userId=currentUser._id}}" role="button">Nuevo bancal</a>
+      {{#if canCreate}}
+        <a class="btn btn-primary" href="{{pathFor 'myorchards.one.benchs.new' _id=myOrchard._id userId=userId}}" role="button">Nuevo bancal</a>
+      {{/if}}
     </div>
   </h2>
 
   <div class="row">
-
     {{#each myBenchs}}
       {{> myOrchardsBenchsTableItem}}
     {{/each}}
-
   </div>
 
 </template>
@@ -21,11 +21,13 @@
 
   <div class="col-md-4">
     <div class="panel panel-default">
-      <div class="panel-heading"><a href="{{pathFor 'myorchards.one.benchs.one' _id=orchardId bench=_id userId=currentUser._id}}">{{name}}</a></div>
-      <div class="panel-body">
-        <a class="btn btn-default" href="{{pathFor 'myorchards.one.benchs.one.edit' _id=orchardId bench=_id userId=currentUser._id}}">Editar</a>
-        <a class="btn btn-danger remove-item" href="#">Eliminar</a>
-      </div>
+      <div class="panel-heading"><a href="{{pathFor 'myorchards.one.benchs.one' _id=orchardId bench=_id userId=userId}}">{{name}}</a></div>
+      {{#if canEdit .}}
+        <div class="panel-body">
+          <a class="btn btn-default" href="{{pathFor 'myorchards.one.benchs.one.edit' _id=orchardId bench=_id userId=userId}}">Editar</a>
+          <a class="btn btn-danger remove-item" href="#">Eliminar</a>
+        </div>
+      {{/if}}
     </div>
   </div>
 
@@ -40,7 +42,7 @@
       <button type="button" data-toggle="modal" data-target="#plant-modal-insert" class="btn-default btn">
         Añadir planta
       </button>
-      <a href="{{pathFor 'myorchards.one.benchs.one.edit' _id=myOrchard._id bench=myBench._id userId=currentUser._id}}" class="btn btn-success">Editar</a>
+      <a href="{{pathFor 'myorchards.one.benchs.one.edit' _id=myOrchard._id bench=myBench._id userId=userId}}" class="btn btn-success">Editar</a>
     </div>
   </h2>
 

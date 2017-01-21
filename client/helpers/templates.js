@@ -6,6 +6,8 @@ Template.registerHelper('isActive', (name) => {
   }
 })
 
+Template.registerHelper('userId', () => Session.get('userId') )
+
 Template.registerHelper('monthName', (number) => {
   if (typeof number === 'undefined') { return; }
   return _.filter(monthSelector, (m) => {

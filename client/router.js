@@ -3,8 +3,15 @@ Router.configure({
 })
 
 Router.onBeforeAction( function() {
+  if (!!this.params.userId) {
+    Session.set('userId', this.params.userId)
+  }
+  this.next();
+})
 
-  if  (!Meteor.userId() && !Meteor.loggingIn()) {
+Router.onBeforeAction( function() {
+
+  if (!Meteor.userId() && !Meteor.loggingIn()) {
     this.redirect('home');
     this.stop();
   } else {
@@ -24,7 +31,12 @@ Router.onBeforeAction( function() {
   'trees.families.one',
   'herbs.index',
   'herbs.one',
-  'myorchards.index'
+  'myorchards.index',
+  'myorchards.one',
+  'myorchards.one.trees.index',
+  'myorchards.one.trees.one',
+  'myorchards.one.benchs.index',
+  'myorchards.one.benchs.one'
 ] });
 
 // *****************************************************************************

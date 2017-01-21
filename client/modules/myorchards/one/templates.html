@@ -3,9 +3,11 @@
   <h2 class="page-header">
     Huerto: {{myOrchard.name}}
 
-    <div class="pull-right">
-      <a class="btn btn-primary" href="{{pathFor 'myorchards.one.edit' _id=myOrchard._id userId=currentUser._id}}">Editar</a>
-    </div>
+    {{#if canEdit myOrchard}}
+      <div class="pull-right">
+        <a class="btn btn-primary" href="{{pathFor 'myorchards.one.edit' _id=myOrchard._id userId=userId}}">Editar</a>
+      </div>
+    {{/if}}
 
   </h2>
 
