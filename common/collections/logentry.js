@@ -20,6 +20,10 @@ MyLogEntriesSchema = new SimpleSchema({
       type: 'hidden'
     }
   },
+  public: {
+    type: Boolean,
+    optional: true
+  },
   type: {
     type: String,
     optional: false,

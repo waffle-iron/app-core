@@ -20,6 +20,10 @@ MyPlantsSchema = new SimpleSchema({
       type: 'hidden'
     }
   },
+  public: {
+    type: Boolean,
+    optional: true
+  },
   orchardId: {
     type: String,
     optional: true,
