@@ -2,13 +2,15 @@ Router.configure({
   layoutTemplate: 'appLayout'
 })
 
-Router.onBeforeAction(function () {    
+Router.onBeforeAction( function() {
+
   if  (!Meteor.userId() && !Meteor.loggingIn()) {
     this.redirect('home');
     this.stop();
   } else {
     this.next();
   }
+
 }, {except: [
   'home',
   'crops.index', 
