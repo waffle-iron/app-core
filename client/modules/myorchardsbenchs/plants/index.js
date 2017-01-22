@@ -20,7 +20,6 @@ Template.myOrchardsBenchsViewSidebar.helpers({
       var ids = _.map(this.myPlants.fetch(), 'cropId');
       Meteor.call('cropRecomendations', ids, (error, result) => {
         if (error) {}
-        console.log(result);
         Session.set('cropRecomendations', result)
       })
     }
