@@ -6,6 +6,11 @@ Template.registerHelper('isActive', (name) => {
   }
 })
 
+Template.registerHelper('lockClass', (element) => {
+  if (!element) return
+  return element.public ? 'unlock' : 'lock'
+})
+
 Template.registerHelper('userId', () => Session.get('userId') )
 
 Template.registerHelper('monthName', (number) => {

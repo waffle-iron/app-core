@@ -20,10 +20,6 @@ MyPlantsSchema = new SimpleSchema({
       type: 'hidden'
     }
   },
-  public: {
-    type: Boolean,
-    optional: true
-  },
   orchardId: {
     type: String,
     optional: true,
@@ -70,6 +66,11 @@ MyPlantsSchema = new SimpleSchema({
       rows: 2
     },
     optional: true
+  },
+  public: {
+    type: Boolean,
+    optional: true,
+    label: "Hacer público"
   },
   seedTime: {
     type: Date,

@@ -39,10 +39,6 @@ MyBenchsSchema = new SimpleSchema({
       type: 'hidden'
     }
   },
-  public: {
-    type: Boolean,
-    optional: true
-  },
   orchardId: {
     type: String,
     optional: true,
@@ -72,6 +68,11 @@ MyBenchsSchema = new SimpleSchema({
     autoform: {
       type: 'hidden'
     }
+  },
+  public: {
+    type: Boolean,
+    optional: true,
+    label: "Hacer público"
   },
   dimmensions: {
     type: Object,

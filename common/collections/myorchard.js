@@ -20,10 +20,6 @@ MyOrchardsSchema = new SimpleSchema({
       type: 'hidden'
     }
   },
-  public: {
-    type: Boolean,
-    optional: true
-  },
   name: {
     type: String,
     max: 200,
@@ -45,6 +41,11 @@ MyOrchardsSchema = new SimpleSchema({
         type: "googleplace"
     }
   }, */
+  public: {
+    type: Boolean,
+    optional: true,
+    label: "Hacer público"
+  },
   notes: {
     type: Array,
     optional: true,

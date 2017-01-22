@@ -5,6 +5,7 @@
 
     {{#if canEdit myOrchard}}
       <div class="pull-right">
+        {{> myOrchardsViewShareToggle}}
         <a class="btn btn-primary" href="{{pathFor 'myorchards.one.edit' _id=myOrchard._id userId=userId}}">Editar</a>
       </div>
     {{/if}}
@@ -40,4 +41,10 @@
     </div>
   </div>
 
+</template>
+
+<template name="myOrchardsViewShareToggle">
+  <button class="btn btn-default">
+    <i class="fa fa-{{lockClass myOrchard}}" aria-hidden="true"></i>
+  </button>
 </template>

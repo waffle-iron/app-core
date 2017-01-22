@@ -20,10 +20,6 @@ MyTreesSchema = new SimpleSchema({
       type: 'hidden'
     }
   },
-  public: {
-    type: Boolean,
-    optional: true
-  },
   orchardId: {
     type: String,
     optional: true,
@@ -69,6 +65,11 @@ MyTreesSchema = new SimpleSchema({
       rows: 10
     },
     optional: true
+  },
+  public: {
+    type: Boolean,
+    optional: true,
+    label: "Hacer público"
   },
   'notes.$': {
     type: String,

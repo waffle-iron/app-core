@@ -4,7 +4,8 @@ AutoForm.addHooks(['myBenchsNew', 'myBenchsUpdate'], {
       if (error) return
 
       if (!!this.currentDoc.orchardId) {
-        Router.go( 'myorchards.one.benchs.one', { 
+        Router.go( 'myorchards.one.benchs.one', {
+          userId: Meteor.user()._id, 
           _id: this.currentDoc.orchardId,
           bench: docId
         } )
@@ -16,7 +17,8 @@ AutoForm.addHooks(['myBenchsNew', 'myBenchsUpdate'], {
       if (error) return
       
       if (!!this.currentDoc.orchardId) {
-        Router.go( 'myorchards.one.benchs.one', { 
+        Router.go( 'myorchards.one.benchs.one', {
+          userId: Meteor.user()._id, 
           _id: this.currentDoc.orchardId,
           bench: docId
         } )
