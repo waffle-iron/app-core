@@ -35,7 +35,8 @@ Router.onBeforeAction( function() {
   'myorchards.index',
   'myorchards.one',
   'myorchards.one.trees.one',
-  'myorchards.one.benchs.one'
+  'myorchards.one.benchs.one',
+  'profile.index'
 ] });
 
 // *****************************************************************************
