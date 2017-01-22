@@ -32,11 +32,11 @@
     <td><a href="{{pathFor "myorchards.one.benchs.one" _id=orchardId bench=_id userId=userId}}">{{name}}</a></td>
     <td width="100px">
       {{#if canEdit .}}
-        <a href="#" class="remove-item">
-          <i class="fa fa-trash red"></i>  
+        <a href="#" class="btn btn-danger btn-xs remove-item">
+          <i class="fa fa-trash"></i>  
         </a>
-        <a href="{{pathFor "myorchards.one.benchs.one.edit" _id=orchardId bench=_id userId=userId}}">
-          <i class="fa fa-pencil blue"></i>  
+        <a href="{{pathFor "myorchards.one.benchs.one.edit" _id=orchardId bench=_id userId=userId}}" class="btn btn-primary btn-xs">
+          <i class="fa fa-pencil"></i> 
         </a>
       {{/if}}
       </td>

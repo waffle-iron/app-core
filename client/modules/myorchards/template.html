@@ -20,22 +20,7 @@
 
       <div class="col-md-12">
 
-        <div class="panel panel-default">
-          <table class="table valign">
-            <thead>
-              <tr>
-                <th width="150">Nombre</th>
-                <th>Descripción</th>
-                <th></th>
-              </tr>
-            </thead>
-            <tbody>
-              {{#each myOrchards}}
-                {{> myOrchardsTableItem}}
-              {{/each}}
-            </tbody>
-          </table>
-        </div>
+        {{> myOrchardsTable}}
 
       </div>
 
@@ -51,9 +36,7 @@
               <th width="25px"></th>
               <th width="15%">Nombre</th>
               <th>Huerto</th>
-              {{#if canEdit .}}
-                <th width="100px"></th>
-              {{/if}}
+              <th width="100px"></th>
             </tr>
           </thead>
           <tbody>
@@ -104,32 +87,69 @@
       <a href="{{pathFor "myorchards.one" _id=orchardId userId=userId}}">{{myOrchardName orchardId}}</a>
     </td>
 
-    {{#if canEdit .}}
-      {{#if orchardId}}
-        <td><a href="{{pathFor "myorchards.one.benchs.one.edit" _id=orchardId bench=_id userId=userId}}">Editar</a></td>
-      {{else}}
-        <td><a href="{{pathFor "myorchards.benchs.one.edit" userId=userId}}">Editar</a></td>
+    <td>
+      {{#if canEdit .}}
+        {{#if orchardId}}
+          <a href="{{pathFor "myorchards.one.benchs.one.edit" _id=orchardId bench=_id userId=userId}}" class="btn btn-primary btn-xs">
+            <i class="fa fa-pencil"></i>
+          </a>
+        {{else}}
+          <a href="{{pathFor "myorchards.benchs.one.edit" userId=userId}}" class="btn btn-primary btn-xs">
+            <i class="fa fa-pencil"></i>
+          </a>
+        {{/if}}
       {{/if}}
-    {{/if}}
+    </td>
   </tr>
 </template>
 
 <template name="myOrchardTreesTableItem">
   <tr>
     <td>🌳</td>
-    <td>{{name}}</td>
+    <td>
+      {{#if name}}
+        {{name}}
+      {{else}}
+        {{treeProperty treeId 'variant'}}
+      {{/if}}
+    </td>
     <td>
       <a href="{{pathFor "myorchards.one" _id=orchardId userId=userId}}">{{myOrchardName orchardId}}</a>
     </td>
 
+    <td>
     {{#if canEdit .}}
       {{#if orchardId}}
-        <td><a href="{{pathFor "myorchards.one.trees.one.edit" _id=orchardId tree=_id userId=userId}}">Editar</a></td>
+        <a href="{{pathFor "myorchards.one.trees.one.edit" _id=orchardId tree=_id userId=userId}}" class="btn btn-primary btn-xs">
+          <i class="fa fa-pencil"></i>
+        </a>
       {{else}}
-        <td><a href="{{pathFor "myorchards.trees.one.edit" userId=userId}}">Editar</a></td>
+        <a href="{{pathFor "myorchards.trees.one.edit" userId=userId}}">
+          <i class="fa fa-pencil"></i>
+        </a>
       {{/if}}
     {{/if}}
+    </td>
   </tr>
+</template>
+
+<template name="myOrchardsTable">
+  <div class="panel panel-default">
+    <table class="table valign">
+      <thead>
+        <tr>
+          <th width="150">Nombre</th>
+          <th>Descripción</th>
+          <th width="100px"></th>
+        </tr>
+      </thead>
+      <tbody>
+        {{#each myOrchards}}
+          {{> myOrchardsTableItem}}
+        {{/each}}
+      </tbody>
+    </table>
+  </div>
 </template>
 
 <template name="myOrchardsTableItem">
@@ -140,8 +160,15 @@
     <td>
       <div class="pull-right">
         {{#if canEdit .}}
-          <a class="btn btn-sm btn-default" href="{{pathFor 'myorchards.one.edit' userId=userId}}">Editar</a>
-          <a class="btn btn-sm btn-danger remove-item" href="#">Eliminar</a>
+          <a class="btn btn-xs btn-danger remove-item" href="#">
+            <i class="fa fa-trash"></i>
+          </a>
+          <a class="btn btn-xs btn-primary" href="{{pathFor 'myorchards.one.edit' userId=userId}}">
+            <i class="fa fa-pencil"></i>
+          </a>
+          <button class="btn btn-default btn-xs toggle-public">
+            <i class="fa fa-{{lockClass this}}"></i>
+          </button>
         {{/if}}
       </div>
     </td>

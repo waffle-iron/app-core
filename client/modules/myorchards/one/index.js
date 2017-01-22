@@ -20,7 +20,6 @@ Template.myOrchardsOneTreesTableItem.events({
   }
 });
 
-
 Template.myOrchardsOneBenchsTableItem.events({
   "click .remove-item": function(event, template){
     if (confirm("¿Eliminar este bancal de tu huerto?")) {

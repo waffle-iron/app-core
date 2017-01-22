@@ -20,5 +20,13 @@ Template.myOrchardsTableItem.events({
     if (confirm('¿Eliminar este huerto?')) {
       Meteor.call('myOrchards-remove', template.data._id)
     }
+  },
+  'click .toggle-public': function() {
+    Meteor.call('switchPublic', {
+      type: 'orchard',
+      _id: this._id,
+      public: !this.public
+    })
   }
+  
 })

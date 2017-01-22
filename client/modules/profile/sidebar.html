@@ -1,0 +1,67 @@
+<template name="profileSidebar">
+
+  <div class="col-md-3">
+
+    <div class="row">
+      <div class="col-md-12">
+        {{> avatar userId=userId size="xlarge" shape="rounded"}}
+      </div>
+    </div>
+    
+    <div class="row">
+      <div class="col-md-10">
+        <h4>
+          {{profile.profile.firstName}}
+          {{profile.profile.lastName}}
+        </h4>
+        
+      </div>
+    </div>
+
+    {{#if isActive 'profile.edit'}}
+      
+    {{else}}
+
+      {{#if canCreate}}
+        <div class="row">
+          <div class="col-md-12">
+            <a class="btn btn-block btn-success" href="{{pathFor 'profile.edit' userId=userId}}" role="button">
+              Editar
+            </a>
+          </div>
+        </div>
+        <br>
+      {{/if}}
+
+    {{/if}}
+
+    <div class="row">
+      <div class="col-md-12">
+        <div class="panel panel-default">
+          <div class="panel-heading">Bio</div>
+          <div class="panel-body">
+            {{profile.profile.bio}}
+          </div>
+        </div>
+      </div>
+    </div>
+
+    {{#if isEq currentUser._id userId}}
+      <div class="row">
+        <div class="col-md-12">
+          <div class="panel panel-default">
+            <div class="panel-heading">Tu URL pública</div>
+            <div class="panel-body">
+              <form>
+                <input onClick="this.select();" style="background: white" readonly="readonly" name="profileUrl" type="text" class="form-control" value="{{fullUrl}}">
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+    {{/if}}
+
+  </div>
+
+</template>

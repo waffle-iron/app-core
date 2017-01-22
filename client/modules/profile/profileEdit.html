@@ -1,0 +1,38 @@
+<template name="profileEdit">
+  
+  <div class="row">
+    {{> profileSidebar}}
+
+    <div class="col-md-9">
+
+      <!-- Nav tabs -->
+      <ul class="nav nav-tabs" role="tablist">
+        <li role="presentation" class="active"><a href="#about" aria-controls="about" role="tab" data-toggle="tab">Acerca de</a></li>
+      </ul>
+
+      <!-- Tab panes -->
+      <div class="tab-content">
+        <div role="tabpanel" class="tab-pane active" id="about">
+
+          <div class="row">
+            <div class="col-md-12">
+              <br>
+              {{#autoForm collection="Meteor.users" id="updateUser" type="update" doc=currentUser}}
+                <fieldset>
+                  {{> afQuickField name="profile.firstName"}}
+                  {{> afQuickField name="profile.lastName"}}
+                  {{> afQuickField name="profile.bio"}}
+                </fieldset>
+                <button type="submit" class="btn btn-primary">Actualizar</button>
+              {{/autoForm}}
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+
+</template>

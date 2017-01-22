@@ -6,3 +6,13 @@ moment.locale('es')
 Meteor.subscribe('userData')
 
 _ = lodash
+
+Avatar.setOptions({
+  fallbackType: 'initials',
+  customImageProperty : 'profile.avatarUrl',
+  imageSizes: {
+    'xlarge': '400'
+  }
+});
+
+SimpleSchema.debug = true

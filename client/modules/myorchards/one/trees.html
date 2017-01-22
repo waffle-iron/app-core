@@ -37,11 +37,11 @@
     </td>
     <td width="100px">
       {{#if canEdit .}}
-        <a href="#" class="remove-item">
-          <i class="fa fa-trash red"></i>  
+        <a href="#" class="btn btn-danger btn-xs remove-item">
+          <i class="fa fa-trash"></i>  
         </a>
-        <a href="{{pathFor "myorchards.one.trees.one.edit" _id=orchardId tree=_id userId=userId}}">
-          <i class="fa fa-pencil blue"></i>  
+        <a href="{{pathFor "myorchards.one.trees.one.edit" _id=orchardId tree=_id userId=userId}}" class="btn btn-primary btn-xs">
+          <i class="fa fa-pencil"></i>  
         </a>
       {{/if}}
     </td>

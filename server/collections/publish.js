@@ -1,3 +1,8 @@
+Meteor.publish('directory', function (userId) {
+  if (!userId) return
+  return Meteor.users.find({_id:userId}, {fields: {profile: 1}});
+});
+
 Meteor.publish('Crops', (cropId) => {
 
   let q = {}
@@ -72,16 +77,17 @@ Meteor.publish('MyOrchards', function (userId, myOrchardId) {
   return MyOrchards.find(q);
 })
 
-
 Meteor.publish('MyPlants', function(userId, orchardId, benchId) {
-
   let q = { 
-    benchId: benchId,
     userId: userId
   }
 
   if (orchardId) {
     q.orchardId = orchardId
+  }
+
+  if (benchId) {
+    q.benchId = benchId
   }
 
   if (!this.userId || this.userId !== userId) {
@@ -90,7 +96,6 @@ Meteor.publish('MyPlants', function(userId, orchardId, benchId) {
 
   return MyPlants.find(q)
 })
-
 
 Meteor.publish('MyLogEntries', function(userId, type, typeId) {
 

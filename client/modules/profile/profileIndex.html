@@ -1,0 +1,55 @@
+<template name="profileIndex">
+  
+  <div class="row">
+    {{> profileSidebar}}
+    
+    <div class="col-md-9">
+
+      <!-- Nav tabs -->
+      <ul class="nav nav-tabs" role="tablist">
+        <li role="presentation" class="active"><a href="#about" aria-controls="about" role="tab" data-toggle="tab">Acerca de</a></li>
+      </ul>
+
+      <!-- Tab panes -->
+      <div class="tab-content">
+        <div role="tabpanel" class="tab-pane active" id="about">
+          <div class="row">
+            <div class="col-md-12">
+              
+              <h3>Qué tengo plantado</h3>
+
+              <div class="panel panel-default">
+                <table class="table">
+                  <thead>
+                    <tr>
+                      <th width="37%">Cultivo</th>
+                      <th>Fecha de plantación</th>
+                      <th width="45"></th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {{#each myPlants}}
+                      <tr>
+                        <td>{{cropProperty cropId 'variant'}}</td>
+                        <td>{{moment 'shortestDay' seedTime}}</td>
+                        <td>.</td>
+                      </tr>
+                    {{/each}}
+                  </tbody>
+                </table>
+              </div>
+              
+              <h3>Mis huertos</h3>
+
+              {{> myOrchardsTable}}
+
+            </div>
+          </div>
+        </div>
+      </div>
+      
+    </div>
+
+  </div>
+
+</template>

@@ -6,6 +6,8 @@ Template.registerHelper('isActive', (name) => {
   }
 })
 
+Template.registerHelper('isEq', (p1, p2) => p1 === p2)
+
 Template.registerHelper('lockClass', (element) => {
   if (!element) return
   return element.public ? 'unlock' : 'lock'

@@ -5,6 +5,7 @@ Router.configure({
 Router.onBeforeAction( function() {
   if (!!this.params.userId) {
     Session.set('userId', this.params.userId)
+    Meteor.subscribe('directory', this.params.userId);
   }
   this.next();
 })
@@ -503,6 +504,7 @@ Router.route('/:userId/myorchards', function () {
 }, {
   subscriptions: function() {
     return [
+      Meteor.subscribe('TreesVariants'),
       Meteor.subscribe('MyOrchards', this.params.userId),
       Meteor.subscribe('MyBenchs', this.params.userId),
       Meteor.subscribe('MyTrees', this.params.userId)
@@ -770,4 +772,50 @@ Router.route('/:userId/myorchards/trees/:_id/edit', function () {
   name: 'myorchards.trees.one.edit',
   parent: 'myorchards.index',
   title: 'Editar árbol'
+})
+
+
+Router.route('/:userId', function () {
+  this.render('profileIndex')
+}, {
+  subscriptions: function() {
+    return [
+      Meteor.subscribe('directory', this.params.userId),
+      Meteor.subscribe('MyOrchards', this.params.userId),
+      Meteor.subscribe('MyPlants', this.params.userId, null, null),
+      Meteor.subscribe('CropsResume')
+    ]
+  },
+  data: function() {
+    if (this.ready) {
+      return {
+        profile: Meteor.users.findOne({_id: this.params.userId}),
+        myOrchards: MyOrchards.find({userId: this.params.userId}, {sort: {name: 1}}),
+        myPlants: MyPlants.find({userId: this.params.userId}, {sort: { createdAt: -1 }})
+      }
+    }
+  },
+  name: 'profile.index',
+  parent: 'home',
+  title: 'Perfil'
+})
+
+Router.route('/:userId/edit', function () {
+  this.render('profileEdit')
+}, {
+  subscriptions: function() {
+    return [
+      Meteor.subscribe('directory', this.params.userId)
+    ]
+  },
+  data: function() {
+    if (this.ready) {
+      return {
+        profile: Meteor.users.findOne({_id: this.params.userId})
+      }
+    }
+  },
+  name: 'profile.edit',
+  parent: 'profile.index',
+  title: 'Editar'
 })
