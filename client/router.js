@@ -545,6 +545,7 @@ Router.route('/:userId/myorchards/:_id', function () {
 }, {
   subscriptions: function() {
     return [
+      Meteor.subscribe('TreesVariants'),
       Meteor.subscribe('MyOrchards', this.params.userId, this.params._id),
       Meteor.subscribe('MyTrees', this.params.userId, this.params._id),
       Meteor.subscribe('MyBenchs', this.params.userId, this.params._id),
@@ -631,7 +632,7 @@ Router.route('/:userId/myorchards/:_id/trees/:tree', function () {
   name: 'myorchards.one.trees.one',
   parent: 'myorchards.one',
   title: function() { 
-    return this.data().myTree ? this.data().myTree.name : null
+    return this.data().myTree ? this.data().myTree.name || 'Sin nombre' : 'Sin nombre'
   }
 })
 

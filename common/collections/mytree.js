@@ -36,7 +36,8 @@ MyTreesSchema = new SimpleSchema({
   name: {
     type: String,
     max: 200,
-    label: "Nombre"
+    label: "Nombre",
+    optional: true,
   },
   treeId: {
     type: String,
