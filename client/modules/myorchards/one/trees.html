@@ -19,9 +19,6 @@
           {{else}}
            &nbsp;
           {{/if}}
-          <div class="pull-right">
-            <a href="{{pathFor 'myorchards.one.trees.index' _id=myOrchard._id userId=userId}}">ver todos</a>
-          </div>
         </div>
       </div>
     </div>
@@ -33,6 +30,7 @@
     <td><a href="{{pathFor "myorchards.one.trees.one" _id=orchardId tree=_id userId=userId}}">{{name}}</a></td>
     <td width="100px">
       {{#if canEdit .}}
+        <a href="#" class="remove-item">Eliminar</a>
         <a href="{{pathFor "myorchards.one.trees.one.edit" _id=orchardId tree=_id userId=userId}}">Editar</a>
       {{/if}}
     </td>

@@ -1,39 +1,4 @@
-<template name="myOrchardsTrees">
-
-  <h2 class="page-header">
-    Los árboles de: {{myOrchard.name}}
-    <div class="pull-right">
-      {{#if canCreate}}
-        <a class="btn btn-primary" href="{{pathFor 'myorchards.one.trees.new' _id=myOrchard._id userId=userId}}" role="button">Nuevo árbol</a>
-      {{/if}}
-    </div>
-  </h2>
-
-  <div class="row">
-    {{#each myTrees}}
-      {{>myOrchardsTreesTableItem}}
-    {{/each}}
-  </div>
-
-</template>
-
 <template name="orchardsTreesView">
-
-</template>
-
-<template name="myOrchardsTreesTableItem">
-
-  <div class="col-md-4">
-    <div class="panel panel-default">
-      <div class="panel-heading"><a href="{{pathFor 'myorchards.one.trees.one' _id=orchardId tree=_id userId=currentUser._id}}">{{name}}</a></div>
-      {{#if canEdit .}}
-        <div class="panel-body">
-          <a class="btn btn-default" href="{{pathFor 'myorchards.one.trees.one.edit' _id=orchardId tree=_id userId=currentUser._id}}">Editar</a>
-          <a class="btn btn-danger remove-item" href="#">Eliminar</a>
-        </div>
-      {{/if}}
-    </div>
-  </div>
 
 </template>
 

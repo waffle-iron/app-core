@@ -33,9 +33,7 @@ Router.onBeforeAction( function() {
   'herbs.one',
   'myorchards.index',
   'myorchards.one',
-  'myorchards.one.trees.index',
   'myorchards.one.trees.one',
-  'myorchards.one.benchs.index',
   'myorchards.one.benchs.one'
 ] });
 
@@ -591,28 +589,6 @@ Router.route('/:userId/myorchards/:_id/edit', function () {
 // Huertos - Árboles
 // *****************************************************************************
 
-Router.route('/:userId/myorchards/:_id/trees', function () {
-  this.render('myOrchardsTrees')
-}, {
-  subscriptions: function() {
-    return [
-      Meteor.subscribe('MyOrchards', this.params.userId, this.params._id),
-      Meteor.subscribe('MyTrees', this.params.userId, this.params._id)
-    ]
-  },
-  data: function() {
-    if (this.ready) {
-      return {
-        myOrchard:  MyOrchards.findOne(this.params._id),
-        myTrees:  MyTrees.find({userId: this.params.userId, orchardId:this.params._id}),
-      }
-    }
-  },
-  name: 'myorchards.one.trees.index',
-  parent: 'myorchards.one',
-  title: 'Árboles'
-})
-
 Router.route('/:userId/myorchards/:_id/trees/new', function () {
   this.render('myOrchardsTreesNew')
 }, {
@@ -631,8 +607,8 @@ Router.route('/:userId/myorchards/:_id/trees/new', function () {
     }
   },
   name: 'myorchards.one.trees.new',
-  parent: 'myorchards.one.trees.index',
-  title: 'Nuevo'
+  parent: 'myorchards.one',
+  title: 'Nuevo árbol'
 })
 
 Router.route('/:userId/myorchards/:_id/trees/:tree', function () {
@@ -653,7 +629,7 @@ Router.route('/:userId/myorchards/:_id/trees/:tree', function () {
     }
   },
   name: 'myorchards.one.trees.one',
-  parent: 'myorchards.one.trees.index',
+  parent: 'myorchards.one',
   title: function() { 
     return this.data().myTree ? this.data().myTree.name : null
   }
@@ -682,28 +658,6 @@ Router.route('/:userId/myorchards/:_id/trees/:tree/edit', function () {
   title: 'Editar'
 })
 
-Router.route('/:userId/myorchards/:_id/benchs', function () {
-  this.render('myOrchardsBenchs')
-}, {
-  subscriptions: function() {
-    return [
-      Meteor.subscribe('MyOrchards', this.params.userId, this.params._id),
-      Meteor.subscribe('MyBenchs', this.params.userId, this.params._id)
-    ]
-  },
-  data: function() {
-    if (this.ready) {
-      return {
-        myOrchard:  MyOrchards.findOne({_id:this.params._id}),
-        myBenchs:  MyBenchs.find({userId: this.params.userId, orchardId:this.params._id}),
-      }
-    }
-  },
-  name: 'myorchards.one.benchs.index',
-  parent: 'myorchards.one',
-  title: 'Bancales'
-})
-
 Router.route('/:userId/myorchards/:_id/benchs/new', function () {
   this.render('myOrchardsBenchsNew')
 }, {
@@ -721,8 +675,8 @@ Router.route('/:userId/myorchards/:_id/benchs/new', function () {
     }
   },
   name: 'myorchards.one.benchs.new',
-  parent: 'myorchards.one.benchs.index',
-  title: 'Nuevo'
+  parent: 'myorchards.one',
+  title: 'Nuevo bancal'
 })
 
 Router.route('/:userId/myorchards/:_id/benchs/:bench', function () {
@@ -748,7 +702,7 @@ Router.route('/:userId/myorchards/:_id/benchs/:bench', function () {
     }
   },
   name: 'myorchards.one.benchs.one',
-  parent: 'myorchards.one.benchs.index',
+  parent: 'myorchards.one',
   title: function() { return this.data().myBench ? this.data().myBench.name : null }
 })
 

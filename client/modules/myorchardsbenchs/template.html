@@ -1,38 +1,3 @@
-<template name="myOrchardsBenchs">
-
-  <h2 class="page-header">
-    Los bancales de: {{myOrchard.name}}
-    <div class="pull-right">
-      {{#if canCreate}}
-        <a class="btn btn-primary" href="{{pathFor 'myorchards.one.benchs.new' _id=myOrchard._id userId=userId}}" role="button">Nuevo bancal</a>
-      {{/if}}
-    </div>
-  </h2>
-
-  <div class="row">
-    {{#each myBenchs}}
-      {{> myOrchardsBenchsTableItem}}
-    {{/each}}
-  </div>
-
-</template>
-
-<template name="myOrchardsBenchsTableItem">
-
-  <div class="col-md-4">
-    <div class="panel panel-default">
-      <div class="panel-heading"><a href="{{pathFor 'myorchards.one.benchs.one' _id=orchardId bench=_id userId=userId}}">{{name}}</a></div>
-      {{#if canEdit .}}
-        <div class="panel-body">
-          <a class="btn btn-default" href="{{pathFor 'myorchards.one.benchs.one.edit' _id=orchardId bench=_id userId=userId}}">Editar</a>
-          <a class="btn btn-danger remove-item" href="#">Eliminar</a>
-        </div>
-      {{/if}}
-    </div>
-  </div>
-
-</template>
-
 <template name="myOrchardsBenchsView">
 
   <h2 class="page-header">
