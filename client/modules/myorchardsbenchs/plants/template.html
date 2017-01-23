@@ -16,9 +16,13 @@
         {{name}} -
       {{/if}}
       {{cropProperty cropId 'variant'}}
-      <div class="pull-right">
-        <a href="#" class="btn btn-primary btn-xs fa fa-pencil plant-modal-update"></a>
-      </div>
+
+      {{#if canEdit this}}
+        <div class="pull-right">
+          <a href="#" class="btn btn-primary btn-xs fa fa-pencil plant-modal-update"></a>
+          {{> shareToggle type="plant" _id=_id public=public}}
+        </div>
+      {{/if}}
     </div>
     <table class="table table-condensed table-bordered">
       <tbody>

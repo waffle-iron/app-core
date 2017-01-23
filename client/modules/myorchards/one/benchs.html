@@ -38,6 +38,7 @@
         <a href="{{pathFor "myorchards.one.benchs.one.edit" _id=orchardId bench=_id userId=userId}}" class="btn btn-primary btn-xs">
           <i class="fa fa-pencil"></i> 
         </a>
+        {{> shareToggle type="bench" _id=_id public=public}}
       {{/if}}
       </td>
   </tr>

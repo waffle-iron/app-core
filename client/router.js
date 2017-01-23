@@ -268,8 +268,6 @@ Router.route('/trees', function () {
   title: 'Árboles'
 })
 
-
-
 Router.route('/trees/families', function () {
   this.render('treeFamilies')
 }, {
@@ -348,7 +346,6 @@ Router.route('/trees/families/:_id/edit', function () {
   title: 'Editar'
 })
 
-
 Router.route('/trees/add', function () {
   this.render('treesAdd')
 }, {
@@ -408,7 +405,6 @@ Router.route('/trees/:_id/edit', function () {
   parent: 'trees.one',
   title: 'Editar'
 })
-
 
 // *****************************************************************************
 // Hierbas
@@ -521,7 +517,7 @@ Router.route('/:userId/myorchards', function () {
     }
   },
   name: 'myorchards.index',
-  parent: 'home',
+  parent: 'profile.index',
   title: 'Mis huertos'
 })
 
@@ -798,7 +794,18 @@ Router.route('/:userId', function () {
   },
   name: 'profile.index',
   parent: 'home',
-  title: 'Perfil'
+  title: function() {
+    
+    if (Meteor.user() && this.params.userId === Meteor.user()._id) {
+      return Meteor.user().profile.firstName
+    }
+
+    try {
+      return Meteor.users.findOne({_id: this.params.userId}).profile.firstName || 'usuario'
+    } catch (ex) {
+      return 'usuario'
+    }
+  }
 })
 
 Router.route('/:userId/edit', function () {

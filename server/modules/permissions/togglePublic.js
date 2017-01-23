@@ -16,5 +16,21 @@ Meteor.methods({
         $set: { public: element.public }
       })
     }
+    else if (element.type === 'tree') {
+      MyTrees.update({
+        _id: element._id,
+        userId: Meteor.user()._id,
+      }, {
+        $set: { public: element.public }
+      })
+    }
+    else if (element.type === 'plant') {
+      MyPlants.update({
+        _id: element._id,
+        userId: Meteor.user()._id,
+      }, {
+        $set: { public: element.public }
+      })
+    }
   }
 })

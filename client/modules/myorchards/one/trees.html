@@ -43,6 +43,7 @@
         <a href="{{pathFor "myorchards.one.trees.one.edit" _id=orchardId tree=_id userId=userId}}" class="btn btn-primary btn-xs">
           <i class="fa fa-pencil"></i>  
         </a>
+        {{> shareToggle type="tree" _id=_id public=public}}
       {{/if}}
     </td>
   </tr>
