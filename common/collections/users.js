@@ -112,16 +112,6 @@ Schema.User = new SimpleSchema({
         optional: true,
         blackbox: true
     },
-    // Option 2: [String] type
-    // If you are sure you will never need to use role groups, then
-    // you can specify [String] as the type
-    roles: {
-        type: Array,
-        optional: true
-    },
-    'roles.$': {
-        type: String
-    },
     // In order to avoid an 'Exception in setInterval callback' from Meteor
     heartbeat: {
         type: Date,

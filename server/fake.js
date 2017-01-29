@@ -17,10 +17,7 @@ let fakeData = () => {
   if ( Meteor.users.find().count() !== 0 ) {
     return
   }
-
-  console.log('Fake data...')
-
-  let adminUserId = Accounts.createUser({
+   let adminUserId = Accounts.createUser({
     username: 'admin',
     email: 'admin@admin.com',
     password: '123456'
@@ -30,11 +27,10 @@ let fakeData = () => {
 
   for (let i = 0; i < 10; i++) {
     let fakeUser = Fake.user({
-      fields: ['name', 'username', 'email', 'profile.name']
+      fields: ['name', 'username', 'email', 'profile.firstName']
     })
 
     let fakeUserId = Accounts.createUser(fakeUser)
-
     console.log(`Fake userId: ${fakeUserId}`)
 
     for(var o = 0; o < 10; o++) {
