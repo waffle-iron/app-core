@@ -1,7 +1,6 @@
 <template name="appLayout">
   {{ > navbar }}
   {{> sAlert}}
-  {{> commentsModal}}
 
   <div class="container">
     <div class="row">
@@ -21,7 +20,6 @@
 <template name="siteLayout">
   {{ > navbar }}
   {{> sAlert}}
-  {{> commentsModal}}
 
   <div class="container">
     <div class="row">
@@ -37,9 +35,10 @@
 <template name="footer">
   <div class="navbar navbar-default navbar-fixed-bottom">
     <div class="container">
-      <p class="navbar-text pull-left">© 2017 - Algunos derechos reservados - hecho por 
+      <p class="navbar-text pull-left">© 2017 - Algunos derechos reservados -
         <a href="http://www.joseconstela.com" target="_blank" >Jose Constela</a>
-        - {{> commentsModalButton}}
+        -
+        <a href="https://github.com/TiempoDeSiembra/app-core">informar de un error</a>
       </p>
     </div>
   </div>
