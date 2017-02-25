@@ -22,7 +22,8 @@ MyLogEntriesSchema = new SimpleSchema({
   },
   public: {
     type: Boolean,
-    optional: true
+    optional: true,
+    label: "Hacer público"
   },
   type: {
     type: String,

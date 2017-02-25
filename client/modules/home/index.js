@@ -6,7 +6,7 @@ Template.s3_tester.events({
 				files:files,
 				path:"subfolder"
 			},function(e,r){
-				console.log(r);
+
 		});
 	}
 })

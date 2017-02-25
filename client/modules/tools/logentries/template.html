@@ -1,5 +1,5 @@
 <template name="MyLogEntriesItem">
-  
+
   <ul class="list-group">
     {{#each myLogEntries}}
       {{> MyLogEntriesItemItem}}
@@ -10,6 +10,9 @@
 
 <template name="MyLogEntriesItemItem">
   <li class="list-group-item">
+    {{#if canEdit .}}
+      {{> shareToggle type="logEntry" _id=_id public=public}}
+    {{/if}}
     <small class="text-right">{{moment 'shortest' createdAt}}</small>
     <p>{{{brNl message}}}</p>
   </li>

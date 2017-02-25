@@ -27,7 +27,6 @@ Template.weatherHome.rendered= function() {
 
   let showWeather = (weather) => {
     Session.set('weatherResults', JSON.stringify(weather));
-    console.log(weather)
   }
 
   var geooptions = {
@@ -35,7 +34,7 @@ Template.weatherHome.rendered= function() {
     timeout: 60000,
     maximumAge: 0
   };
-  
+
   function success(pos) {
     var lat = pos.coords.latitude;
     var lng = pos.coords.longitude;
@@ -51,7 +50,7 @@ Template.weatherHome.rendered= function() {
       showWeather(result)
     })
   }
-  
+
   function error(err) {
     console.warn('ERROR(' + err.code + '): ' + err.message);
   }
@@ -75,7 +74,7 @@ Template.weatherHome.rendered= function() {
         longitude: weatherLocation[1]
       }
     })
-  } 
+  }
   else {
     if (!Session.get('weatherLocation')) {
       if (navigator.geolocation) {
@@ -92,5 +91,5 @@ Template.weatherHome.rendered= function() {
       })
     }
   }
-  
+
 }

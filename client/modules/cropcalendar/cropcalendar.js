@@ -1,5 +1,5 @@
 Template.registerHelper('cropCalendarClass', (crop, month) => {
-  
+
   if (!crop) return;
 
   if (!!crop.seedTime) {
@@ -13,11 +13,8 @@ Template.registerHelper('cropCalendarClass', (crop, month) => {
           return 'green';
         }
       }
-    } 
+    }
   }
-
-          console.log(month , crop.seedTime.from);
-          console.log(month , crop.seedTime.to);
 
   if (!!crop.seedTime) {
     if (!!crop.harvestTime.from) {
@@ -35,7 +32,7 @@ Template.registerHelper('cropCalendarClass', (crop, month) => {
   }
 
   return 'gray';
-  
+
 })
 
 Template.registerHelper('cropCalendarMonthClass', (month) => {
@@ -45,7 +42,7 @@ Template.registerHelper('cropCalendarMonthClass', (month) => {
 })
 
 Template.registerHelper('cropCalendarText', (crop, month) => {
-  
+
   if (!crop) return;
 
   if (!!crop.seedTime) {

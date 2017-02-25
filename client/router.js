@@ -1,3 +1,5 @@
+import { breadcrumbName } from './helpers/users'
+
 Router.configure({
   layoutTemplate: 'appLayout'
 })
@@ -21,7 +23,7 @@ Router.onBeforeAction( function() {
 
 }, {except: [
   'home',
-  'crops.index', 
+  'crops.index',
   'crops.families.index',
   'crops.families.one',
   'crops.one',
@@ -630,7 +632,7 @@ Router.route('/:userId/myorchards/:_id/trees/:tree', function () {
   },
   name: 'myorchards.one.trees.one',
   parent: 'myorchards.one',
-  title: function() { 
+  title: function() {
     return this.data().myTree ? this.data().myTree.name || 'Sin nombre' : 'Sin nombre'
   }
 })
@@ -795,13 +797,13 @@ Router.route('/:userId', function () {
   name: 'profile.index',
   parent: 'home',
   title: function() {
-    
+
     if (Meteor.user() && this.params.userId === Meteor.user()._id) {
-      return Meteor.user().profile.firstName
+      return breadcrumbName(Meteor.user())
     }
 
     try {
-      return Meteor.users.findOne({_id: this.params.userId}).profile.firstName || 'usuario'
+      return breadcrumbName(Meteor.users.findOne({_id: this.params.userId}))
     } catch (ex) {
       return 'usuario'
     }

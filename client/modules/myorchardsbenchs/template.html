@@ -68,12 +68,12 @@
         </table>
       </div>
     </div>
-    
+
     <div class="col-md-12">
-      
+
       <div class="panel panel-default">
         <div class="panel-heading">Asociaciones recomendadas</div>
-        
+
         {{#if recommendations}}
           {{> MyOrchardBenchRecommendations recommendations}}
         {{else}}
@@ -89,22 +89,24 @@
 
   <div class="row">
     <div class="col-md-12">
-      
+
       <div class="panel panel-default">
         <div class="panel-heading">Actualizaciones</div>
-        <div class="panel-body">
-          {{#autoForm collection="MyLogEntries" id="logentryInsert" type="insert"}}
-            <fieldset>
-              {{> afQuickField name='message' label=false}}
-              {{> afQuickField name='type' value='bench' type='hidden'}}
-              {{> afQuickField name='typeId' value=myBench._id type='hidden'}}
-            </fieldset>
-            <button type="submit" class="btn btn-primary">Insert</button>
-          {{/autoForm}}
-        </div>
+        {{#if canEdit myBench}}
+          <div class="panel-body">
+            {{#autoForm collection="MyLogEntries" id="logentryInsert" type="insert"}}
+              <fieldset>
+                {{> afQuickField name='message' label=false}}
+                {{> afQuickField name='type' value='bench' type='hidden'}}
+                {{> afQuickField name='typeId' value=myBench._id type='hidden'}}
+              </fieldset>
+              <button type="submit" class="btn btn-primary">Insert</button>
+            {{/autoForm}}
+          </div>
+        {{/if}}
 
         {{> MyLogEntriesItem}}
-        
+
       </div>
 
     </div>
