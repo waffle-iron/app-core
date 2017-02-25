@@ -12,43 +12,47 @@ Schema.UserCountry = new SimpleSchema({
 
 Schema.UserProfile = new SimpleSchema({
     firstName: {
-        type: String,
-        optional: true,
-        label: "Nombre"
+      type: String,
+      optional: true,
+      label: "Nombre"
     },
     lastName: {
-        type: String,
-        optional: true,
-        label: "Apellidos"
+      type: String,
+      optional: true,
+      label: "Apellidos"
     },
     birthday: {
-        type: Date,
-        optional: true,
-        label: "Fecha de cumpleaños"
+      type: Date,
+      optional: true,
+      label: "Fecha de cumpleaños"
     },
     organization : {
-        type: String,
-        optional: true,
-        label: "Empresa"
+      type: String,
+      optional: true,
+      label: "Empresa"
     },
     website: {
-        type: String,
-        regEx: SimpleSchema.RegEx.Url,
-        optional: true,
-        label: "Dirección web"
+      type: String,
+      regEx: SimpleSchema.RegEx.Url,
+      optional: true,
+      label: "Dirección web"
     },
     bio: {
-        type: String,
-        optional: true,
-        label: "Bio",
-        autoform: {
-          rows: 5
-        }
+      type: String,
+      optional: true,
+      label: "Bio",
+      autoform: {
+        rows: 5
+      }
     },
     country: {
-        type: Schema.UserCountry,
-        optional: true,
-        label: "País"
+      type: Schema.UserCountry,
+      optional: true,
+      label: "País"
+    },
+    geo: {
+      type: String,
+      optional: true
     }
 });
 
