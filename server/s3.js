@@ -19,8 +19,8 @@
  */
 
 S3.config = {
-    key: 'AKIAJRZR6QTU5QN6KXGA',
-    secret: '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',
-    bucket: 'tiempodesiembra-app',
-    region: 'eu-west-1'
-};
+  key: process.env.AWS_S3_KEY,
+  secret: process.env.AWS_S3_SECRET,
+  bucket: process.env.AWS_S3_BUCKET_NAME,
+  region: process.env.AWS_S3_REGION_NAME
+}
