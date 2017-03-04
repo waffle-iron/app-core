@@ -187,6 +187,11 @@ CropSchema = new SimpleSchema({
     label: 'Tipo preferido',
     optional: true
   },
+  'land.type._ok': {
+    type: Boolean,
+    label: 'Dato analizado',
+    optional: true
+  },
   'land.ph': {
     type: Object,
     label: 'PH',
@@ -206,24 +211,24 @@ CropSchema = new SimpleSchema({
   },
   sun: {
     type: Object,
-    label: 'Preferencias de sol',
+    label: 'Exposición al sol',
     optional: true
   },
-  'sun.sunExposition': {
+  'sun.exposition': {
     type: Number,
-    label: 'Grado de exposición al sol',
+    label: 'Grado',
     optional: true,
     min: 0,
     max: 5
   },
-  'sun.sunExpositionDescription': {
+  'sun.description': {
     type: String,
-    label: 'Grado de exposición al sol',
+    label: 'Descripción',
     optional: true
   },
   'water': {
     type: Object,
-    label: 'Preferencias de regado',
+    label: 'Agua',
     optional: true
   },
   'water.exposition': {
@@ -234,9 +239,9 @@ CropSchema = new SimpleSchema({
     label: 'Grado de regado',
     optional: true
   },
-  'water.expositionDescription': {
+  'water.description': {
     type: String,
-    label: 'Grado de regado',
+    label: 'Descipción',
     optional: true
   },
   associations: {

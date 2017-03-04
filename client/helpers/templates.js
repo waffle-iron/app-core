@@ -20,9 +20,9 @@
 
 Template.registerHelper('isActive', (name) => {
   try {
-    return Router.current().route.getName().indexOf(name) === 0;
+    return Router.current().route.getName().indexOf(name) === 0
   } catch (Ex) {
-    return false;
+    return false
   }
 })
 
@@ -36,50 +36,33 @@ Template.registerHelper('lockClass', (element) => {
 Template.registerHelper('userId', () => Session.get('userId') )
 
 Template.registerHelper('monthName', (number) => {
-  if (typeof number === 'undefined') { return; }
+  if (typeof number === 'undefined') { return }
   return _.filter(monthSelector, (m) => {
     return m.value === number
-  })[0].label;
+  })[0].label
 })
 
-Template.registerHelper('stars', (number) => {
-  if (!number) return '-';
-
-  let r = '';
-  for(var i = 0; i<number; i++){
-    r += '⭐️'
-  }
-  return `${r} ${number}/10`;
-})
-
-Template.registerHelper('moons', (number) => {
-  if (!number) return '-';
-
-  let r = '';
-  for(var i = 0; i<number; i++){
-    r += '🌑'
-  }
-  return `${r} ${number}/10`;
-})
-
-Template.registerHelper('water', (number) => {
-  if (!number) return '-'
-
+Template.registerHelper('expositionIcon', (faClass, number, max) => {
   let r = ''
-  for(var i = 0; i<number; i++){
-    r += '🚰'
+  if (!max) max = 5
+
+  if (typeof number === 'undefined') { return '' }
+
+  for(var i = 0; i < max; i++) {
+    let active = i < number ? 'active' : ''
+    r += `<i class="fa ${faClass} ${active}" aria-hidden="true"></i>`
   }
-  return `${r} ${number}/10`
+  return `${r}`
 })
 
 Template.registerHelper('familyName', function(familyId) {
   if (!familyId) return
-  let r = CropFamilies.findOne({_id:familyId})
+  let r = CropFamilies.findOne({_id: familyId})
   return r ? r.name : null
 })
 
 Template.registerHelper('myOrchardName', function(orchardId) {
   if (!orchardId) return
-  let r = MyOrchards.findOne({_id:orchardId})
+  let r = MyOrchards.findOne({_id: orchardId})
   return r ? r.name : null
 })

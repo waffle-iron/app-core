@@ -93,3 +93,22 @@ img {
 .homepage-feature-img {
   margin-top: 30px;
 }
+
+
+.exposition-icon .fa {
+  font-size: 3em;
+  margin-right: 1em;
+  color: #CDCDCD;
+}
+
+.exposition-icon .fa.fa-sun-o.active {
+  font-size: 3em;
+  margin-right: 1em;
+  color: #FDD021;
+}
+
+.exposition-icon .fa.fa-tint.active {
+  font-size: 3em;
+  margin-right: 1em;
+  color: #2799D7;
+}

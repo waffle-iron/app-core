@@ -179,86 +179,37 @@
   </div>
 
   <div class="row">
-    <div class="col-sm-12">
+    <div class="col-sm-6">
       <div class="panel panel-default">
         <div class="panel-heading">
-          <h3 class="panel-title">Sol y sombra</h3>
+          <h3 class="panel-title">Sol</h3>
         </div>
-        <table class="table">
-          <tbody>
-            <tr>
-              <td width="65%">
-                Grado de exposición al sol
-              </td>
-              <td>
-                {{stars crop.sun.sunExposition}} ️
-              </td>
-            </tr>
-            <tr>
-              <td>
-              </td>
-              <td>
-                {{#if crop.sun.sunExpositionDescription}}
-                  {{crop.sun.sunExpositionDescription}}
-                {{else}}
-                  -
-                {{/if}}
-              </td>
-            </tr>
-            <tr>
-              <td>
-                Grado de exposición a la sombra
-              </td>
-              <td>
-                {{moons crop.sun.shadowExposition}}
-              </td>
-            </tr>
-            <tr>
-              <td>
-              </td>
-              <td>
-                {{#if crop.sun.shadowExpositionDescription}}
-                  {{crop.sun.shadowExpositionDescription}}
-                {{else}}
-                  -
-                {{/if}}
-              </td>
-            </tr>
-          </tbody>
-        </table>
+        <div class="panel-body exposition-icon">
+          {{{expositionIcon 'fa-sun-o' crop.sun.exposition 5}}}
+
+          {{#if crop.sun.description}}
+            <br>
+            <br>
+            <p>{{crop.sun.description}}</p>
+          {{/if}}
+        </div>
       </div>
     </div>
-  </div>
 
-  <div class="row">
-    <div class="col-sm-12">
+    <div class="col-sm-6">
       <div class="panel panel-default">
         <div class="panel-heading">
-          <h3 class="panel-title">Regado</h3>
+          <h3 class="panel-title">Agua</h3>
         </div>
-        <table class="table">
-          <tbody>
-            <tr>
-              <td width="65%">
-                Grado de regado
-              </td>
-              <td>
-                {{water crop.water.exposition}} ️
-              </td>
-            </tr>
-            <tr>
-              <td>
-              </td>
-              <td>
-                {{#if crop.water.expositionDescription}}
-                  {{crop.water.expositionDescription}}
-                {{else}}
-                  -
-                {{/if}}
-              </td>
-            </tr>
-          </tbody>
-        </table>
+        <div class="panel-body exposition-icon">
+          {{{expositionIcon 'fa-tint' crop.water.exposition 5}}}
+
+          {{#if crop.water.description}}
+            <br>
+            <br>
+            <p>{{crop.water.description}}</p>
+          {{/if}}
+        </div>
       </div>
     </div>
   </div>
