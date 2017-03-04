@@ -20,12 +20,6 @@
 
 Herbs = new Mongo.Collection("herb");
 
-Herbs.allow({
-  insert: function () { return !!Meteor.user(); },
-  update: function () { return !!Meteor.user(); },
-  remove: function () { return !!Meteor.user(); }
-});
-
 // Define the schema
 Herbschema = new SimpleSchema({
   name: {

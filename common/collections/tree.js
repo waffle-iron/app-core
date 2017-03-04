@@ -20,12 +20,6 @@
 
 Trees = new Mongo.Collection("tree");
 
-Trees.allow({
-  insert: function () { return !!Meteor.user(); },
-  update: function () { return !!Meteor.user(); },
-  remove: function () { return !!Meteor.user(); }
-});
-
 // Define the schema
 TreesSchema = new SimpleSchema({
   familyId: {

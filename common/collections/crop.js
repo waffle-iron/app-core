@@ -27,12 +27,6 @@
 
 Crops = new Mongo.Collection('crop')
 
-Crops.allow({
-  insert: function () { return !!Meteor.user() },
-  update: function () { return !!Meteor.user() },
-  remove: function () { return !!Meteor.user() }
-})
-
 // Define the schema
 CropSchema = new SimpleSchema({
   name: {
