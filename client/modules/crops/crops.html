@@ -40,15 +40,15 @@
     <div class="thumbnail">
       <a href="{{pathFor 'crops.one'}}">
         {{#if highlightedImage}}
-          <img src="{{highlightedImage}}" alt="{{variant}}" title="{{variant}}">   
+          <img src="{{highlightedImage}}" alt="{{variant}}" title="{{variant}}">
         {{else}}
-          <img src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9InllcyI/PjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB3aWR0aD0iMjQyIiBoZWlnaHQ9IjIwMCIgdmlld0JveD0iMCAwIDI0MiAyMDAiIHByZXNlcnZlQXNwZWN0UmF0aW89Im5vbmUiPjwhLS0KU291cmNlIFVSTDogaG9sZGVyLmpzLzEwMCV4MjAwCkNyZWF0ZWQgd2l0aCBIb2xkZXIuanMgMi42LjAuCkxlYXJuIG1vcmUgYXQgaHR0cDovL2hvbGRlcmpzLmNvbQooYykgMjAxMi0yMDE1IEl2YW4gTWFsb3BpbnNreSAtIGh0dHA6Ly9pbXNreS5jbwotLT48ZGVmcz48c3R5bGUgdHlwZT0idGV4dC9jc3MiPjwhW0NEQVRBWyNob2xkZXJfMTU5NTU0MTI3MjggdGV4dCB7IGZpbGw6I0FBQUFBQTtmb250LXdlaWdodDpib2xkO2ZvbnQtZmFtaWx5OkFyaWFsLCBIZWx2ZXRpY2EsIE9wZW4gU2Fucywgc2Fucy1zZXJpZiwgbW9ub3NwYWNlO2ZvbnQtc2l6ZToxMnB0IH0gXV0+PC9zdHlsZT48L2RlZnM+PGcgaWQ9ImhvbGRlcl8xNTk1NTQxMjcyOCI+PHJlY3Qgd2lkdGg9IjI0MiIgaGVpZ2h0PSIyMDAiIGZpbGw9IiNFRUVFRUUiLz48Zz48dGV4dCB4PSI4OS44NTE1NjI1IiB5PSIxMDUuMzYyNSI+MjQyeDIwMDwvdGV4dD48L2c+PC9nPjwvc3ZnPg==" alt="{{variant}}" title="{{variant}}">   
+          <img src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9InllcyI/PjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB3aWR0aD0iMjQyIiBoZWlnaHQ9IjIwMCIgdmlld0JveD0iMCAwIDI0MiAyMDAiIHByZXNlcnZlQXNwZWN0UmF0aW89Im5vbmUiPjwhLS0KU291cmNlIFVSTDogaG9sZGVyLmpzLzEwMCV4MjAwCkNyZWF0ZWQgd2l0aCBIb2xkZXIuanMgMi42LjAuCkxlYXJuIG1vcmUgYXQgaHR0cDovL2hvbGRlcmpzLmNvbQooYykgMjAxMi0yMDE1IEl2YW4gTWFsb3BpbnNreSAtIGh0dHA6Ly9pbXNreS5jbwotLT48ZGVmcz48c3R5bGUgdHlwZT0idGV4dC9jc3MiPjwhW0NEQVRBWyNob2xkZXJfMTU5NTU0MTI3MjggdGV4dCB7IGZpbGw6I0FBQUFBQTtmb250LXdlaWdodDpib2xkO2ZvbnQtZmFtaWx5OkFyaWFsLCBIZWx2ZXRpY2EsIE9wZW4gU2Fucywgc2Fucy1zZXJpZiwgbW9ub3NwYWNlO2ZvbnQtc2l6ZToxMnB0IH0gXV0+PC9zdHlsZT48L2RlZnM+PGcgaWQ9ImhvbGRlcl8xNTk1NTQxMjcyOCI+PHJlY3Qgd2lkdGg9IjI0MiIgaGVpZ2h0PSIyMDAiIGZpbGw9IiNFRUVFRUUiLz48Zz48dGV4dCB4PSI4OS44NTE1NjI1IiB5PSIxMDUuMzYyNSI+MjQyeDIwMDwvdGV4dD48L2c+PC9nPjwvc3ZnPg==" alt="{{variant}}" title="{{variant}}">
         {{/if}}
       </a>
       <div class="caption">
         <h3><a href="{{pathFor 'crops.one'}}">{{variant}}</a></h3>
         <p>{{monthName seedTime.from}} ~ {{monthName harvestTime.from}}</p>
-        
+
         {{#if isInRole 'super-admin,admin,editor'}}
           <a class="btn btn-default" href="{{pathFor 'crops.one.edit'}}">Editar</a>
           <a class="btn btn-danger remove-item" href="#">Eliminar</a>
@@ -60,7 +60,7 @@
     <!-- <div class="panel panel-default">
       <div class="panel-heading"><a href="{{pathFor 'crops.one'}}">{{variant}}</a></div>
       <div class="panel-body">
-        
+
         <p>{{monthName seedTime.from}} ~ {{monthName harvestTime.from}}</p>
 
         {{#if isInRole 'super-admin,admin,editor'}}
@@ -77,7 +77,7 @@
 <template name="cropsView">
 
   <h2 class="page-header">{{crop.variant}}</h2>
-  
+
   <div class="row">
     <div class="col-md-6">
       <div class="panel panel-default">
@@ -86,7 +86,11 @@
         </div>
         <ul class="list-group">
           <li class="list-group-item">{{crop.name}}</li>
-          <li class="list-group-item">{{familyName crop.family}}</li>
+
+          {{#if familyName crop.family}}
+            <li class="list-group-item">{{familyName crop.family}}</li>
+          {{/if}}
+
           {{#if crop.coldSupport}}
             <li class="list-group-item">Resistencia al frío. Mínimo {{crop.coldSupport}} grados.</li>
           {{/if}}
@@ -95,7 +99,7 @@
     </div>
 
     {{> resourcesList crop}}
-    
+
   </div>
 
   <div class="row">
@@ -309,7 +313,7 @@
       </div>
     </div>
   {{/if}}
-  
+
 </template>
 
 <template name="cropsAdd">
