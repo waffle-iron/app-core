@@ -212,21 +212,13 @@ CropSchema = new SimpleSchema({
   'sun.sunExposition': {
     type: Number,
     label: 'Grado de exposición al sol',
-    optional: true
+    optional: true,
+    min: 0,
+    max: 5
   },
   'sun.sunExpositionDescription': {
     type: String,
     label: 'Grado de exposición al sol',
-    optional: true
-  },
-  'sun.shadowExposition': {
-    type: Number,
-    label: 'Grado de exposición a la sombra',
-    optional: true
-  },
-  'sun.shadowExpositionDescription': {
-    type: String,
-    label: 'Grado de exposición a la sombra',
     optional: true
   },
   'water': {
@@ -237,6 +229,8 @@ CropSchema = new SimpleSchema({
   'water.exposition': {
     type: Number,
     decimal: true,
+    min: 0,
+    max: 5,
     label: 'Grado de regado',
     optional: true
   },
