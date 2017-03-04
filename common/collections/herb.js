@@ -27,6 +27,11 @@ Herbschema = new SimpleSchema({
     label: "Nombre",
     max: 200
   },
+  binomial: {
+    type: String,
+    label: 'Nombre científico',
+    optional: true
+  },
   associations: {
     type: Object,
     label: "Asociaciones",
