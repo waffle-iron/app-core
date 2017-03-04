@@ -64,6 +64,11 @@ CropSchema = new SimpleSchema({
     },
     optional: true
   },
+  binomial: {
+    type: String,
+    label: 'Nombre científico',
+    optional: true
+  },
   seedTime: {
     type: Object,
     label: 'Siembra',
@@ -110,6 +115,11 @@ CropSchema = new SimpleSchema({
     type: Boolean,
     optional: true
   },
+  'seedingType._ok': {
+    label: 'Datos analizados',
+    type: Boolean,
+    optional: true
+  },
   harvestTime: {
     type: Object,
     label: 'Cosecha',
@@ -118,6 +128,14 @@ CropSchema = new SimpleSchema({
   'harvestTime.from': {
     type: Number,
     label: 'Desde',
+    autoform: {
+      options: () => monthSelector
+    },
+    optional: true
+  },
+  'harvestTime.to': {
+    type: Number,
+    label: 'Hasta',
     autoform: {
       options: () => monthSelector
     },
