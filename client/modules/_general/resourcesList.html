@@ -1,59 +1,52 @@
 <template name="resourcesList">
-  <div class="col-md-6">
-    <div class="panel panel-default">
-      <div class="panel-heading">
-        <h3 class="panel-title">Recursos</h3>
-      </div>
-      <ul class="list-group">
-        {{#each info.seed}}
-          {{#if url}}
-            <li class="list-group-item">
-              {{#if isVideo}}
-                <i class="fa fa-youtube-play" aria-hidden="true"></i>
-              {{else}}
-                <i class="fa fa-globe" aria-hidden="true"></i>
-              {{/if}}
-              <a href="{{url}}" target="_blank">{{name}}</a>
-            </li>
+  <ul class="list-group">
+    {{#each info.seed}}
+      {{#if url}}
+        <li class="list-group-item">
+          {{#if isVideo}}
+            <i class="fa fa-youtube-play" aria-hidden="true"></i>
+          {{else}}
+            <i class="fa fa-globe" aria-hidden="true"></i>
           {{/if}}
-        {{/each}}
-        {{#each info.seeding}}
-          {{#if url}}
-            <li class="list-group-item">
-              {{#if isVideo}}
-                <i class="fa fa-youtube-play" aria-hidden="true"></i>
-              {{else}}
-                <i class="fa fa-globe" aria-hidden="true"></i>
-              {{/if}}
-              <a href="{{url}}" target="_blank">{{name}}</a>
-            </li>
+          <a href="{{url}}" target="_blank">{{name}}</a>
+        </li>
+      {{/if}}
+    {{/each}}
+    {{#each info.seeding}}
+      {{#if url}}
+        <li class="list-group-item">
+          {{#if isVideo}}
+            <i class="fa fa-youtube-play" aria-hidden="true"></i>
+          {{else}}
+            <i class="fa fa-globe" aria-hidden="true"></i>
           {{/if}}
-        {{/each}}
-        {{#each info.harvest}}
-          {{#if url}}
-            <li class="list-group-item">
-              {{#if isVideo}}
-                <i class="fa fa-youtube-play" aria-hidden="true"></i>
-              {{else}}
-                <i class="fa fa-globe" aria-hidden="true"></i>
-              {{/if}}
-              <a href="{{url}}" target="_blank">{{name}}</a>
-            </li>
+          <a href="{{url}}" target="_blank">{{name}}</a>
+        </li>
+      {{/if}}
+    {{/each}}
+    {{#each info.harvest}}
+      {{#if url}}
+        <li class="list-group-item">
+          {{#if isVideo}}
+            <i class="fa fa-youtube-play" aria-hidden="true"></i>
+          {{else}}
+            <i class="fa fa-globe" aria-hidden="true"></i>
           {{/if}}
-        {{/each}}
-        {{#each info.general}}
-          {{#if url}}
-            <li class="list-group-item">
-              {{#if isVideo}}
-                <i class="fa fa-youtube-play" aria-hidden="true"></i>
-              {{else}}
-                <i class="fa fa-globe" aria-hidden="true"></i>
-              {{/if}}
-              <a href="{{url}}" target="_blank">{{name}}</a>
-            </li>
+          <a href="{{url}}" target="_blank">{{name}}</a>
+        </li>
+      {{/if}}
+    {{/each}}
+    {{#each info.general}}
+      {{#if url}}
+        <li class="list-group-item">
+          {{#if isVideo}}
+            <i class="fa fa-youtube-play" aria-hidden="true"></i>
+          {{else}}
+            <i class="fa fa-globe" aria-hidden="true"></i>
           {{/if}}
-        {{/each}}
-      </ul>
-    </div>
-  </div>
+          <a href="{{url}}" target="_blank">{{name}}</a>
+        </li>
+      {{/if}}
+    {{/each}}
+  </ul>
 </template>

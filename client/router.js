@@ -180,6 +180,26 @@ Router.route('/crops', function () {
   title: 'Cultivos'
 })
 
+Router.route('/crops/maintenance', function () {
+  this.render('cropsMaintenance')
+}, {
+  subscriptions: function() {
+    return [
+      Meteor.subscribe('Crops')
+    ]
+  },
+  data: function() {
+    if (this.ready) {
+      return {
+        crops: Crops.find({}, {sort: {name: 1}})
+      }
+    }
+  },
+  name: 'crops.maintenance',
+  parent: 'crops.index',
+  title: 'Mantenimiento de cultivos'
+})
+
 Router.route('/crops/calendar', function () {
   this.render('cropsCalendar')
 }, {
