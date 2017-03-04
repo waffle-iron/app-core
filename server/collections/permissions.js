@@ -29,6 +29,12 @@ Crops.allow({
   remove: () => onlySuperAdmin()
 })
 
+Pests.allow({
+  insert: () => onlySuperAdmin(),
+  update: () => onlySuperAdmin(),
+  remove: () => onlySuperAdmin()
+})
+
 CropFamilies.allow({
   insert: () => onlySuperAdmin(),
   update: () => onlySuperAdmin(),
