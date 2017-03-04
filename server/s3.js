@@ -19,8 +19,8 @@
  */
 
 S3.config = {
-  key: process.env.AWS_S3_KEY,
-  secret: process.env.AWS_S3_SECRET,
-  bucket: process.env.AWS_S3_BUCKET_NAME,
-  region: process.env.AWS_S3_REGION_NAME
+  key: process.env.AWS_S3_KEY || 'AWS_S3_KEY',
+  secret: process.env.AWS_S3_SECRET || 'AWS_S3_SECRET',
+  bucket: process.env.AWS_S3_BUCKET_NAME || 'my-bucket-name',
+  region: process.env.AWS_S3_REGION_NAME || 'eu-west-1'
 }
