@@ -22,16 +22,16 @@
 
 let fakeData = () => {
 
+  // Import crops
   if (Crops.find().count() === 0) {
-    // Load crop file
-    try {
-      let crops = JSON.parse(Assets.getText('crops.json'))
-      _.map(crops, (crop) => {
-        Crops.insert(crop)
-      })
-    } catch (ex) {
-      console.log('ex', ex)
-    }
+    let crops = JSON.parse(Assets.getText('crops.json'))
+    _.map(crops, (crop) => { Crops.insert(crop) })
+  }
+
+  // Import crop families
+  if (CropFamilies.find().count() === 0) {
+    let families = JSON.parse(Assets.getText('cropfamily.json'))
+    _.map(families, (family) => { CropFamilies.insert(family) })
   }
 
   if (Meteor.users.find().count() !== 0) {
