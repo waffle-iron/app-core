@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2016-2016 "Jose Constela" [jose@joseconstela.com]
+ * Copyright (c) 2016-2017 "Jose Constela" [jose@joseconstela.com]
  * Tiempo de Siembra [http://app.tiempodesiembra.es]
  *
  * This file is part of iempo de Siembra core's app.
