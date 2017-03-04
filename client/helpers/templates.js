@@ -46,7 +46,10 @@ Template.registerHelper('expositionIcon', (faClass, number, max) => {
   let r = ''
   if (!max) max = 5
 
-  if (typeof number === 'undefined') { return '' }
+  if (typeof number === 'undefined') {
+    faClass = 'fa-question'
+    number = 0
+  }
 
   for(var i = 0; i < max; i++) {
     let active = i < number ? 'active' : ''
