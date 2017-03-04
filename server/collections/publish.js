@@ -1,3 +1,23 @@
+/**
+ * Copyright (c) 2016-2016 "Jose Constela" [jose@joseconstela.com]
+ * Tiempo de Siembra [http://app.tiempodesiembra.es]
+ *
+ * This file is part of iempo de Siembra core's app.
+ *
+ * Tiempo de Siembra is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU Affero General Public License as
+ * published by the Free Software Foundation, either version 3 of the
+ * License, or (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU Affero General Public License for more details.
+ *
+ * You should have received a copy of the GNU Affero General Public License
+ * along with this program. If not, see <http://www.gnu.org/licenses/>.
+ */
+
 Meteor.publish('directory', function (userId) {
   if (!userId) return
   return Meteor.users.find({_id:userId}, {fields: {profile: 1}});
@@ -78,7 +98,7 @@ Meteor.publish('MyOrchards', function (userId, myOrchardId) {
 })
 
 Meteor.publish('MyPlants', function(userId, orchardId, benchId) {
-  let q = { 
+  let q = {
     userId: userId
   }
 
@@ -136,7 +156,7 @@ Meteor.publish('MyTrees', function(userId, myOrchardId, mytreeId) {
 })
 
 Meteor.publish('MyBenchs', function(userId, myOrchardId, mybenchId) {
-  
+
   let q = {userId: userId}
 
   if (!this.userId || this.userId !== userId) {
