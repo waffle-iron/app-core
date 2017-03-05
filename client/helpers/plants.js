@@ -39,3 +39,9 @@ Template.registerHelper('incompatiblePlants', function(plant) {
   })
   return r;
 })
+
+Template.registerHelper('plantProperty', function(plantId, property) {
+  if (!plantId) return
+  const plant = MyPlants.findOne({_id:plantId})
+  return plant ? plant[property] : null
+})

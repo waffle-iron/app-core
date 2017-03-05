@@ -23,13 +23,23 @@
     <div class="panel-body">
       <div class="pull-right">
         {{moment 'shortest' createdAt}}
-        <a class="btn btn-xs btn-danger remove-item" href="#">
-          <i class="fa fa-trash"></i>
-        </a>
         {{#if canEdit .}}
+          <a class="btn btn-xs btn-danger remove-item" href="#">
+            <i class="fa fa-trash"></i>
+          </a>
           {{> shareToggle type="logEntry" _id=_id public=public}}
         {{/if}}
       </div>
+
+      {{#if isEq type 'bench'}}
+        <span class="label label-primary">bancal {{benchProperty typeId 'name'}}</span>
+      {{else if isEq type 'orchard'}}
+        🚜 Huerta <span class="label label-primary">{{orchardProperty typeId 'name'}}</span>
+      {{else if isEq type 'plant'}}
+        🌱 Planta <span class="label label-primary">{{plantProperty typeId 'name'}}</span>
+      {{else if isEq type 'tree'}}
+        🌳 Árbol <span class="label label-primary">{{treeProperty typeId 'name'}}</span>
+      {{/if}}
       {{message}}
     </div>
   </div>

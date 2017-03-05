@@ -961,6 +961,7 @@ Router.route('/:userId', function () {
   subscriptions: function () {
     return [
       Meteor.subscribe('directory', this.params.userId),
+      Meteor.subscribe('MyBenchsNames', this.params.userId),
       Meteor.subscribe('MyOrchards', this.params.userId),
       Meteor.subscribe('MyPlants', this.params.userId),
       Meteor.subscribe('MyLogEntries', this.params.userId),

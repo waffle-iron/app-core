@@ -136,7 +136,7 @@ Meteor.publish('MyLogEntries', function(userId, type, typeId) {
     q.typeId = typeId
   }
 
-  return MyLogEntries.find(q, {fields: { type: false, typeId: false }})
+  return MyLogEntries.find(q)
 })
 
 Meteor.publish('MyTrees', function(userId, myOrchardId, mytreeId) {
