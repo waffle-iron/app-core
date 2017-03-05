@@ -5,11 +5,13 @@
     {{> toolUuid}}
     {{#if canEdit myBench}}
       <div class="pull-right">
-        {{> myOrchardsBenchsViewShareToggle}}
         <button type="button" data-toggle="modal" data-target="#plant-modal-insert" class="btn-default btn">
           Añadir planta
         </button>
-        <a href="{{pathFor 'myorchards.one.benchs.one.edit' _id=myOrchard._id bench=myBench._id userId=userId}}" class="btn btn-success">Editar</a>
+        <a href="{{pathFor 'myorchards.one.benchs.one.edit' _id=myOrchard._id bench=myBench._id userId=userId}}" class="btn btn-primary">
+          <i class="fa fa-pencil"></i>
+        </a>
+        {{> myOrchardsBenchsViewShareToggle}}
       </div>
     {{/if}}
   </h2>

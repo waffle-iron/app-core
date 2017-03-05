@@ -24,6 +24,11 @@ Template.myOrchardsBenchsViewPlantsItem.events({
     e.stopPropagation()
     Session.set('MyPlantsUpdatingId', this._id)
     $('#plant-modal-update').modal('show')
+  },
+  'click .remove-item': function(event, template){
+    if (confirm('¿Eliminar esta planta?')) {
+      Meteor.call('myPlants-remove', template.data._id)
+    }
   }
 })
 

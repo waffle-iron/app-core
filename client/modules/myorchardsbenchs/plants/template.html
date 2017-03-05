@@ -19,6 +19,9 @@
 
       {{#if canEdit this}}
         <div class="pull-right">
+          <a class="btn btn-xs btn-danger remove-item" href="#">
+            <i class="fa fa-trash"></i>
+          </a>
           <a href="#" class="btn btn-primary btn-xs fa fa-pencil plant-modal-update"></a>
           {{> shareToggle type="plant" _id=_id public=public}}
         </div>
