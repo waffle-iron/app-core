@@ -19,8 +19,23 @@
  */
 
 Meteor.publish('directory', function (userId) {
+
+  let fields = {
+    'services.twitter.profile_image_url_https': true,
+    'services.facebook.id': true,
+    'services.google.picture': true,
+    'services.github.username': true,
+    'services.instagram.profile_picture': true,
+    'services.linkedin.pictureUrl': true,
+    'profile.firstName': true,
+    'profile.lastName': true,
+    'profile.familyName': true,
+    'profile.secondName': true,
+    'profile.name': true
+  }
+
   if (!userId) return
-  return Meteor.users.find({_id: userId}, {fields: {profile: 1}})
+  return Meteor.users.find({_id: userId}, {fields: fields})
 })
 
 Meteor.publish('Crops', (cropId) => {

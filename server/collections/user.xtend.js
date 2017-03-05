@@ -19,9 +19,25 @@
  */
 
 Meteor.publish('userData', function () {
+
+  let fields = {
+    'services.twitter.profile_image_url_https': true,
+    'services.facebook.id': true,
+    'services.google.picture': true,
+    'services.github.username': true,
+    'services.instagram.profile_picture': true,
+    'services.linkedin.pictureUrl': true,
+    'profile.firstName': true,
+    'profile.lastName': true,
+    'profile.familyName': true,
+    'profile.secondName': true,
+    'profile.name': true,
+    'geo': true
+  }
+
   if (this.userId) {
     return Meteor.users.find({_id: this.userId},
-                             {fields: {'geo': 1}})
+                             {fields: fields})
   } else {
     this.ready()
   }

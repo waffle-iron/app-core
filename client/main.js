@@ -29,7 +29,6 @@ _ = lodash
 
 Avatar.setOptions({
   fallbackType: 'initials',
-  customImageProperty : 'profile.avatarUrl',
   imageSizes: {
     'xlarge': '400'
   }

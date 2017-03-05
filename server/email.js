@@ -24,6 +24,11 @@ Accounts.config({
 
 Accounts.validateLoginAttempt(function(attempt) {
   var user = attempt.user;
+
+  if (!user.emails) {
+    return true;
+  }
+
   if (!!user && !user.emails[0].verified) {
     throw new Meteor.Error(403, 'Necesitas verificar tu correo electrónico. Revisa el email que te hemos enviado.');
   }
