@@ -29,6 +29,7 @@ Router.configure({
 Router.onBeforeAction(function () {
   if (!!this.params.userId) {
     Session.set('userId', this.params.userId)
+    Session.set('orchardId', this.params._id)
     Meteor.subscribe('directory', this.params.userId)
   }
   this.next()
@@ -773,7 +774,7 @@ Router.route('/:userId/myorchards/:_id/trees/:tree', function () {
         }),
         myTree: MyTrees.findOne({
           _id: this.params.tree
-        }),
+        })
       }
     }
   },
@@ -842,7 +843,7 @@ Router.route('/:userId/myorchards/:_id/benchs/:bench', function () {
   subscriptions: function () {
     return [
       Meteor.subscribe('MyOrchards', this.params.userId, this.params._id),
-      Meteor.subscribe('MyBenchs', this.params.userId, this.params._id, this.params.bench),
+      Meteor.subscribe('MyBenchsNames', this.params.userId, this.params._id, this.params.bench),
       Meteor.subscribe('MyPlants', this.params.userId, null, this.params.bench),
       Meteor.subscribe('MyLogEntries', this.params.userId, 'bench', this.params.bench),
       Meteor.subscribe('CropsNames')
@@ -953,7 +954,6 @@ Router.route('/:userId/myorchards/trees/:_id/edit', function () {
   parent: 'myorchards.index',
   title: 'Editar árbol'
 })
-
 
 Router.route('/:userId', function () {
   this.render('profileIndex')

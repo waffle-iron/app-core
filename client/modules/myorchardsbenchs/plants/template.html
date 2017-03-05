@@ -3,9 +3,9 @@
   {{#each myPlants}}
     {{> myOrchardsBenchsViewPlantsItem}}
   {{/each}}
-  
-  {{> myOrchardsBenchsViewPlantsModalInsert}}
-  {{> myOrchardsBenchsViewPlantsModalUpdate}}
+
+  {{> myPlantsModalInsert}}
+  {{> myPlantsModalUpdate}}
 
 </template>
 
@@ -37,71 +37,5 @@
         {{description}}
       </div>
     {{/if}}
-  </div>
-</template>
-
-<template name="myOrchardsBenchsViewPlantsModalUpdate">
-  <div class="modal fade" id="plant-modal-update" tabindex="-1" role="dialog">
-    <div class="modal-dialog" role="document">
-      {{#autoForm collection="MyPlants" id="myPlantsUpdate" type="update" doc=doc}}
-        <div class="modal-content">
-          <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-            <h4 class="modal-title">Actualizar planta</h4>
-          </div>
-          <div class="modal-body">
-            <div class="row">
-              <div class="col-md-12">
-                {{> afQuickField name='cropId'}}
-                {{> afQuickField name='name'}}
-                {{> afQuickField name='orchardId' type='hidden' value=myOrchard._id}}
-                {{> afQuickField name='benchId' type='hidden' value=myBench._id}}
-                {{> afQuickField name='seedTime' type="bootstrap-datepicker"}}
-              </div>
-              <div class="col-md-12">
-                {{> afQuickField name='description'}}
-              </div>
-            </div>
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
-            <button type="submit" class="btn btn-primary">Actualizar</button>
-          </div>
-        </div>
-      {{/autoForm}}
-    </div>
-  </div>
-</template>
-
-<template name="myOrchardsBenchsViewPlantsModalInsert">
-  <div class="modal fade" id="plant-modal-insert" tabindex="-1" role="dialog">
-    <div class="modal-dialog" role="document">
-      {{#autoForm collection="MyPlants" id="myPlantsInsert" type="insert"}}
-        <div class="modal-content">
-          <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-            <h4 class="modal-title">Añadir planta</h4>
-          </div>
-          <div class="modal-body">
-            <div class="row">
-              <div class="col-md-12">
-                {{> afQuickField name='cropId'}}
-                {{> afQuickField name='name'}}
-                {{> afQuickField name='orchardId' type='hidden' value=myOrchard._id}}
-                {{> afQuickField name='benchId' type='hidden' value=myBench._id}}
-                {{> afQuickField name='seedTime' type="bootstrap-datepicker"}}
-              </div>
-              <div class="col-md-12">
-                {{> afQuickField name='description'}}
-              </div>
-            </div>
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
-            <button type="submit" class="btn btn-primary">Añadir</button>
-          </div>
-        </div>
-      {{/autoForm}}
-    </div>
   </div>
 </template>

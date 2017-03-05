@@ -18,24 +18,32 @@
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
-Template.myOrchardsBenchsViewPlantsItem.events({
-  'click .plant-modal-update': function(e) {
-    e.preventDefault()
-    e.stopPropagation()
-    Session.set('MyPlantsUpdatingId', this._id)
-    $('#plant-modal-update').modal('show')
+Template.myPlantsModalUpdate.helpers({
+  doc: () => {
+    return MyPlants.findOne({_id: Session.get('MyPlantsUpdatingId')})
   }
 })
 
-Template.myOrchardsBenchsViewSidebar.helpers({
-  recommendations: function() {
-    if (this.myPlants.fetch()) {
-      var ids = _.map(this.myPlants.fetch(), 'cropId');
-      Meteor.call('cropRecomendations', ids, (error, result) => {
-        if (error) {}
-        Session.set('cropRecomendations', result)
-      })
+Template.myPlantsModalUpdate.onRendered(function () {
+  Meteor.subscribe('MyOrchardsNames', Session.get('userId'))
+  Meteor.subscribe('MyBenchsNames', Session.get('userId'))
+})
+
+Template.myPlantsModalUpdate.events({
+  'change [name="orchardId"]': (event) => {
+    let value = $(event.target).val()
+    if (value) {
+      Session.set('MyPlantsUpdatingOrchardId', value)
     }
-    return Session.get('cropRecomendations') || []
+  }
+})
+
+Template.myPlantsModalUpdate.helpers({
+  benchs: function() {
+    return MyBenchs.find({
+      orchardId: Session.get('MyPlantsUpdatingOrchardId') || Session.get('orchardId')
+    }).map( (c) => {
+      return {label: `${c.name}`, value: c._id}
+    })
   }
 })

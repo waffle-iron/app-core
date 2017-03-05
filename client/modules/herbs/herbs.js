@@ -18,12 +18,6 @@
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
-Template.herbsAdd.rendered = function() {
-}
-
-Template.herbsEdit.rendered = function() {
-}
-
 Template.herbsView.events({
   "click [data-action=herb]": function(event, template){
     Router.go('herbs.one', {_id: $(event.target).data('herbid')});

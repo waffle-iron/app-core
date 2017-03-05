@@ -45,8 +45,13 @@ MyPlantsSchema = new SimpleSchema({
     optional: true,
     max: 20,
     autoform: {
-      type: 'hidden'
-    }
+      options: () => {
+        return MyOrchards.find().map( (c) => {
+          return {label: `${c.name}`, value: c._id}
+        })
+      }
+    },
+    label: "Huerto"
   },
   benchId: {
     type: String,

@@ -20,11 +20,10 @@
 
 Meteor.publish('directory', function (userId) {
   if (!userId) return
-  return Meteor.users.find({_id:userId}, {fields: {profile: 1}});
-});
+  return Meteor.users.find({_id: userId}, {fields: {profile: 1}})
+})
 
 Meteor.publish('Crops', (cropId) => {
-
   let q = {}
 
   if (cropId) {
@@ -35,20 +34,20 @@ Meteor.publish('Crops', (cropId) => {
 })
 
 Meteor.publish('CropsResume', (cropId) => {
-
   let q = {}
 
   if (cropId) {
     q._id = cropId
   }
 
-  let f = {
-    variant: 1,
-    highlightedImage: 1,
-    'seedTime': 1,
-    'harvestTime': 1
+  let fields = {
+    variant: true,
+    highlightedImage: true,
+    'seedTime': true,
+    'harvestTime': true
   }
-  return Crops.find(q, {fields: f})
+
+  return Crops.find(q, {fields: fields})
 })
 
 Meteor.publish('Herbs', (herbId) => {
@@ -56,10 +55,7 @@ Meteor.publish('Herbs', (herbId) => {
 })
 
 Meteor.publish('CropsNames', () => {
-
-  let q = {}
-
-  return Crops.find(q, {fields: {name: 1, variant: 1}})
+  return Crops.find({}, {fields: {name: 1, variant: 1}})
 })
 
 Meteor.publish('CropsTiming', () => {
@@ -86,15 +82,24 @@ Meteor.publish('Trees', (treeId) => {
 })
 
 Meteor.publish('MyOrchards', function (userId, myOrchardId) {
-
-  let q = myOrchardId ? {_id: myOrchardId} : {};
-      q.userId = userId;
+  let q = myOrchardId ? {_id: myOrchardId} : {}
+      q.userId = userId
 
   if (!this.userId || this.userId !== userId) {
     q.public = true
   }
 
-  return MyOrchards.find(q);
+  return MyOrchards.find(q)
+})
+
+Meteor.publish('MyOrchardsNames', function (userId, myOrchardId) {
+  let q = myOrchardId ? {_id: myOrchardId} : {}
+      q.userId = userId
+
+  if (!this.userId || this.userId !== userId) {
+    q.public = true
+  }
+  return MyOrchards.find(q, {fields: {name: true}})
 })
 
 Meteor.publish('MyPlants', function(userId, orchardId, benchId) {
@@ -143,16 +148,34 @@ Meteor.publish('MyTrees', function(userId, myOrchardId, mytreeId) {
   if (mytreeId) {
     q._id = mytreeId
     q.orchardId = myOrchardId
-    return MyTrees.find(q)
   }
 
   if (myOrchardId) {
     q.orchardId = myOrchardId
-    return MyTrees.find(q)
   }
 
   return MyTrees.find(q)
 
+})
+
+Meteor.publish('MyBenchsNames', function(userId, myOrchardId, mybenchId) {
+  let q = {userId: userId}
+  let fields = {name: true, orchardId: true}
+
+  if (!this.userId || this.userId !== userId) {
+    q.public = true
+  }
+
+  if (mybenchId) {
+    q._id = mybenchId
+    q.orchardId = myOrchardId
+  }
+
+  if (myOrchardId) {
+    q.orchardId = myOrchardId
+  }
+
+  return MyBenchs.find(q, {fields: fields})
 })
 
 Meteor.publish('MyBenchs', function(userId, myOrchardId, mybenchId) {

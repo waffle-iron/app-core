@@ -1,21 +1,31 @@
 <template name="profileIndex">
-  
+
   <div class="row">
     {{> profileSidebar}}
-    
+
     <div class="col-md-9">
 
       <!-- Nav tabs -->
       <ul class="nav nav-tabs" role="tablist">
-        <li role="presentation" class="active"><a href="#about" aria-controls="about" role="tab" data-toggle="tab">Acerca de</a></li>
+        <li role="presentation" class="active">
+          <a href="#activity" aria-controls="about" role="tab" data-toggle="tab">Actividad</a>
+        </li>
+        <li role="presentation">
+          <a href="#mythings" aria-controls="about" role="tab" data-toggle="tab">Mis huertos</a>
+        </li>
       </ul>
 
       <!-- Tab panes -->
       <div class="tab-content">
-        <div role="tabpanel" class="tab-pane active" id="about">
+        <div role="tabpanel" class="tab-pane active" id="activity">
+
+          my log entries
+
+        </div>
+        <div role="tabpanel" class="tab-pane" id="mythings">
           <div class="row">
             <div class="col-md-12">
-              
+
               <h3>Qué tengo plantado</h3>
 
               <div class="panel panel-default">
@@ -38,7 +48,7 @@
                   </tbody>
                 </table>
               </div>
-              
+
               <h3>Mis huertos</h3>
 
               {{> myOrchardsTable}}
@@ -47,7 +57,7 @@
           </div>
         </div>
       </div>
-      
+
     </div>
 
   </div>

@@ -19,8 +19,8 @@
  */
 
 Template.myOrchards.onRendered(function() {
-  GoogleMaps.load({ v: '3', key: 'AIzaSyBdHhCYmwljyGMK4qE4Bk0yO2mEKzlv6ko', libraries: 'geometry,places' });
-});
+  GoogleMaps.load({ v: '3', key: 'AIzaSyBdHhCYmwljyGMK4qE4Bk0yO2mEKzlv6ko', libraries: 'geometry,places' })
+})
 
 Template.myOrchards.helpers({
   exampleMapOptions: function() {
@@ -32,6 +32,15 @@ Template.myOrchards.helpers({
         zoom: 8
       }
     }
+  }
+})
+
+Template.myOrchardPlantsTableItem.events({
+  'click .plant-modal-update': function(e) {
+    e.preventDefault()
+    e.stopPropagation()
+    Session.set('MyPlantsUpdatingId', this._id)
+    $('#plant-modal-update').modal('show')
   }
 })
 

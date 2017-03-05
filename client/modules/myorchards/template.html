@@ -50,6 +50,7 @@
     </div>
 
     <h3>🌱 Plantas</h3>
+    {{> myPlantsModalUpdate}}
 
     <div class="row">
       <div class="col-md-12">
@@ -159,7 +160,7 @@
       {{#if name}}
         {{name}} - {{cropProperty cropId 'variant'}}
       {{else}}
-        {{cropProperty plantId 'variant'}}
+        {{cropProperty cropId 'variant'}}
       {{/if}}
     </td>
     <td>
@@ -173,12 +174,41 @@
     <td>
       <div class="pull-right">
         {{#if canEdit .}}
+          <button class="btn btn-primary btn-xs plant-modal-update">
+            <i class="fa fa-pencil"></i>
+          </button>
+          {{> shareToggle type="plant" _id=_id public=public}}
+        {{/if}}
+      </div>
+    </td>
+  </tr>
+</template>
+
+<template name="myOrchardTreesTableItem">
+  <tr>
+    <td>
+      <a href="{{pathFor "myorchards.one.trees.one" userId=userId _id=orchardId tree=_id}}">
+        {{#if name}}
+          {{name}}
+        {{else}}
+          {{treeProperty treeId 'variant'}}
+        {{/if}}
+      </a>
+    </td>
+
+    <td>
+      <a href="{{pathFor "myorchards.one" _id=orchardId userId=userId}}">{{myOrchardName orchardId}}</a>
+    </td>
+
+    <td>
+      <div class="pull-right">
+        {{#if canEdit .}}
           {{#if orchardId}}
             <a href="{{pathFor "myorchards.one.trees.one.edit" _id=orchardId tree=_id userId=userId}}" class="btn btn-primary btn-xs">
               <i class="fa fa-pencil"></i>
             </a>
           {{else}}
-            <a href="{{pathFor "myorchards.trees.one.edit" userId=userId}}">
+            <a href="{{pathFor "myorchards.trees.one.edit" userId=userId}}" class="btn btn-primary btn-xs">
               <i class="fa fa-pencil"></i>
             </a>
           {{/if}}
@@ -189,42 +219,12 @@
   </tr>
 </template>
 
-<template name="myOrchardTreesTableItem">
-  <tr>
-    <td>
-      {{#if name}}
-        {{name}}
-      {{else}}
-        {{treeProperty treeId 'variant'}}
-      {{/if}}
-    </td>
-    <td>
-      <a href="{{pathFor "myorchards.one" _id=orchardId userId=userId}}">{{myOrchardName orchardId}}</a>
-    </td>
-
-    <td>
-    {{#if canEdit .}}
-      {{#if orchardId}}
-        <a href="{{pathFor "myorchards.one.trees.one.edit" _id=orchardId tree=_id userId=userId}}" class="btn btn-primary btn-xs">
-          <i class="fa fa-pencil"></i>
-        </a>
-      {{else}}
-        <a href="{{pathFor "myorchards.trees.one.edit" userId=userId}}">
-          <i class="fa fa-pencil"></i>
-        </a>
-      {{/if}}
-      {{> shareToggle type="tree" _id=_id public=public}}
-    {{/if}}
-    </td>
-  </tr>
-</template>
-
 <template name="myOrchardsTable">
   <div class="panel panel-default">
     <table class="table valign table-condensed">
       <thead>
         <tr>
-          <th width="150">Nombre</th>
+          <th width="15%">Nombre</th>
           <th>Descripción</th>
           <th width="100px"></th>
         </tr>
