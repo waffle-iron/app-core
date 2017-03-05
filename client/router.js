@@ -843,7 +843,7 @@ Router.route('/:userId/myorchards/:_id/benchs/:bench', function () {
   subscriptions: function () {
     return [
       Meteor.subscribe('MyOrchards', this.params.userId, this.params._id),
-      Meteor.subscribe('MyBenchsNames', this.params.userId, this.params._id, this.params.bench),
+      Meteor.subscribe('MyBenchs', this.params.userId, this.params._id, this.params.bench),
       Meteor.subscribe('MyPlants', this.params.userId, null, this.params.bench),
       Meteor.subscribe('MyLogEntries', this.params.userId, 'bench', this.params.bench),
       Meteor.subscribe('CropsNames')

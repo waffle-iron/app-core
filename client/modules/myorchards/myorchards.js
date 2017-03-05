@@ -30,6 +30,22 @@ Template.myOrchardPlantsTableItem.events({
   }
 })
 
+Template.myOrchardTreesTableItem.events({
+  'click .remove-item': function(event, template){
+    if (confirm('¿Eliminar este árbol?')) {
+      Meteor.call('myTrees-remove', template.data._id)
+    }
+  }
+})
+
+Template.myOrchardPlantsTableItem.events({
+  'click .remove-item': function(event, template){
+    if (confirm('¿Eliminar esta planta?')) {
+      Meteor.call('myPlants-remove', template.data._id)
+    }
+  }
+})
+
 Template.myOrchardsTableItem.events({
   'click .remove-item': function(event, template){
     if (confirm('¿Eliminar este huerto?')) {
@@ -43,5 +59,4 @@ Template.myOrchardsTableItem.events({
       public: !this.public
     })
   }
-
 })

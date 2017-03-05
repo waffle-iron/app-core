@@ -134,6 +134,9 @@
     <td>
       <div class="pull-right">
         {{#if canEdit .}}
+          <a class="btn btn-xs btn-danger remove-item" href="#">
+            <i class="fa fa-trash"></i>
+          </a>
           {{#if orchardId}}
             <a href="{{pathFor "myorchards.one.benchs.one.edit" _id=orchardId bench=_id userId=userId}}" class="btn btn-primary btn-xs">
               <i class="fa fa-pencil"></i>
@@ -170,6 +173,9 @@
     <td>
       <div class="pull-right">
         {{#if canEdit .}}
+          <a class="btn btn-xs btn-danger remove-item" href="#">
+            <i class="fa fa-trash"></i>
+          </a>
           <button class="btn btn-primary btn-xs plant-modal-update">
             <i class="fa fa-pencil"></i>
           </button>
@@ -199,6 +205,9 @@
     <td>
       <div class="pull-right">
         {{#if canEdit .}}
+          <a class="btn btn-xs btn-danger remove-item" href="#">
+            <i class="fa fa-trash"></i>
+          </a>
           {{#if orchardId}}
             <a href="{{pathFor "myorchards.one.trees.one.edit" _id=orchardId tree=_id userId=userId}}" class="btn btn-primary btn-xs">
               <i class="fa fa-pencil"></i>
