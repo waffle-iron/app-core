@@ -18,6 +18,6 @@
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
-Template.registerHelper('checkArray', function(arr) { 
+Template.registerHelper('checkArray', (arr) => {
   return arr && arr.count()
-});
+})
