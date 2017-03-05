@@ -2,7 +2,7 @@
   <div class="row">
     <div class="col-md-12">
       <div class="panel panel-default">
-        <div class="panel-heading">Árboles</div>
+        <div class="panel-heading">🌳 Árboles</div>
         <table class="table table-condensed table-bordered">
           <tbody>
             {{#each myTrees}}
@@ -38,10 +38,10 @@
     <td width="100px">
       {{#if canEdit .}}
         <a href="#" class="btn btn-danger btn-xs remove-item">
-          <i class="fa fa-trash"></i>  
+          <i class="fa fa-trash"></i>
         </a>
         <a href="{{pathFor "myorchards.one.trees.one.edit" _id=orchardId tree=_id userId=userId}}" class="btn btn-primary btn-xs">
-          <i class="fa fa-pencil"></i>  
+          <i class="fa fa-pencil"></i>
         </a>
         {{> shareToggle type="tree" _id=_id public=public}}
       {{/if}}

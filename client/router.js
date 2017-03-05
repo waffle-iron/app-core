@@ -670,6 +670,7 @@ Router.route('/:userId/myorchards/:_id', function () {
       Meteor.subscribe('MyOrchards', this.params.userId, this.params._id),
       Meteor.subscribe('MyTrees', this.params.userId, this.params._id),
       Meteor.subscribe('MyBenchs', this.params.userId, this.params._id),
+      Meteor.subscribe('MyLogEntries', this.params.userId, 'orchard', this.params._id)
     ]
   },
   data: function () {
@@ -680,6 +681,13 @@ Router.route('/:userId/myorchards/:_id', function () {
         }),
         myOrchard: MyOrchards.findOne({
           _id: this.params._id
+        }),
+        myLogEntries: MyLogEntries.find({
+          userId: this.params.userId
+        }, {
+          sort: {
+            createdAt: -1
+          }
         }),
         myTrees: MyTrees.find({
           userId: this.params.userId,
@@ -990,6 +998,10 @@ Router.route('/:userId', function () {
         }),
         myLogEntries: MyLogEntries.find({
           userId: this.params.userId
+        }, {
+          sort: {
+            createdAt: -1
+          }
         })
       }
     }

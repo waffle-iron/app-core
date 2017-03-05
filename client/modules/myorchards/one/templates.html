@@ -1,5 +1,5 @@
 <template name="myOrchardsView">
-  
+
   <h2 class="page-header">
     Huerto: {{myOrchard.name}}
 
@@ -21,26 +21,71 @@
   {{/if}}
 
   <div class="row">
+    <div class="col-md-4">
+      {{> myOrchardsOneBenchsTable}}
+    </div>
+    <div class="col-md-4">
+      {{> myOrchardsOneTreesTable}}
+    </div>
+    <div class="col-md-4">
+      {{> myOrchardSidebar}}
+    </div>
+  </div>
 
-    {{#each myOrchard.notes}}
+  {{#each checkArray myOrchard.notes}}
+    <div class="row">
       <div class="col-md-4">
         <div class="note note-yellow">
           <p>{{.}}</p>
         </div>
       </div>
-    {{/each}}
+    </div>
+  {{/each}}
 
+</template>
+
+<template name="myOrchardSidebar">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="panel panel-default">
+        <div class="panel-heading">Acerca de</div>
+        <table class="table table-condensed table-bordered table-striped">
+          <tbody>
+            <tr>
+              <td>Creado</td>
+              <td>{{moment 'shortest' myBench.createdAt}}</td>
+            </tr>
+            <tr>
+              <td>Actualización</td>
+              <td>{{moment 'shortest' myBench.updatedAt}}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
   </div>
 
   <div class="row">
-    <div class="col-md-6">
-      {{> myOrchardsOneBenchsTable}}
-    </div>
-    <div class="col-md-6">
-      {{> myOrchardsOneTreesTable}}
+    <div class="col-md-12">
+      <div class="panel panel-default">
+        <div class="panel-heading">Actualizaciones</div>
+        {{#if canEdit myOrchard}}
+          <div class="panel-body">
+            {{#autoForm collection="MyLogEntries" id="logentryInsert" type="insert"}}
+              <fieldset>
+                {{> afQuickField name='message' label=false}}
+                {{> afQuickField name='type' value='orchard' type='hidden'}}
+                {{> afQuickField name='typeId' value=myOrchard._id type='hidden'}}
+              </fieldset>
+              <button type="submit" class="btn btn-primary">Insert</button>
+            {{/autoForm}}
+          </div>
+        {{/if}}
+
+        {{> MyLogEntriesItem}}
+      </div>
     </div>
   </div>
-
 </template>
 
 <template name="myOrchardsViewShareToggle">
