@@ -49,3 +49,7 @@ rzymek:moment-locale-es
 erasaur:meteor-lodash
 anti:fake
 utilities:avatar
+accounts-facebook
+accounts-google
+accounts-github
+accounts-twitter
