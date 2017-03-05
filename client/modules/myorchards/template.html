@@ -1,7 +1,7 @@
 <template name="myOrchards">
 
   {{#if checkArray myOrchards}}
-    
+
     <h2 class="page-header">
       Huertos
 
@@ -26,7 +26,7 @@
 
     </div>
 
-    <h3>Elementos</h3>
+    <h3>Bancales</h3>
 
     <div class="row">
       <div class="col-md-12">
@@ -34,7 +34,6 @@
           <table class="table table-condensed">
             <thead>
               <tr>
-                <th width="25px"></th>
                 <th width="15%">Nombre</th>
                 <th>Huerto</th>
                 <th width="100px"></th>
@@ -44,6 +43,50 @@
               {{#each myBenchs}}
                 {{> myOrchardBenchsTableItem}}
               {{/each}}
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <h3>🌱 Plantas</h3>
+
+    <div class="row">
+      <div class="col-md-12">
+        <div class="panel panel-default">
+          <table class="table table-condensed">
+            <thead>
+              <tr>
+                <th width="15%">Nombre</th>
+                <th>Huerto</th>
+                <th>Bancal</th>
+                <th width="100px"></th>
+              </tr>
+            </thead>
+            <tbody>
+              {{#each myPlants}}
+                {{> myOrchardPlantsTableItem}}
+              {{/each}}
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <h3>🌳 Árboles</h3>
+
+    <div class="row">
+      <div class="col-md-12">
+        <div class="panel panel-default">
+          <table class="table table-condensed">
+            <thead>
+              <tr>
+                <th width="15%">Nombre</th>
+                <th>Huerto</th>
+                <th width="100px"></th>
+              </tr>
+            </thead>
+            <tbody>
               {{#each myTrees}}
                 {{> myOrchardTreesTableItem}}
               {{/each}}
@@ -65,7 +108,7 @@
 
 <template name="myOrchardsNoContent">
   <h2 class="page-header">Administra tus huertos</h2>
-  
+
   <div class="row">
     <div class="col-md-12">
       <p>Los huertos de Tiempo de Siembra te facilitan la gestión
@@ -83,32 +126,71 @@
 
 <template name="myOrchardBenchsTableItem">
   <tr>
-    <td>🌱</td>
-    <td>{{name}}</td>
+    <td>
+      <a href="{{pathFor "myorchards.one.benchs.one" userId=userId _id=orchardId bench=_id}}">{{name}}</a>
+
+    </td>
     <td>
       <a href="{{pathFor "myorchards.one" _id=orchardId userId=userId}}">{{myOrchardName orchardId}}</a>
     </td>
 
     <td>
-      {{#if canEdit .}}
-        {{#if orchardId}}
-          <a href="{{pathFor "myorchards.one.benchs.one.edit" _id=orchardId bench=_id userId=userId}}" class="btn btn-primary btn-xs">
-            <i class="fa fa-pencil"></i>
-          </a>
-        {{else}}
-          <a href="{{pathFor "myorchards.benchs.one.edit" userId=userId}}" class="btn btn-primary btn-xs">
-            <i class="fa fa-pencil"></i>
-          </a>
+      <div class="pull-right">
+        {{#if canEdit .}}
+          {{#if orchardId}}
+            <a href="{{pathFor "myorchards.one.benchs.one.edit" _id=orchardId bench=_id userId=userId}}" class="btn btn-primary btn-xs">
+              <i class="fa fa-pencil"></i>
+            </a>
+          {{else}}
+            <a href="{{pathFor "myorchards.benchs.one.edit" userId=userId}}" class="btn btn-primary btn-xs">
+              <i class="fa fa-pencil"></i>
+            </a>
+          {{/if}}
+          {{> shareToggle type="bench" _id=_id public=public}}
         {{/if}}
-        {{> shareToggle type="bench" _id=_id public=public}}
+      </div>
+    </td>
+  </tr>
+</template>
+
+<template name="myOrchardPlantsTableItem">
+  <tr>
+    <td>
+      {{#if name}}
+        {{name}} - {{cropProperty cropId 'variant'}}
+      {{else}}
+        {{cropProperty plantId 'variant'}}
       {{/if}}
+    </td>
+    <td>
+      <a href="{{pathFor "myorchards.one" _id=orchardId userId=userId}}">{{myOrchardName orchardId}}</a>
+    </td>
+
+    <td>
+      <a href="{{pathFor "myorchards.one.benchs.one" userId=userId _id=orchardId bench=benchId}}">{{myBenchName benchId}}</a>
+    </td>
+
+    <td>
+      <div class="pull-right">
+        {{#if canEdit .}}
+          {{#if orchardId}}
+            <a href="{{pathFor "myorchards.one.trees.one.edit" _id=orchardId tree=_id userId=userId}}" class="btn btn-primary btn-xs">
+              <i class="fa fa-pencil"></i>
+            </a>
+          {{else}}
+            <a href="{{pathFor "myorchards.trees.one.edit" userId=userId}}">
+              <i class="fa fa-pencil"></i>
+            </a>
+          {{/if}}
+          {{> shareToggle type="tree" _id=_id public=public}}
+        {{/if}}
+      </div>
     </td>
   </tr>
 </template>
 
 <template name="myOrchardTreesTableItem">
   <tr>
-    <td>🌳</td>
     <td>
       {{#if name}}
         {{name}}
@@ -139,7 +221,7 @@
 
 <template name="myOrchardsTable">
   <div class="panel panel-default">
-    <table class="table valign">
+    <table class="table valign table-condensed">
       <thead>
         <tr>
           <th width="150">Nombre</th>

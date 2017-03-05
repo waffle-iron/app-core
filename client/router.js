@@ -610,7 +610,9 @@ Router.route('/:userId/myorchards', function () {
   subscriptions: function () {
     return [
       Meteor.subscribe('TreesVariants'),
+      Meteor.subscribe('CropsNames'),
       Meteor.subscribe('MyOrchards', this.params.userId),
+      Meteor.subscribe('MyPlants', this.params.userId),
       Meteor.subscribe('MyBenchs', this.params.userId),
       Meteor.subscribe('MyTrees', this.params.userId)
     ]
@@ -629,6 +631,9 @@ Router.route('/:userId/myorchards', function () {
           userId: this.params.userId
         }),
         myBenchs: MyBenchs.find({
+          userId: this.params.userId
+        }),
+        myPlants: MyPlants.find({
           userId: this.params.userId
         })
       }

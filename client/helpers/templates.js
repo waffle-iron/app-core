@@ -69,3 +69,9 @@ Template.registerHelper('myOrchardName', function(orchardId) {
   let r = MyOrchards.findOne({_id: orchardId})
   return r ? r.name : null
 })
+
+Template.registerHelper('myBenchName', function(benchId) {
+  if (!benchId) return
+  let r = MyBenchs.findOne({_id: benchId})
+  return r ? r.name : null
+})
