@@ -17,12 +17,12 @@
 <template name="treesMenu">
   <div class="row">
     <div class="col-md-4">
-  
+
       {{#if isInRole 'super-admin,admin,editor'}}
         <a class="btn btn-success" href="{{pathFor 'trees.add'}}" role="button">Añadir árbol</a>
+        <a class="btn btn-primary" href="{{urlFor 'trees.families.index'}}">Familias</a>
       {{/if}}
-      <a class="btn btn-primary" href="{{urlFor 'trees.families.index'}}">Familias</a>
-      
+
       <br>
       <br>
     </div>

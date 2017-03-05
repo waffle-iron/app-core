@@ -3,10 +3,10 @@
     Cultivos
     <div class="pull-right">
       {{#if isInRole 'super-admin,admin,editor'}}
-      <a class="btn btn-warning" href="{{pathFor 'crops.maintenance'}}" role="button">Comprobar datos</a>
-      <a class="btn btn-success" href="{{pathFor 'crops.add'}}" role="button">Añadir cultivo</a>
+        <a class="btn btn-warning" href="{{pathFor 'crops.maintenance'}}" role="button">Comprobar datos</a>
+        <a class="btn btn-success" href="{{pathFor 'crops.add'}}" role="button">Añadir cultivo</a>
+        <a class="btn btn-primary" href="{{urlFor 'crops.families.index'}}">Familias</a>
       {{/if}}
-      <a class="btn btn-primary" href="{{urlFor 'crops.families.index'}}">Familias</a>
       <a class="btn btn-primary" href="{{urlFor 'crops.calendar'}}">
         <i class="fa fa-calendar" aria-hidden="true"></i>
         Calendario
