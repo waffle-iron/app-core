@@ -17,7 +17,7 @@
       </div>
       <div id="navbar" class="navbar-collapse collapse">
         <ul class="nav navbar-nav">
-          
+
           <li class="{{#if isActive 'crops'}}active{{/if}}"><a href="{{urlFor 'crops.index'}}">Cultivos</a></li>
 
           {{#if currentUser}}
@@ -30,20 +30,6 @@
 
         <ul class="nav navbar-nav navbar-right">
           {{> loginButtons}}
-          <!-- <li>
-            <p class="navbar-btn">
-              <button type="button" data-toggle="modal" data-target="#login-modal" class="btn-link btn">
-                Acceso
-              </button>
-            </p>
-          </li>
-          <li>
-            <p class="navbar-btn">
-              <button type="button" data-toggle="modal" data-target="#signup-modal" class="btn-success btn">
-                Registrarse
-              </button>
-            </p>
-          </li> -->
         </ul>
       </div>
     </div>
@@ -52,7 +38,7 @@
   <!-- {{> loginModal}}
   {{> signupModal}} -->
 </template>
-<!-- 
+<!--
 <template name="loginModal">
   <div class="modal fade" id="login-modal" tabindex="-1" role="dialog">
     <div class="modal-dialog" width="300" role="document">

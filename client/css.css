@@ -81,7 +81,10 @@ img {
   color: #2799D7;
 }
 
-.home-anonimous {
+.bbm {
+  font-weight: bold;
+  font-size: 2.5em;
   text-align: center;
   color: #d8d8d8;
+  text-align: center;
 }

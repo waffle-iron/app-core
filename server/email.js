@@ -10,7 +10,7 @@
  * License, or (at your option) any later version.
  *
  * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * but WITHOUT ANY WARRANTY without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU Affero General Public License for more details.
  *
@@ -20,27 +20,31 @@
 
 Accounts.config({
   sendVerificationEmail: true
-});
+})
 
-Accounts.validateLoginAttempt(function(attempt) {
-  var user = attempt.user;
+Accounts.validateLoginAttempt(function (attempt) {
+  var user = attempt.user
+
+  if (!user) {
+    return false
+  }
 
   if (!user.emails) {
-    return true;
+    return true
   }
 
   if (!!user && !user.emails[0].verified) {
-    throw new Meteor.Error(403, 'Necesitas verificar tu correo electrónico. Revisa el email que te hemos enviado.');
+    throw new Meteor.Error(403, 'Necesitas verificar tu correo electrónico. Revisa el email que te hemos enviado.')
   }
-  return true;
-});
+  return true
+})
 
-Accounts.emailTemplates.siteName = "Tiempo de Siembra";
-Accounts.emailTemplates.from = "Tiempo de Siembra <no-contestes@tiempodesiembra.es>";
+Accounts.emailTemplates.siteName = 'Tiempo de Siembra'
+Accounts.emailTemplates.from = 'Tiempo de Siembra <no-contestes@tiempodesiembra.es>'
 
 Accounts.emailTemplates.resetPassword = {
   subject(user) {
-    return "Cambiar tu contraseña en Tiempo de Siembra";
+    return "Cambiar tu contraseña en Tiempo de Siembra"
   },
   text(user, url) {
     return `¡Hola!
@@ -64,11 +68,11 @@ Si no has solicitado este email, simplemente ingnóralo. <br> <br>
 El equipo detrás de Tiempo de Siembra.
 `
   }
-};
+}
 
 Accounts.emailTemplates.enrollAccount = {
   subject(user) {
-    return "Tu invitación a Tiempo de Siembra";
+    return "Tu invitación a Tiempo de Siembra"
   },
   text(user, url) {
     return `¡Hola!
@@ -88,11 +92,11 @@ ${url} <br><br>
 El equipo detrás de Tiempo de Siembra.
 `
   }
-};
+}
 
 Accounts.emailTemplates.verifyEmail = {
   subject(user) {
-    return "Verifica tu email";
+    return "Verifica tu email"
   },
   text(user, url) {
     return `¡Hola!
@@ -112,4 +116,4 @@ ${url} <br><br>
 El equipo detrás de Tiempo de Siembra.
 `
   }
-};
+}

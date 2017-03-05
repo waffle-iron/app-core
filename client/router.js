@@ -965,7 +965,7 @@ Router.route('/:userId', function () {
       Meteor.subscribe('MyOrchards', this.params.userId),
       Meteor.subscribe('MyPlants', this.params.userId),
       Meteor.subscribe('MyLogEntries', this.params.userId),
-      Meteor.subscribe('CropsResume')
+      Meteor.subscribe('CropsNames')
     ]
   },
   data: function () {

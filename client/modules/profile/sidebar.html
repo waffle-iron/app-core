@@ -7,26 +7,27 @@
         {{> avatar userId=userId size="xlarge" shape="rounded"}}
       </div>
     </div>
-    
+
     <div class="row">
       <div class="col-md-10">
         <h4>
           {{profile.profile.firstName}}
           {{profile.profile.lastName}}
         </h4>
-        
+
       </div>
     </div>
 
     {{#if isActive 'profile.edit'}}
-      
+
     {{else}}
 
       {{#if canCreate}}
         <div class="row">
           <div class="col-md-12">
             <a class="btn btn-block btn-success" href="{{pathFor 'profile.edit' userId=userId}}" role="button">
-              Editar
+              <i class="fa fa-pencil"></i>  
+              Editar mi perfil
             </a>
           </div>
         </div>
@@ -59,7 +60,7 @@
           </div>
         </div>
       </div>
-      
+
     {{/if}}
 
   </div>
