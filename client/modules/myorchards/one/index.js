@@ -33,9 +33,7 @@ Template.myOrchardsViewShareToggle.events({
 Template.myOrchardsOneTreesTableItem.events({
   "click .remove-item": function(event, template){
     if (confirm("¿Eliminar este árbol de tu huerto?")) {
-       MyTrees.remove({
-         _id: template.data._id
-       })
+       Meteor.call('myTrees-remove', template.data._id)
     }
   }
 });
@@ -43,9 +41,7 @@ Template.myOrchardsOneTreesTableItem.events({
 Template.myOrchardsOneBenchsTableItem.events({
   "click .remove-item": function(event, template){
     if (confirm("¿Eliminar este bancal de tu huerto?")) {
-       MyBenchs.remove({
-         _id: template.data._id
-       })
+      Meteor.call('myBenchs-remove', template.data._id)
     }
   }
 });

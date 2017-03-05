@@ -962,7 +962,8 @@ Router.route('/:userId', function () {
     return [
       Meteor.subscribe('directory', this.params.userId),
       Meteor.subscribe('MyOrchards', this.params.userId),
-      Meteor.subscribe('MyPlants', this.params.userId, null, null),
+      Meteor.subscribe('MyPlants', this.params.userId),
+      Meteor.subscribe('MyLogEntries', this.params.userId),
       Meteor.subscribe('CropsResume')
     ]
   },
@@ -985,6 +986,9 @@ Router.route('/:userId', function () {
           sort: {
             createdAt: -1
           }
+        }),
+        myLogEntries: MyLogEntries.find({
+          userId: this.params.userId
         })
       }
     }

@@ -26,4 +26,4 @@ Template.cropsFamiliesTableItem.events({
        })
     }
   }
-});
+})

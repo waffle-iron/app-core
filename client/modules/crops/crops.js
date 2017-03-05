@@ -18,10 +18,6 @@
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
-Template.cropsAdd.rendered = function() {}
-
-Template.cropsEdit.rendered = function() {}
-
 Template.cropsView.events({
   "click [data-action=crop]": function(event, template) {
     Router.go('crops.one', {

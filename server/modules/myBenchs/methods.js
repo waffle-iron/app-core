@@ -19,44 +19,32 @@
  */
 
 Meteor.methods({
-  'myOrchards-remove': (myOrchardId) => {
+  'myBenchs-remove': (myBenchId) => {
     if (!Meteor.user()) throw Error()
 
-    MyOrchards.remove({
-      _id: myOrchardId,
+    MyBenchs.remove({
+      _id: myBenchId,
       userId: Meteor.user()._id
-    })
-
-    MyTrees.update({
-      orchardId: myOrchardId,
-      userId: Meteor.user()._id
-    }, {
-      $set: {orchardId: null}
-    }, {
-      multi: 1
-    })
-
-    MyBenchs.update({
-      orchardId: myOrchardId,
-      userId: Meteor.user()._id
-    }, {
-      $set: {orchardId: null}
-    }, {
-      multi: 1
     })
 
     MyPlants.update({
-      orchardId: myOrchardId,
+      benchId: myBenchId,
       userId: Meteor.user()._id
     }, {
-      $set: {orchardId: null}
+      $set: {benchId: null}
     }, {
       multi: 1
     })
 
+    console.log({
+      type: 'bench',
+      typeId: myBenchId,
+      user: Meteor.user()._id
+    })
+
     MyLogEntries.remove({
-      type: 'orchard',
-      typeId: myOrchardId,
+      type: 'bench',
+      typeId: myBenchId,
       userId: Meteor.user()._id
     }, {
       multi: 1

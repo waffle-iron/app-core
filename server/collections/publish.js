@@ -123,13 +123,15 @@ Meteor.publish('MyPlants', function(userId, orchardId, benchId) {
 })
 
 Meteor.publish('MyLogEntries', function(userId, type, typeId) {
-
-  let q = { type: type, userId: userId }
+  let q = { userId: userId }
 
   if (!this.userId || this.userId !== userId) {
     q.public = true
   }
 
+  if (type) {
+    q.type = type
+  }
   if (typeId) {
     q.typeId = typeId
   }

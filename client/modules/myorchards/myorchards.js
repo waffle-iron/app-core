@@ -18,9 +18,6 @@
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
-Template.myOrchards.onRendered(function() {
-})
-
 Template.myOrchardPlantsTableItem.events({
   'click .plant-modal-update': function(e) {
     e.preventDefault()
@@ -34,6 +31,14 @@ Template.myOrchardTreesTableItem.events({
   'click .remove-item': function(event, template){
     if (confirm('¿Eliminar este árbol?')) {
       Meteor.call('myTrees-remove', template.data._id)
+    }
+  }
+})
+
+Template.myOrchardBenchsTableItem.events({
+  'click .remove-item': function(event, template){
+    if (confirm('¿Eliminar este bancal?')) {
+      Meteor.call('myBenchs-remove', template.data._id)
     }
   }
 })

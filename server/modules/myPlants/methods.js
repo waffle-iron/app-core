@@ -30,7 +30,9 @@ Meteor.methods({
     MyLogEntries.remove({
       type: 'plant',
       typeId: myPlantId,
-      user: Meteor.user()._id
+      userId: Meteor.user()._id
+    }, {
+      multi: 1
     })
 
     return true
