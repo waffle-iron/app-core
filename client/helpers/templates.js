@@ -63,15 +63,3 @@ Template.registerHelper('familyName', function(familyId) {
   let r = CropFamilies.findOne({_id: familyId})
   return r ? r.name : null
 })
-
-Template.registerHelper('myOrchardName', function(orchardId) {
-  if (!orchardId) return
-  let r = MyOrchards.findOne({_id: orchardId})
-  return r ? r.name : null
-})
-
-Template.registerHelper('myBenchName', function(benchId) {
-  if (!benchId) return
-  let r = MyBenchs.findOne({_id: benchId})
-  return r ? r.name : null
-})

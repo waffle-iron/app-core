@@ -124,13 +124,19 @@
 <template name="myOrchardBenchsTableItem">
   <tr>
     <td>
-      <a href="{{pathFor "myorchards.one.benchs.one" userId=userId _id=orchardId bench=_id}}">{{name}}</a>
-
+      {{#if orchardId}}
+        <a href="{{pathFor "myorchards.one.benchs.one" userId=userId _id=orchardId bench=_id}}">{{name}}</a>
+      {{else}}
+        {{name}}
+      {{/if}}
     </td>
     <td>
-      <a href="{{pathFor "myorchards.one" _id=orchardId userId=userId}}">{{myOrchardName orchardId}}</a>
+      {{#if orchardId}}
+        <a href="{{pathFor "myorchards.one" _id=orchardId userId=userId}}">{{orchardProperty orchardId 'name'}}</a>
+      {{else}}
+        <span class="label label-default">sin asignar</span>
+      {{/if}}
     </td>
-
     <td>
       <div class="pull-right">
         {{#if canEdit .}}
@@ -163,13 +169,19 @@
       {{/if}}
     </td>
     <td>
-      <a href="{{pathFor "myorchards.one" _id=orchardId userId=userId}}">{{myOrchardName orchardId}}</a>
+      {{#if orchardId}}
+        <a href="{{pathFor "myorchards.one" _id=orchardId userId=userId}}">{{orchardProperty orchardId 'name'}}</a>
+      {{else}}
+        <span class="label label-default">sin asignar</span>
+      {{/if}}
     </td>
-
     <td>
-      <a href="{{pathFor "myorchards.one.benchs.one" userId=userId _id=orchardId bench=benchId}}">{{myBenchName benchId}}</a>
+      {{#if benchId}}
+        <a href="{{pathFor "myorchards.one.benchs.one" userId=userId _id=orchardId bench=benchId}}">{{benchProperty benchId 'name'}}</a>
+      {{else}}
+        <span class="label label-default">sin asignar</span>
+      {{/if}}
     </td>
-
     <td>
       <div class="pull-right">
         {{#if canEdit .}}
@@ -199,7 +211,11 @@
     </td>
 
     <td>
-      <a href="{{pathFor "myorchards.one" _id=orchardId userId=userId}}">{{myOrchardName orchardId}}</a>
+      {{#if orchardId}}
+        <a href="{{pathFor "myorchards.one" _id=orchardId userId=userId}}">{{orchardProperty orchardId 'name'}}</a>
+      {{else}}
+        <span class="label label-default">sin asignar</span>
+      {{/if}}
     </td>
 
     <td>

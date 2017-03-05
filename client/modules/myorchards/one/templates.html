@@ -1,12 +1,14 @@
 <template name="myOrchardsView">
 
   <h2 class="page-header">
-    Huerto: {{myOrchard.name}}
+    {{myOrchard.name}}
 
     {{#if canEdit myOrchard}}
       <div class="pull-right">
+        <a class="btn btn-primary" href="{{pathFor 'myorchards.one.edit' _id=myOrchard._id userId=userId}}">
+          <i class="fa fa-pencil"></i>
+        </a>
         {{> myOrchardsViewShareToggle}}
-        <a class="btn btn-primary" href="{{pathFor 'myorchards.one.edit' _id=myOrchard._id userId=userId}}">Editar</a>
       </div>
     {{/if}}
 
@@ -53,11 +55,11 @@
           <tbody>
             <tr>
               <td>Creado</td>
-              <td>{{moment 'shortest' myBench.createdAt}}</td>
+              <td>{{moment 'shortest' myOrchard.createdAt}}</td>
             </tr>
             <tr>
               <td>Actualización</td>
-              <td>{{moment 'shortest' myBench.updatedAt}}</td>
+              <td>{{moment 'shortest' myOrchard.updatedAt}}</td>
             </tr>
           </tbody>
         </table>

@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2016-2017 "Jose Constela" [jose@joseconstela.com]
+ * Copyright (c) 2016-2017 Jose Constela [jose@joseconstela.com]
  * Tiempo de Siembra [http://app.tiempodesiembra.es]
  *
  * This file is part of iempo de Siembra core's app.
@@ -18,13 +18,13 @@
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
-MyOrchards = new Mongo.Collection("myorchard");
+MyOrchards = new Mongo.Collection('myorchard')
 
 MyOrchards.allow({
-  insert: function () { return !!Meteor.user(); },
-  update: function () { return !!Meteor.user(); },
-  remove: function () { return !!Meteor.user(); }
-});
+  insert: function () { return !!Meteor.user() },
+  update: function () { return !!Meteor.user() },
+  remove: function () { return !!Meteor.user() }
+})
 
 // Define the schema
 MyOrchardsSchema = new SimpleSchema({
@@ -43,12 +43,12 @@ MyOrchardsSchema = new SimpleSchema({
   name: {
     type: String,
     max: 200,
-    label: "Nombre"
+    label: 'Nombre'
   },
   description: {
     type: String,
     optional: true,
-    label: "Descripción",
+    label: 'Descripción',
     autoform: {
       rows: 5
     }
@@ -56,20 +56,20 @@ MyOrchardsSchema = new SimpleSchema({
   /* location: {
     type: AddressSchema,
     optional: true,
-    label: "Localización",
+    label: 'Localización',
     autoform: {
-        type: "googleplace"
+        type: 'googleplace'
     }
   }, */
   public: {
     type: Boolean,
     optional: true,
-    label: "Hacer público"
+    label: 'Hacer público'
   },
   notes: {
     type: Array,
     optional: true,
-    label: "Notas",
+    label: 'Notas',
     autoform: {
       rows: 10
     }
@@ -85,11 +85,11 @@ MyOrchardsSchema = new SimpleSchema({
     type: Date,
     autoValue: function() {
       if (this.isInsert) {
-        return new Date();
+        return new Date()
       } else if (this.isUpsert) {
-        return {$setOnInsert: new Date()};
+        return {$setOnInsert: new Date()}
       } else {
-        this.unset();  // Prevent user from supplying their own value
+        this.unset()  // Prevent user from supplying their own value
       }
     },
     autoform: {
@@ -101,16 +101,13 @@ MyOrchardsSchema = new SimpleSchema({
   updatedAt: {
     type: Date,
     autoValue: function() {
-      if (this.isUpdate) {
-        return new Date();
-      }
+      return new Date()
     },
+    optional: true,
     autoform: {
       type: 'hidden'
-    },
-    denyInsert: true,
-    optional: true
+    }
   }
-});
+})
 
-MyOrchards.attachSchema(MyOrchardsSchema);
+MyOrchards.attachSchema(MyOrchardsSchema)

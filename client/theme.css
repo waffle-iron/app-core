@@ -2,6 +2,19 @@ body {
   background: #F0F0ED;
 }
 
+h1, h2, h3, h4, h5 {
+  color: #2d2d2d;
+  font-weight: 700;
+  line-height: 120%;
+  margin-bottom: 15px;
+  -ms-word-break: break-all;
+  word-break: break-word;
+  -webkit-hyphens: auto;
+  -moz-hyphens: auto;
+  hyphens: auto;
+  border-bottom: none !important;
+}
+
 h2.page-header {
   margin: 10px 0;
 }
@@ -21,7 +34,7 @@ h2.page-header {
 
 .breadcrumb,
 .jumbotron {
-  background: #fff
+  background: white
 }
 
 .panel-body p:last-child {
