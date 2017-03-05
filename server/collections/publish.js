@@ -31,10 +31,12 @@ Meteor.publish('directory', function (userId) {
     'profile.lastName': true,
     'profile.familyName': true,
     'profile.secondName': true,
+    'emails.address': true,
     'profile.name': true
   }
 
   if (!userId) return
+
   return Meteor.users.find({_id: userId}, {fields: fields})
 })
 

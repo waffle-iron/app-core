@@ -19,7 +19,6 @@
  */
 
 Meteor.publish('userData', function () {
-
   let fields = {
     'services.twitter.profile_image_url_https': true,
     'services.facebook.id': true,
